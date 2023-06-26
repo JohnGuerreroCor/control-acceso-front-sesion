@@ -1,0 +1,714 @@
+<!-- Image and text -->
+<nav class="navbar navbar-dark bg-dark">
+  <a class="navbar-brand" href="#">
+    <img class="img-fluid" src="assets/universidad-surcolombiana-multicampos-white.png" style="width: 60%;" alt="USCO">
+  </a>
+</nav>
+<div id="content-wrap" class="container mt-1 mb-5 text-center">
+  <button *ngIf="mobile" class="btn-flotante-usco-dos" (click)="flipCard()">
+    <i class="fa-solid fa-qrcode fa-2x"></i>
+  </button>
+  <!--VISTA ESCRITORIO-->
+  <div class="card-body" *ngIf="!mobile">
+    <div class="row ml-5 mr-5 pl-5 pr-5">
+      <div class="col">
+        <!--CARNET PC ESTUDIANTE-->
+        <div class="pl-4 pr-4">
+          <div class="card-usco-carnet-pc carnet-usco-body-pc shadow p-4 mt-4" id="carnet-usco-rotulo-front"
+            *ngIf="(estudiante | json) != '[]' && foto.url != '' && carnetEstudiante">
+            <div class="row mt-4">
+              <div class="col-md-4">
+                <div class="row text-center">
+                  <div class="col">
+                    <img src="{{foto.url}}" [alt]="estudiante[0].persona.apellido"
+                      [title]="estudiante[0].persona.apellido" class="card-img-top foto-usco-pc cursor-select" />
+                  </div>
+                </div>
+                <div class="row text-left">
+                  <div class="col ml-2">
+                    <small class="font-weight-bold" style="font-size: 12px;">
+                      Cód: {{estudiante[0].codigo}}
+                    </small>
+                  </div>
+                </div>
+                <div class="row text-left">
+                  <div class="col ml-2">
+                    <small class="font-usco-vt font-weight-bold">
+                      G.S: {{estudiante[0].persona.grupoSanguineo}}
+                    </small>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-8 text-left p-0">
+                <div class="card-block">
+                  <div class="row ml-2">
+                    <div class="col">
+                      <img
+                        src="https://www.usco.edu.co/imagen-institucional/ocre/universidad-surcolombiana-multicampos.png"
+                        class="img-fluid" style="width: 90%;">
+                    </div>
+                  </div>
+                  <div class="row mt-4 ml-2">
+                    <div class="col">
+                      <small CLASS="font-usco-default font-usco-gr font-weight-bold text-uppercase">
+                        {{estudiante[0].persona.nombre}} {{estudiante[0].persona.apellido}}
+                      </small>
+                    </div>
+                  </div>
+                  <div class="row ml-2">
+                    <div class="col">
+                      <small class="font-usco-default font-usco-gr font-weight-bold">
+                        ID: {{estudiante[0].persona.identificacion}}
+                      </small>
+                    </div>
+                  </div>
+                  <div class="row ml-2">
+                    <div class="col">
+                      <small class="font-usco-default font-usco-gr font-weight-bold text-uppercase">
+                        {{estudiante[0].programa.nombreCorto}}
+                      </small>
+                    </div>
+                  </div>
+                  <div class="row ml-2">
+                    <div class="col">
+                      <small class="font-usco-default font-usco-gr font-weight-bold text-uppercase">
+                        ESTUDIANTE
+                      </small>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!--CARNET PC GRADUADO-->
+        <div class="pl-4 pr-4">
+          <div class="card-usco-carnet-pc carnet-usco-body-pc shadow p-4 mt-4" id="carnet-usco-rotulo-front"
+            *ngIf="(graduado | json) != '[]' && foto.url != '' && carnetGraduado">
+            <div class="row mt-4">
+              <div class="col-md-4">
+                <div class="row text-center">
+                  <div class="col">
+                    <img src="{{ foto.url }}" [alt]="graduado[0].persona.apellido"
+                      [title]="graduado[0].persona.apellido" class="card-img-top foto-usco-pc cursor-select" />
+                  </div>
+                </div>
+                <div class="row text-left">
+                  <div class="col ml-2">
+                    <small class="font-weight-bold">
+                      ID: {{graduado[0].persona.identificacion}}
+                    </small>
+                  </div>
+                </div>
+                <div class="row text-left">
+                  <div class="col ml-2">
+                    <small class="font-usco-vt font-weight-bold">
+                      G.S: {{graduado[0].persona.grupoSanguineo}}
+                    </small>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-8 text-left p-0">
+                <div class="card-block">
+                  <div class="row ml-2">
+                    <div class="col">
+                      <img
+                        src="https://www.usco.edu.co/imagen-institucional/ocre/universidad-surcolombiana-multicampos.png"
+                        class="img-fluid" style="width: 90%;">
+                    </div>
+                  </div>
+                  <div class="row mt-4 ml-2">
+                    <div class="col">
+                      <small class="font-usco-default font-usco-gr font-weight-bold text-uppercase">
+                        {{graduado[0].persona.nombre}} {{graduado[0].persona.apellido}}
+                      </small>
+                    </div>
+                  </div>
+                  <div class="row ml-2">
+                    <div class="col">
+                      <small class="font-usco-default font-usco-gr font-weight-bold">
+                        {{graduado[0].programa.nombrePrograma}}
+                      </small>
+                    </div>
+                  </div>
+                  <div class="row ml-2">
+                    <div class="col">
+                      <small class="font-usco-default font-usco-gr font-weight-bold text-uppercase">
+                        Fecha: {{graduado[0].fechaGrado | date : "dd/MM/yyyy"}}
+                      </small>
+                    </div>
+                  </div>
+                  <div class="row ml-2">
+                    <div class="col">
+                      <small *ngIf="graduado[0].persona.genero === 'M'"
+                        class="font-usco-default font-usco-gr font-weight-bold text-uppercase">
+                        graduado
+                      </small>
+                      <small *ngIf="graduado[0].persona.genero === 'F'"
+                        class="font-usco-default font-usco-gr font-weight-bold text-uppercase">
+                        graduada
+                      </small>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!--CARNET PC DOCENTE-->
+        <div class="pl-4 pr-4">
+          <div class="card-usco-carnet-pc carnet-usco-body-pc shadow p-4 mt-4" id="carnet-usco-rotulo-front"
+            *ngIf="(docente | json) != '[]' && foto.url != '' && carnetDocente">
+            <div class="row mt-4">
+              <div class="col-md-4">
+                <div class="row text-center">
+                  <div class="col">
+                    <img src="{{ foto.url }}" [alt]="docente[0].persona.apellido" [title]="docente[0].persona.apellido"
+                      class="card-img-top foto-usco-pc cursor-select" />
+                  </div>
+                </div>
+                <div class="row text-left">
+                  <div class="col ml-2">
+                    <small class="font-usco-vt font-weight-bold">
+                      G.S: {{docente[0].persona.grupoSanguineo}}
+                    </small>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-8 text-left p-0">
+                <div class="card-block">
+                  <div class="row ml-2">
+                    <div class="col">
+                      <img
+                        src="https://www.usco.edu.co/imagen-institucional/ocre/universidad-surcolombiana-multicampos.png"
+                        class="img-fluid" style="width: 90%;">
+                    </div>
+                  </div>
+                  <div class="row mt-4 ml-2">
+                    <div class="col">
+                      <small class="font-usco-default font-usco-gr font-weight-bold text-uppercase">
+                        {{docente[0].persona.nombre}} {{docente[0].persona.apellido}}
+                      </small>
+                    </div>
+                  </div>
+                  <div class="row ml-2">
+                    <div class="col">
+                      <small class="font-usco-default font-usco-gr font-weight-bold">
+                        ID: {{docente[0].persona.identificacion}}
+                      </small>
+                    </div>
+                  </div>
+                  <div class="row ml-2">
+                    <div class="col">
+                      <small class="font-usco-default font-usco-gr font-weight-bold text-uppercase">
+                        {{docente[0].sede}} - {{docente[0].nombrePrograma}}
+                      </small>
+                    </div>
+                  </div>
+                  <div class="row ml-2">
+                    <div class="col">
+                      <small class="font-usco-default font-usco-gr font-weight-bold text-uppercase">
+                        {{docente[0].vinculacionNombre}}
+                      </small>
+                    </div>
+                  </div>
+                  <!--   <div class="row ml-2">
+                    <div class="col">
+                      <small class="font-usco-default font-usco-gr font-weight-bold text-uppercase">
+                        DOCENTE
+                      </small>
+                    </div>
+                  </div> -->
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!--CARNET PC ADMINISTRATIVO-->
+        <div class="pl-4 pr-4">
+          <div class="card-usco-carnet-pc carnet-usco-body-pc shadow p-5" id="carnet-usco-rotulo-front"
+            *ngIf="(administrativo | json) != '[]' && foto.url != '' && carnetAdministrativo">
+            <div class="row mt-4">
+              <div class="col-md-4">
+                <div class="row text-center">
+                  <div class="col">
+                    <img src="{{ foto.url }}" [alt]="persona[0].apellido" [title]="persona[0].apellido"
+                      class="card-img-top foto-usco-pc cursor-select" style="width: 115%;" />
+                  </div>
+                </div>
+                <div class="row text-left">
+                  <div class="col ml-2">
+                    <small class="font-usco-vt font-weight-bold">
+                      G.S: {{persona[0].grupoSanguineo}}
+                    </small>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-8 text-left p-0">
+                <div class="card-block">
+                  <div class="row ml-2">
+                    <div class="col">
+                      <img
+                        src="https://www.usco.edu.co/imagen-institucional/ocre/universidad-surcolombiana-multicampos.png"
+                        class="img-fluid" style="width: 90%;">
+                    </div>
+                  </div>
+                  <div class="row mt-4 ml-2">
+                    <div class="col">
+                      <small class="font-usco-default font-usco-gr font-weight-bold text-uppercase">
+                        {{persona[0].nombre}} {{persona[0].apellido}}
+                      </small>
+                    </div>
+                  </div>
+                  <div class="row ml-2">
+                    <div class="col">
+                      <small class="font-usco-default font-usco-gr font-weight-bold">
+                        ID: {{administrativo[0].identificacion}}
+                      </small>
+                    </div>
+                  </div>
+                  <div class="row ml-2">
+                    <div class="col">
+                      <small class="font-usco-default font-usco-gr font-weight-bold text-uppercase">
+                        {{administrativo[0].nombrePrograma}}
+                      </small>
+                    </div>
+                  </div>
+                  <div class="row ml-2">
+                    <div class="col">
+                      <small class="font-usco-default font-usco-gr font-weight-bold text-uppercase">
+                        {{administrativo[0].cargoNombre}}
+                      </small>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="pl-4 pr-4">
+      <div class="row mt-4 ml-5 mr-5 pl-5 pr-5">
+        <div class="col">
+          <div class="card-usco-carnet-pc carnet-usco-body-pc shadow p-4" id="carnet-usco-rotulo-back">
+            <div class="row mt-2">
+              <div class="col">
+                <img src="assets/universidad-surcolombiana-v.png" class="img-fluid" style="width: 20%" />
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-4 mt-2">
+                <div class="row text-center">
+                  <div class="col mt-2">
+                    <img src="{{foto.url}}" class="card-img-top foto-usco-pc cursor-select" />
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-8 text-left p-0 mt-4">
+                <div class="card-block px-3">
+                  <div class="row ml-2">
+                    <div class="col mt-1">
+                      <p *ngIf="(politica | json) != '[]'" class="font-usco-default font-weight-bold text-justify"
+                        style="font-size: 13px; line-height: 1">
+                        {{ politica[0].descripcion }}
+                      </p>
+                      <p *ngIf="(politica | json) == '[]'" class="font-usco-default font-weight-bold text-justify"
+                        style="font-size: 13px; line-height: 1">
+                        Lorem, ipsum dolor sit amet consectetur adipisicing
+                        elit. Est incidunt nihil error quidem fugit minima
+                        inventore et obcaecati quibusdam! Mollitia cum nesciunt
+                        sapiente minima corporis incidunt exercitationem error
+                        eos at.
+                      </p>
+                    </div>
+                  </div>
+                  <div class="row mt-1 ml-2 text-center">
+                    <div class="col">
+                      <img src="assets/signature-solid.png" class="img-fluid" style="width: 20%" />
+                    </div>
+                  </div>
+                  <div class="row ml-2 text-center">
+                    <div class="col">
+                      <!--  <small class="font-usco-default font-weight-bold text-uppercase">
+                        RECTORA
+                      </small> -->
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!--VISTA MOBILE-->
+  <div class="row" *ngIf="mobile">
+    <!--CARNET MOBILE ADMINISTRATIVO-->
+    <div class="col" *ngIf="carnetAdministrativo">
+      <div class="carnet" [class.flipped]="flipped" (click)="flipCard()">
+        <div class="front">
+          <div class="card-usco-carnet carnet-usco-body shadow p-4 text-center" id="carnet-usco-rotulo-front">
+            <div class="row mt-4">
+              <div class="col-md-4">
+                <div class="row mb-3">
+                  <div class="col">
+                    <img
+                      src="https://www.usco.edu.co/imagen-institucional/ocre/universidad-surcolombiana-multicampos.png"
+                      class="img-fluid">
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col">
+                    <img *ngIf="(administrativo | json) != '[]'" src="{{ foto.url }}" [alt]="persona[0].apellido"
+                      [title]="persona[0].apellido" class="foto-usco cursor-select" />
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-8 p-5">
+                <div class="card-block">
+                  <div class="row mt-2">
+                    <div class="col">
+                      <h6 *ngIf="(administrativo | json) != '[]'" class="font-usco-default font-weight-bold">
+                        ID: {{administrativo[0].identificacion}}
+                      </h6>
+                    </div>
+                  </div>
+                  <div class="row mb-2">
+                    <div class="col">
+                      <small *ngIf="(administrativo | json) != '[]'"
+                        class="font-usco-default font-weight-bold text-uppercase">
+                        {{persona[0].nombre}} {{persona[0].apellido}}
+                      </small>
+                    </div>
+                  </div>
+                  <div class="row mb-2">
+                    <div class="col">
+                      <small *ngIf="(administrativo | json) != '[]'"
+                        class="font-usco-default font-weight-bold text-uppercase">
+                        {{administrativo[0].nombrePrograma}}
+                      </small>
+                    </div>
+                  </div>
+                  <div class="row mb-2">
+                    <div class="col">
+                      <small *ngIf="(administrativo | json) != '[]'" class="font-usco-vt font-weight-bold">
+                        G.S: {{persona[0].grupoSanguineo}}
+                      </small>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col">
+                      <small *ngIf="(administrativo | json) != '[]'"
+                        class="font-usco-default font-weight-bold text-uppercase">
+                        {{administrativo[0].cargoNombre}}
+                      </small>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="back">
+          <div class="card-usco-carnet carnet-usco-body shadow p-4 mb-4" id="carnet-usco-rotulo-back">
+            <div class="row mt-2">
+              <div class="col">
+                <img src="assets/universidad-surcolombiana-v.png" class="img-fluid firma-usco p-2" />
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-4 mt-1">
+                <div class="row">
+                  <div class="col mt-2">
+                    <img *ngIf="(administrativo | json) != '[]'" src="{{ foto.url }}" [alt]="persona[0].apellido"
+                      [title]="persona[0].apellido" class="foto-usco cursor-select" />
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-8 p-0 mt-1">
+                <div class="card-block px-3">
+                  <div class="row">
+                    <div class="col">
+                      <h6 class="font-usco-default font-usco-gr font-weight-bold">
+                        {{politica[0].descripcion}}
+                      </h6>
+                    </div>
+                  </div>
+                  <!-- <div class="row mt-1 mb-2">
+                    <div class="col">
+                      <img src="{{firma.url}}" class="img-fluid firma-usco">
+                    </div>
+                  </div> -->
+                  <div class="row">
+                    <div class="col">
+                      <!--  <small *ngIf="rector[0].persona.genero == 'M'"
+                        class="font-usco-default font-weight-bold text-uppercase">
+                        RECTOR
+                      </small>
+                      <small *ngIf="rector[0].persona.genero == 'F'"
+                        class="font-usco-default font-weight-bold text-uppercase">
+                        RECTORA
+                      </small> -->
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!--CARNET MOBILE ESTUDIANTE-->
+    <div class="col" *ngIf="carnetEstudiante">
+      <div class="carnet" [class.flipped]="flipped" (click)="flipCard()">
+        <div class="front">
+          <div class="card-usco-carnet carnet-usco-body shadow p-4 text-center" id="carnet-usco-rotulo-front">
+            <div class="row mt-4">
+              <div class="col-md-4">
+                <div class="row mb-3">
+                  <div class="col">
+                    <img
+                      src="https://www.usco.edu.co/imagen-institucional/ocre/universidad-surcolombiana-multicampos.png"
+                      class="img-fluid">
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col">
+                    <img *ngIf="(estudiante | json) != '[]'" src="{{foto.url}}" [alt]="estudiante[0].persona.apellido"
+                      [title]="estudiante[0].persona.apellido" class="card-img-top foto-usco cursor-select" />
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-8 p-5">
+                <div class="card-block">
+                  <div class="row mt-2">
+                    <div class="col">
+                      <h6 *ngIf="(estudiante | json) != '[]'" class="font-weight-bold">
+                        Cód: {{estudiante[0].codigo}}
+                      </h6>
+                    </div>
+                  </div>
+                  <div class="row mb-2">
+                    <div class="col">
+                      <small *ngIf="(estudiante | json) != '[]'"
+                        class="font-usco-default font-weight-bold text-uppercase">
+                        {{estudiante[0].persona.nombre}} {{estudiante[0].persona.apellido}}
+                      </small>
+                    </div>
+                  </div>
+                  <div class="row mb-2">
+                    <div class="col">
+                      <small *ngIf="(estudiante | json) != '[]'" class="font-usco-default font-weight-bold">
+                        ID: {{estudiante[0].persona.identificacion}}
+                      </small>
+                    </div>
+                  </div>
+                  <div class="row mb-2">
+                    <div class="col">
+                      <small *ngIf="(estudiante | json) != '[]'"
+                        class="font-usco-default font-weight-bold text-uppercase">
+                        {{estudiante[0].programa.nombreCorto}}
+                      </small>
+                    </div>
+                  </div>
+                  <div class="row mb-2">
+                    <div class="col">
+                      <small *ngIf="(estudiante | json) != '[]'" class="font-usco-vt font-weight-bold">
+                        G.S: {{estudiante[0].persona.grupoSanguineo}}
+                      </small>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col">
+                      <small class="font-usco-default font-weight-bold text-uppercase">
+                        ESTUDIANTE
+                      </small>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="back">
+          <div class="card-usco-carnet carnet-usco-body shadow p-4 mb-4 text-center" id="carnet-usco-rotulo-back">
+            <div class="row mt-2">
+              <div class="col">
+                <img src="assets/universidad-surcolombiana-v.png" class="img-fluid p-3 firma-usco" />
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-4 mt-1">
+                <div class="row">
+                  <div class="col mt-2">
+                    <img *ngIf="(estudiante | json) != '[]'" src="{{foto.url}}" [alt]="estudiante[0].persona.apellido"
+                      [title]="estudiante[0].persona.apellido" class="card-img-top foto-usco cursor-select" />
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-8 p-0 mt-1">
+                <div class="card-block px-3">
+                  <div class="row">
+                    <div class="col">
+                      <h6 *ngIf="(politica | json) != '[]'" class="font-usco-default font-weight-bold font-usco-gr">
+                        {{politica[0].descripcion}}
+                      </h6>
+                    </div>
+                  </div>
+                  <!--  <div class="row mt-1 mb-2">
+                    <div class="col">
+                      <img src="{{firma.url}}" class="img-fluid firma-usco">
+                    </div>
+                  </div> -->
+                  <div class="row">
+                    <div class="col">
+                      <!--  <small *ngIf="rector[0].persona.genero == 'M'"
+                        class="font-usco-default font-weight-bold text-uppercase">
+                        RECTOR
+                      </small>
+                      <small *ngIf="rector[0].persona.genero == 'F'"
+                        class="font-usco-default font-weight-bold text-uppercase">
+                        RECTORA
+                      </small> -->
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!--CARNET MOBILE GRADUADO-->
+    <div class="col" *ngIf="carnetGraduado">
+      <div class="carnet" [class.flipped]="flipped" (click)="flipCard()">
+        <div class="front">
+          <div class="card-usco-carnet carnet-usco-body shadow p-4 text-center" id="carnet-usco-rotulo-front">
+            <div class="row mt-4">
+              <div class="col-md-4">
+                <div class="row mb-3">
+                  <div class="col">
+                    <img
+                      src="https://www.usco.edu.co/imagen-institucional/ocre/universidad-surcolombiana-multicampos.png"
+                      class="img-fluid">
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col">
+                    <img *ngIf="(graduado | json) != '[]'" src="{{foto.url}}" [alt]="graduado[0].persona.apellido"
+                      [title]="graduado[0].persona.apellido" class="card-img-top foto-usco cursor-select" />
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-8 p-4">
+                <div class="card-block">
+                  <div class="row mt-2">
+                    <div class="col">
+                      <h6 *ngIf="(graduado | json) != '[]'" class="font-weight-bold">
+                        ID: {{graduado[0].persona.identificacion}}
+                      </h6>
+                    </div>
+                  </div>
+                  <div class="row mb-2">
+                    <div class="col">
+                      <small *ngIf="(graduado | json) != '[]'"
+                        class="font-usco-default font-weight-bold text-uppercase">
+                        {{graduado[0].persona.nombre}} {{graduado[0].persona.apellido}}
+                      </small>
+                    </div>
+                  </div>
+                  <div class="row mb-2">
+                    <div class="col">
+                      <small *ngIf="(graduado | json) != '[]'" class="font-usco-default font-weight-bold">
+                        {{graduado[0].programa.nombrePrograma}}
+                      </small>
+                    </div>
+                  </div>
+                  <div class="row mb-2">
+                    <div class="col">
+                      <small *ngIf="(graduado | json) != '[]'"
+                        class="font-usco-default font-weight-bold text-uppercase">
+                        Fecha: {{graduado[0].fechaGrado | date : "dd-MM-yyyy"}}
+                      </small>
+                    </div>
+                  </div>
+                  <div class="row mb-2">
+                    <div class="col">
+                      <small *ngIf="(graduado | json) != '[]'" class="font-usco-vt font-weight-bold">
+                        G.S: {{graduado[0].persona.grupoSanguineo}}
+                      </small>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col">
+                      <small *ngIf="graduado[0].persona.genero === 'M'"
+                        class="font-usco-default font-weight-bold text-uppercase">
+                        graduado
+                      </small>
+                      <small *ngIf="graduado[0].persona.genero === 'F'"
+                        class="font-usco-default font-weight-bold text-uppercase">
+                        graduada
+                      </small>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="back">
+          <div class="card-usco-carnet carnet-usco-body shadow p-4 mb-4 text-center" id="carnet-usco-rotulo-back">
+            <div class="row mt-2">
+              <div class="col">
+                <img src="assets/universidad-surcolombiana-v.png" class="img-fluid p-3 firma-usco" />
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-4 mt-1">
+                <div class="row">
+                  <div class="col mt-2">
+                    <img *ngIf="(graduado | json) != '[]'" src="{{foto.url}}" [alt]="graduado[0].persona.apellido"
+                      [title]="graduado[0].persona.apellido" class="card-img-top foto-usco cursor-select" />
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-8 p-0 mt-1">
+                <div class="card-block px-3">
+                  <div class="row">
+                    <div class="col">
+                      <h6 class="font-usco-default font-weight-bold font-usco-gr">
+                        {{politica[0].descripcion}}
+                      </h6>
+                    </div>
+                  </div>
+                  <!--  <div class="row mt-1 mb-2">
+                    <div class="col">
+                      <img src="{{firma.url}}" class="img-fluid firma-usco">
+                    </div>
+                  </div> -->
+                  <div class="row">
+                    <div class="col">
+                      <!--  <small *ngIf="rector[0].persona.genero == 'M'"
+                        class="font-usco-default font-weight-bold text-uppercase">
+                        RECTOR
+                      </small>
+                      <small *ngIf="rector[0].persona.genero == 'F'"
+                        class="font-usco-default font-weight-bold text-uppercase">
+                        RECTORA
+                      </small> -->
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<footer class="bg-usco-gr-d6">
+  <p class="mt-2 font-weight-bold text-white">© {{ anio | date : "yyyy" }} CITCD - Version 1 Construcción 1.0</p>
+</footer>

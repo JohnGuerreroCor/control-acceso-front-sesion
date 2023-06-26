@@ -1,0 +1,32 @@
+.content {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+}
+
+.card-login {
+  background: white;
+  text-align: center;
+  border: 1px solid #a6b1b6;
+  border-radius: 15px;
+  -moz-box-shadow: 2px 2px 5px #999;
+  box-shadow: 5px 5px 15px #999;
+}
+
+.header-usco-card {
+  border-radius: 15px 15px 0px 0px;
+}
+
+.fondo {
+  background-color: #dbe0e2;
+}
+
+.example-full-width {
+  width: 100%;
+}
+
+.punteada {
+  border-bottom: dashed 1px #ffffff;
+}

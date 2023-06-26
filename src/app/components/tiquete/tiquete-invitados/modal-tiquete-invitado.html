@@ -1,0 +1,98 @@
+<div mat-dialog-title>
+  <div class="row">
+    <div class="col">
+      <h4 class="font-usco-vt font-weight-bold"><i class="fa-solid fa-ticket"></i> Tiquete
+      </h4>
+      <!-- <p>{{data | json}}</p> -->
+    </div>
+    <div class="col text-right font-usco-vt font-weight-bold">
+      <i class="fa-solid fa-xmark" mat-dialog-close></i>
+    </div>
+  </div>
+</div>
+<hr>
+<mat-dialog-content>
+  <div class="container">
+    <div class="row text-center" id="print-section">
+      <div class="col">
+        <div class="shadow" style="width: 300px;border-radius: 2px;margin-left: auto;margin-right: auto;">
+          <div class="bg-usco-gr-d6 text-white p-2">
+            <img src="assets/universidad-surcolombiana-multicampos-white.png" alt="USCO" class="img-fluid">
+          </div>
+          <div class="row">
+            <div class="col text-center p-4">
+              <img *ngIf="data.ticket.tercero.codigo !== 0"
+                src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data={{data.ticket.tercero.codigo}}"
+                alt="">
+              <img *ngIf="data.ticket.tercero.codigo === 0"
+                src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data={{data.ticket.persona.codigo}}"
+                alt="">
+            </div>
+          </div>
+          <hr class="dashed">
+          <div class="row text-left p-2">
+            <div class="col">
+              <table class="table table-sm">
+                <tbody>
+                  <tr>
+                    <th scope="row" style="font-size: 11px;">Nombre:</th>
+                    <td style="font-size: 11px;">
+                      <span *ngIf="data.ticket.tercero.codigo !== 0">{{data.ticket.tercero.nombreCompleto}}</span>
+                      <span *ngIf="data.ticket.tercero.codigo === 0">{{data.ticket.persona.nombre}}
+                        {{data.ticket.persona.apellido}}</span>
+                    </td>
+                  </tr>
+                  <tr>
+                    <th scope="row" style="font-size: 11px;">Id:</th>
+                    <td style="font-size: 11px;">
+                      <span *ngIf="data.ticket.tercero.codigo !== 0">{{data.ticket.tercero.identificacion}}</span>
+                      <span *ngIf="data.ticket.tercero.codigo === 0">{{data.ticket.persona.identificacion}}</span>
+                    </td>
+                  </tr>
+                  <tr>
+                    <th scope="row" style="font-size: 11px;">Correo:</th>
+                    <td style="font-size: 11px;">
+                      <span *ngIf="data.ticket.tercero.codigo !== 0">{{data.ticket.tercero.email}}</span>
+                      <span *ngIf="data.ticket.tercero.codigo === 0">{{data.ticket.persona.emailInterno}}</span>
+                    </td>
+                  </tr>
+                  <tr>
+                    <th scope="row" style="font-size: 11px;">Lugar:</th>
+                    <td style="font-size: 11px;">
+                      <span *ngIf="data.ticket.tipoLugar === 1">{{data.ticket.bloque.bloqueNombre}}</span>
+                      <span *ngIf="data.ticket.tipoLugar === 2">{{data.ticket.oficina.uaaNombre}}</span>
+                    </td>
+                  </tr>
+                  <tr>
+                    <th scope="row" style="font-size: 11px;">Creado:</th>
+                    <td style="font-size: 11px;">
+                      {{data.ticket.fechaCreacion | date: 'dd-MM-yyyy'}}
+                    </td>
+                  </tr>
+                  <tr>
+                    <th scope="row" style="font-size: 11px;">Vigencia:</th>
+                    <td style="font-size: 11px;">
+                      {{data.ticket.fechaVigencia | date: 'dd-MM-yyyy'}}
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <div class="bg-usco-gr-d6 text-white text-center">
+            <h6 class="p-2 font-weight-bold text-uppercase">TIQUETE DE ACCESO</h6>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</mat-dialog-content>
+<hr />
+<div mat-dialog-actions align="center">
+  <div class="row text-right p-2">
+    <div class="col">
+      <button class="btn btn-usco-vt" [useExistingCss]="true" printTitle="Tiquete {{data.ticket.codigo}}"
+        printSectionId="print-section" ngxPrint><i class="fa-solid fa-print"></i> Imprimir</button>
+    </div>
+  </div>
+</div>

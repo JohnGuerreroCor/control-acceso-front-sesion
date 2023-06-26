@@ -1,0 +1,102 @@
+.example-full-width {
+  width: 100%;
+}
+
+.example-form {
+  min-width: 150px;
+  max-width: 500px;
+  width: 100%;
+}
+
+.example-full-width2 {
+  width: 100%;
+}
+
+.card-pc {
+  display: inline-block !important;
+  position: relative !important;
+  width: 90%;
+  box-shadow: 0 1px 2px 0 rgb(0 0 0 / 14%) !important;
+  border-radius: 3px !important;
+  color: rgba(0, 0, 0, 0.87);
+  background: #fff;
+  padding-top: 0px !important;
+}
+
+.card-header-pc {
+  box-shadow: 0 5px 20px -12px rgb(0 0 0 / 42%), 0 4px 25px 0px rgb(0 0 0 / 12%),
+    0 8px 10px -5px rgb(0 0 0 / 20%);
+  border-radius: 3px;
+  padding: 15px;
+  background-color: #4d626c;
+  margin-top: -25px !important;
+  margin-bottom: 25px;
+  color: #fff;
+  height: 65px !important;
+}
+
+.card-usco-carnet-pc {
+  display: inline-block !important;
+  position: relative !important;
+  width: 70%;
+  box-shadow: 0 10px 20px 0 rgb(0 0 0 / 14%) !important;
+  border-radius: 15px !important;
+  color: rgba(0, 0, 0, 0.87);
+  background: #fff;
+  padding-top: 0px !important;
+}
+
+.card {
+  display: inline-block !important;
+  position: relative !important;
+  box-shadow: 0 10px 20px 0 rgb(0 0 0 / 14%) !important;
+  border-radius: 3px !important;
+  color: rgba(0, 0, 0, 0.87);
+  background: #fff;
+  padding-top: 0px !important;
+}
+
+.card-header {
+  box-shadow: 0 5px 20px -12px rgb(0 0 0 / 42%), 0 4px 25px 0px rgb(0 0 0 / 12%),
+    0 8px 10px -5px rgb(0 0 0 / 20%);
+  border-radius: 3px;
+  padding: 15px;
+  background-color: #4d626c;
+  margin-top: -25px !important;
+  margin-bottom: 25px;
+  color: #fff;
+  height: 65px !important;
+}
+
+.card-usco-carnet {
+  display: inline-block !important;
+  position: relative !important;
+  box-shadow: 0 10px 20px 0 rgb(0 0 0 / 14%) !important;
+  border-radius: 15px !important;
+  color: rgba(0, 0, 0, 0.87);
+  background: #fff;
+  padding-top: 0px !important;
+}
+
+.foto-usco-pc {
+  border: solid 6px white;
+  border-radius: 10px;
+}
+
+.foto-usco {
+  border: solid 6px white;
+  width: 250px;
+  border-radius: 10px;
+}
+
+.firma-usco {
+  width: 150px;
+}
+
+#carnet-usco-rotulo-front {
+  background-image: linear-gradient(#8f141b 35%, white 10%);
+}
+
+#carnet-usco-rotulo-back {
+  background-image: linear-gradient(#8f141b 30%, white 10%);
+}

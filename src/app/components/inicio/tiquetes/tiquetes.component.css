@@ -1,0 +1,7 @@
+.card-usco-menu {
+  filter: brightness(100%);
+}
+
+.card-usco-menu:hover {
+  filter: brightness(90%);
+}

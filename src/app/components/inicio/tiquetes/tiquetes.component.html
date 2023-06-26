@@ -1,0 +1,118 @@
+<app-navbar>
+  <div class="container p-5" *ngIf="!mobile">
+    <div class="row mt-4">
+      <div class="col-sm-6 m-sm-auto">
+        <div class="card mb-4 cursor-select card-usco-menu shadow" [routerLink]="['/tiquete-invitados']">
+          <div class="row">
+            <div class="col-md-4 text-center">
+              <img class="rounded w-100 p-3 shadow filter-green" src="assets/users-rectangle-solid.png" />
+            </div>
+            <div class="col-md-8 mt-3 text-left p-0">
+              <div class="card-block pr-4">
+                <h6 class="card-title text-left font-usco-vt font-weight-bold cursor-select">
+                  Externos Invitados
+                </h6>
+                <p style="font-size: 12px;">
+                  Registro, actualización de correo, generación de tiquete de acceso, asignación de foto y
+                  parametrización con fecha de ingreso y salida de los invitados que tenga la institución.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="card mb-4 cursor-select card-usco-menu shadow" [routerLink]="['/tiquete-visitantes']">
+          <div class="row">
+            <div class="col-md-4 text-center">
+              <img class="rounded w-100 p-3 shadow filter-green" src="assets/users-solid.png" />
+            </div>
+            <div class="col-md-8 mt-3 text-left p-0">
+              <div class="card-block pr-4">
+                <h6 class="card-title text-left font-usco-vt font-weight-bold cursor-select">
+                  Externos Visitantes
+                </h6>
+                <p style="font-size: 12px;">
+                  Registro, actualización de correo, generación de tiquete de acceso con una vigencia de 24 horas.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="card mb-2 cursor-select card-usco-menu shadow" [routerLink]="['/inicio']">
+          <div class="row">
+            <div class="col-md-4 text-center">
+              <img class="rounded w-100 p-3 shadow filter-green" src="assets/house-solid.png" />
+            </div>
+            <div class="col-md-8 mt-3 text-left p-0">
+              <div class="card-block pr-4">
+                <h6 class="card-title text-left font-usco-vt font-weight-bold cursor-select">
+                  Inicio
+                </h6>
+                <p style="font-size: 12px;">
+                  Volver al menú inicial
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="container mb-4" *ngIf="mobile">
+    <div class="row">
+      <div class="col">
+        <div class="card card-usco-menu text-center rounded w-100 p-3 shadow filter-green mt-4 cursor-select"
+          [routerLink]="['/tiquete-invitados']" routerLinkActive="router-link-active">
+          <!--  <div class="card-header" style="background-color: white;">
+            <h1 class="card-title font-usco-vt font-weight-bold cursor-select">
+              Externos Invitados
+            </h1>
+          </div> -->
+          <div class="card-body ">
+            <img class="w-100" src="assets/users-rectangle-solid.png" />
+          </div>
+          <div class="card-footer" style="background-color: white;">
+            <h1 class="card-title font-usco-vt font-weight-bold">
+              Invitado
+            </h1>
+          </div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="card card-usco-menu text-center rounded w-100 p-3 shadow filter-green mt-4 cursor-select"
+          [routerLink]="['/tiquete-visitantes']" routerLinkActive="router-link-active">
+          <!--  <div class="card-header" style="background-color: white;">
+             <h1 class="card-title font-usco-vt font-weight-bold cursor-select">
+               Externos Invitados
+             </h1>
+           </div> -->
+          <div class="card-body ">
+            <img class="w-100" src="assets/users-solid.png" />
+          </div>
+          <div class="card-footer" style="background-color: white;">
+            <h1 class="card-title font-usco-vt font-weight-bold">
+              Visitante
+            </h1>
+          </div>
+        </div>
+      </div>
+      <div class="col mb-4">
+        <div class="card card-usco-menu text-center rounded w-100 p-3 shadow filter-green mt-4 cursor-select"
+          [routerLink]="['/inicio']" routerLinkActive="router-link-active">
+          <!--  <div class="card-header" style="background-color: white;">
+             <h1 class="card-title font-usco-vt font-weight-bold cursor-select">
+               Externos Invitados
+             </h1>
+           </div> -->
+          <div class="card-body ">
+            <img class="w-100" src="assets/house-solid.png" />
+          </div>
+          <div class="card-footer" style="background-color: white;">
+            <h1 class="card-title font-usco-vt font-weight-bold">
+              Inicio
+            </h1>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</app-navbar>

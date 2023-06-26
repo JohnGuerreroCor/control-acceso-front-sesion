@@ -1,0 +1,66 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-usco-vt">
+  <a class="navbar-brand" href="#" role="button" data-toggle="dropdown" aria-expanded="false">
+    <img *ngIf="foto.url != ''" src="{{foto.url}}" width="30" height="30"
+      class="rounded-circle d-inline-block align-top" alt="avatar image" />
+    <img *ngIf="foto.url == ''" src="assets/precarga-usco-dos.gif" width="30" height="30"
+      class="rounded-circle d-inline-block align-top" alt="avatar image" />
+    <small> {{ nombre | titlecase }} <span *ngIf="perCodigo == 128884"><i class="fa-solid fa-cat"></i></span></small>
+  </a>
+  <div class="dropdown-menu dropdown-info text-center" aria-labelledby="navbarDropdownMenu" id="gradiante">
+    <a class="dropdown-info"><img src="{{foto.url}}" class="rounded-circle z-depth-0 border-usco-white"
+        alt="avatar image" width="60" height="60" /></a>
+    <a class="dropdown-item font-usco-default">
+      <small class="font-weight-bold">{{ nombre }}</small>
+    </a>
+    <a class="dropdown-item font-usco-default">
+      <small class="font-weight-bold">{{ apellido }}</small>
+    </a>
+    <!-- <a class="dropdown-item font-usco-default"><small *ngFor="let u of uaa">{{u}} <br></small></a> -->
+    <div class="dropdown-divider"></div>
+    <a class="dropdown"><button (click)="logout()" class="btn btn-usco-vt" type="button">
+        Cerrar Sesión
+      </button></a>
+  </div>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item item-usco active">
+        <a class="nav-link font-usco-default" [routerLink]="['/inicio']" routerLinkActive="router-link-active"><i
+            class="fa-solid fa-house"></i> Inicio</a>
+      </li>
+      <li class="nav-item item-usco active">
+        <a class="nav-link font-usco-default" [routerLink]="['/escaner']" routerLinkActive="router-link-active"><i
+            class="fa-solid fa-qrcode"></i> Escáner</a>
+      </li>
+      <li class="nav-item item-usco active">
+        <a class="nav-link font-usco-default" [routerLink]="['/tiquete-visitantes']"
+          routerLinkActive="router-link-active"><i class="fa-solid fa-ticket"></i> Tiquete</a>
+      </li>
+      <!--  <li class="nav-item item-usco dropdown active">
+        <a class="nav-link dropdown-toggle" role="button" data-toggle="dropdown" aria-expanded="false">
+          <i class="fa-solid fa-ticket"></i> Tiquete
+        </a>
+        <div class="dropdown-menu dropdown-info bg-usco-vt">
+          <a class="dropdown-item item-usco text-white" [routerLink]="['/tiquete-invitados']"
+            routerLinkActive="router-link-active"><i class="fa-solid fa-users-rectangle"></i> Invitado</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item item-usco text-white" [routerLink]="['/tiquete-visitantes']"
+            routerLinkActive="router-link-active"><i class="fa-solid fa-users"></i> Visitante</a>
+        </div>
+      </li> -->
+      <li class="nav-item item-usco active">
+        <a class="nav-link font-usco-default cursor-select" (click)="logout()"><i class="fa-solid fa-door-open"></i>
+          Cerrar Sesión</a>
+      </li>
+    </ul>
+    <br>
+    <div class="text-center">
+      <img src="https://www.usco.edu.co/imagen-institucional/blanco/universidad-surcolombiana-p.png" alt="USCO">
+    </div>
+  </div>
+</nav>
+<ng-content (validarToken)="receiveMessage($event)"></ng-content>

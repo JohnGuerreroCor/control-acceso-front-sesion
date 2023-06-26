@@ -1,0 +1,75 @@
+<app-navbar>
+  <div class="container p-5" *ngIf="!mobile">
+    <div class="row mt-4">
+      <div class="col-sm-6 m-sm-auto">
+        <div class="card mb-4 cursor-select card-usco-menu shadow" [routerLink]="['/escaner']">
+          <div class="row">
+            <div class="col-md-4 text-center">
+              <img class="rounded w-100 p-3 shadow filter-green" src="assets/qrcode-solid.png" />
+            </div>
+            <div class="col-md-8 mt-3 text-left p-0">
+              <div class="card-block pr-4">
+                <h6 class="card-title text-left font-usco-vt font-weight-bold cursor-select">
+                  Escáner
+                </h6>
+                <p style="font-size: 12px;">
+                  Lectura con cámara del qr para la identificación del usuario a ingresar o salir a la institución y
+                  registro manual para casos excepcionales.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="card mb-4 cursor-select card-usco-menu shadow" [routerLink]="['/tiquete-visitantes']">
+          <div class="row">
+            <div class="col-md-4 text-center">
+              <img class="rounded w-100 p-3 shadow filter-green" src="assets/ticket-solid.png" />
+            </div>
+            <div class="col-md-8 mt-3 text-left p-0">
+              <div class="card-block pr-4">
+                <h6 class="card-title text-left font-usco-vt font-weight-bold cursor-select">
+                  Tiquete
+                </h6>
+                <p style="font-size: 12px;">
+                  Generación de tiquetes de acceso para las personas externas a la institución.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="container mb-2" *ngIf="mobile">
+    <div class="row">
+      <div class="col pl-5 pr-5 pt-4 pb-4">
+        <div class="card card-usco-menu text-center rounded shadow filter-green cursor-select"
+          [routerLink]="['/escaner']" routerLinkActive="router-link-active">
+          <div class="card-body ">
+            <img class="img-fluid" src="assets/qrcode-solid.png" />
+          </div>
+          <div class="card-footer" style="background-color: white;">
+            <h3 class="font-usco-vt font-weight-bold">
+              Escáner
+            </h3>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col pl-5 pr-5">
+        <div class="card card-usco-menu text-center rounded shadow filter-green cursor-select"
+          [routerLink]="['/tiquete-visitantes']" routerLinkActive="router-link-active">
+          <div class="card-body ">
+            <img class="img-fluid" src="assets/ticket-solid.png" />
+          </div>
+          <div class="card-footer" style="background-color: white;">
+            <h3 class="font-usco-vt font-weight-bold">
+              Tiquete
+            </h3>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</app-navbar>
