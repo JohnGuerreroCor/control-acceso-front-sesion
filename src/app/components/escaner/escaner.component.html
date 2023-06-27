@@ -1,7 +1,11 @@
 <app-navbar>
   <div id="content-wrap" class="container mt-3 text-center" *ngIf="!mobile">
     <div class="card rounded-2 p-0 shadow-sm mt-5 mb-2">
-      <div class="card-header cursor-select" [routerLink]="['/inicio']" routerLinkActive="router-link-active">
+      <div
+        class="card-header cursor-select"
+        [routerLink]="['/inicio']"
+        routerLinkActive="router-link-active"
+      >
         <h5 class="font-usco-default">
           <strong>Escáner QR</strong>
         </h5>
@@ -9,33 +13,44 @@
       <div class="card-body">
         <div class="row text-center">
           <div class="col" *ngIf="foto.url == ''">
-            <br><br><br><br><br><br>
-            <img src="assets/precarga-usco.gif" class="img-fluid" alt="USCO">
+            <br /><br /><br /><br /><br /><br />
+            <img src="assets/precarga-usco.gif" class="img-fluid" alt="USCO" />
           </div>
           <div class="col pl-5 pr-5" *ngIf="foto.url != ''">
-            <br><br><br><br>
+            <br /><br /><br /><br />
             <!--CARNET PC ESTUDIANTE-->
-            <div class="card-usco-carnet-pc carnet-usco-body-pc shadow p-4 mt-4" id="carnet-usco-rotulo-front"
-              *ngIf="(estudiante | json) != '[]' && foto.url != '' && carnetEstudiante">
+            <div
+              class="card-usco-carnet-pc carnet-usco-body-pc shadow p-4 mt-4"
+              id="carnet-usco-rotulo-front"
+              *ngIf="
+                (estudiante | json) != '[]' &&
+                foto.url != '' &&
+                carnetEstudiante
+              "
+            >
               <div class="row mt-4">
                 <div class="col-md-4">
                   <div class="row text-center">
                     <div class="col">
-                      <img src="{{foto.url}}" [alt]="estudiante[0].persona.apellido"
-                        [title]="estudiante[0].persona.apellido" class="card-img-top foto-usco-pc cursor-select" />
+                      <img
+                        src="{{ foto.url }}"
+                        [alt]="estudiante[0].persona.apellido"
+                        [title]="estudiante[0].persona.apellido"
+                        class="card-img-top foto-usco-pc cursor-select"
+                      />
                     </div>
                   </div>
                   <div class="row text-left">
                     <div class="col ml-2">
-                      <small class="font-weight-bold" style="font-size: 11px;">
-                        Cód: {{estudiante[0].codigo}}
+                      <small class="font-weight-bold" style="font-size: 11px">
+                        Cód: {{ estudiante[0].codigo }}
                       </small>
                     </div>
                   </div>
                   <div class="row text-left">
                     <div class="col ml-2">
                       <small class="font-usco-vt font-weight-bold">
-                        G.S: {{estudiante[0].persona.grupoSanguineo}}
+                        G.S: {{ estudiante[0].persona.grupoSanguineo }}
                       </small>
                     </div>
                   </div>
@@ -46,33 +61,44 @@
                       <div class="col">
                         <img
                           src="https://www.usco.edu.co/imagen-institucional/ocre/universidad-surcolombiana-multicampos.png"
-                          class="img-fluid" style="width: 90%;">
+                          class="img-fluid"
+                          style="width: 90%"
+                        />
                       </div>
                     </div>
                     <div class="row mt-4 ml-2">
                       <div class="col">
-                        <small CLASS="font-usco-default font-usco-gr font-weight-bold text-uppercase">
-                          {{estudiante[0].persona.nombre}} {{estudiante[0].persona.apellido}}
+                        <small
+                          CLASS="font-usco-default font-usco-bl font-weight-bold text-uppercase"
+                        >
+                          {{ estudiante[0].persona.nombre }}
+                          {{ estudiante[0].persona.apellido }}
                         </small>
                       </div>
                     </div>
                     <div class="row ml-2">
                       <div class="col">
-                        <small class="font-usco-default font-usco-gr font-weight-bold">
-                          ID: {{estudiante[0].persona.identificacion}}
+                        <small
+                          class="font-usco-default font-usco-bl font-weight-bold"
+                        >
+                          ID: {{ estudiante[0].persona.identificacion }}
                         </small>
                       </div>
                     </div>
                     <div class="row ml-2">
                       <div class="col">
-                        <small class="font-usco-default font-usco-gr font-weight-bold text-uppercase">
-                          {{estudiante[0].programa.nombreCorto}}
+                        <small
+                          class="font-usco-default font-usco-bl font-weight-bold text-uppercase"
+                        >
+                          {{ estudiante[0].programa.nombreCorto }}
                         </small>
                       </div>
                     </div>
                     <div class="row ml-2">
                       <div class="col">
-                        <small class="font-usco-default font-usco-gr font-weight-bold text-uppercase">
+                        <small
+                          class="font-usco-default font-usco-bl font-weight-bold text-uppercase"
+                        >
                           ESTUDIANTE
                         </small>
                       </div>
@@ -82,27 +108,36 @@
               </div>
             </div>
             <!--CARNET PC GRADUADO-->
-            <div class="card-usco-carnet-pc carnet-usco-body-pc shadow p-4 mt-4" id="carnet-usco-rotulo-front"
-              *ngIf="(graduado | json) != '[]' && foto.url != '' && carnetGraduado">
+            <div
+              class="card-usco-carnet-pc carnet-usco-body-pc shadow p-4 mt-4"
+              id="carnet-usco-rotulo-front"
+              *ngIf="
+                (graduado | json) != '[]' && foto.url != '' && carnetGraduado
+              "
+            >
               <div class="row mt-4">
                 <div class="col-md-4">
                   <div class="row text-center">
                     <div class="col">
-                      <img src="{{ foto.url }}" [alt]="graduado[0].persona.apellido"
-                        [title]="graduado[0].persona.apellido" class="card-img-top foto-usco-pc cursor-select" />
+                      <img
+                        src="{{ foto.url }}"
+                        [alt]="graduado[0].persona.apellido"
+                        [title]="graduado[0].persona.apellido"
+                        class="card-img-top foto-usco-pc cursor-select"
+                      />
                     </div>
                   </div>
                   <div class="row text-left">
-                    <div class="col ml-2" style="font-size: 14px;">
+                    <div class="col ml-2" style="font-size: 14px">
                       <small class="font-weight-bold">
-                        ID: {{graduado[0].persona.identificacion}}
+                        ID: {{ graduado[0].persona.identificacion }}
                       </small>
                     </div>
                   </div>
                   <div class="row text-left">
                     <div class="col ml-2">
                       <small class="font-usco-vt font-weight-bold">
-                        G.S: {{graduado[0].persona.grupoSanguineo}}
+                        G.S: {{ graduado[0].persona.grupoSanguineo }}
                       </small>
                     </div>
                   </div>
@@ -113,38 +148,52 @@
                       <div class="col">
                         <img
                           src="https://www.usco.edu.co/imagen-institucional/ocre/universidad-surcolombiana-multicampos.png"
-                          class="img-fluid" style="width: 90%;">
+                          class="img-fluid"
+                          style="width: 90%"
+                        />
                       </div>
                     </div>
                     <div class="row mt-4 ml-2">
                       <div class="col">
-                        <small class="font-usco-default font-usco-gr font-weight-bold text-uppercase">
-                          {{graduado[0].persona.nombre}} {{graduado[0].persona.apellido}}
+                        <small
+                          class="font-usco-default font-usco-bl font-weight-bold text-uppercase"
+                        >
+                          {{ graduado[0].persona.nombre }}
+                          {{ graduado[0].persona.apellido }}
                         </small>
                       </div>
                     </div>
                     <div class="row ml-2">
                       <div class="col">
-                        <small class="font-usco-default font-usco-gr font-weight-bold">
-                          {{graduado[0].programa.nombrePrograma}}
+                        <small
+                          class="font-usco-default font-usco-bl font-weight-bold"
+                        >
+                          {{ graduado[0].programa.nombrePrograma }}
                         </small>
                       </div>
                     </div>
                     <div class="row ml-2">
                       <div class="col">
-                        <small class="font-usco-default font-usco-gr font-weight-bold text-uppercase">
-                          Fecha: {{graduado[0].fechaGrado | date : "dd/MM/yyyy"}}
+                        <small
+                          class="font-usco-default font-usco-bl font-weight-bold text-uppercase"
+                        >
+                          Fecha:
+                          {{ graduado[0].fechaGrado | date : "dd/MM/yyyy" }}
                         </small>
                       </div>
                     </div>
                     <div class="row ml-2">
                       <div class="col">
-                        <small *ngIf="graduado[0].persona.genero === 'M'"
-                          class="font-usco-default font-usco-gr font-weight-bold text-uppercase">
+                        <small
+                          *ngIf="graduado[0].persona.genero === 'M'"
+                          class="font-usco-default font-usco-bl font-weight-bold text-uppercase"
+                        >
                           graduado
                         </small>
-                        <small *ngIf="graduado[0].persona.genero === 'F'"
-                          class="font-usco-default font-usco-gr font-weight-bold text-uppercase">
+                        <small
+                          *ngIf="graduado[0].persona.genero === 'F'"
+                          class="font-usco-default font-usco-bl font-weight-bold text-uppercase"
+                        >
                           graduada
                         </small>
                       </div>
@@ -154,20 +203,29 @@
               </div>
             </div>
             <!--CARNET PC DOCENTE-->
-            <div class="card-usco-carnet-pc carnet-usco-body-pc shadow p-4 mt-4" id="carnet-usco-rotulo-front"
-              *ngIf="(docente | json) != '[]' && foto.url != '' && carnetDocente">
+            <div
+              class="card-usco-carnet-pc carnet-usco-body-pc shadow p-4 mt-4"
+              id="carnet-usco-rotulo-front"
+              *ngIf="
+                (docente | json) != '[]' && foto.url != '' && carnetDocente
+              "
+            >
               <div class="row mt-4">
                 <div class="col-md-4">
                   <div class="row text-center">
                     <div class="col">
-                      <img src="{{ foto.url }}" [alt]="docente[0].persona.apellido"
-                        [title]="docente[0].persona.apellido" class="card-img-top foto-usco-pc cursor-select" />
+                      <img
+                        src="{{ foto.url }}"
+                        [alt]="docente[0].persona.apellido"
+                        [title]="docente[0].persona.apellido"
+                        class="card-img-top foto-usco-pc cursor-select"
+                      />
                     </div>
                   </div>
                   <div class="row text-left">
                     <div class="col ml-2">
                       <small class="font-usco-vt font-weight-bold">
-                        G.S: {{docente[0].persona.grupoSanguineo}}
+                        G.S: {{ docente[0].persona.grupoSanguineo }}
                       </small>
                     </div>
                   </div>
@@ -178,40 +236,54 @@
                       <div class="col">
                         <img
                           src="https://www.usco.edu.co/imagen-institucional/ocre/universidad-surcolombiana-multicampos.png"
-                          class="img-fluid" style="width: 90%;">
+                          class="img-fluid"
+                          style="width: 90%"
+                        />
                       </div>
                     </div>
                     <div class="row mt-4 ml-2">
                       <div class="col">
-                        <small class="font-usco-default font-usco-gr font-weight-bold text-uppercase">
-                          {{docente[0].persona.nombre}} {{docente[0].persona.apellido}}
+                        <small
+                          class="font-usco-default font-usco-bl font-weight-bold text-uppercase"
+                        >
+                          {{ docente[0].persona.nombre }}
+                          {{ docente[0].persona.apellido }}
                         </small>
                       </div>
                     </div>
                     <div class="row ml-2">
                       <div class="col">
-                        <small class="font-usco-default font-usco-gr font-weight-bold">
-                          ID: {{docente[0].persona.identificacion}}
+                        <small
+                          class="font-usco-default font-usco-bl font-weight-bold"
+                        >
+                          ID: {{ docente[0].persona.identificacion }}
                         </small>
                       </div>
                     </div>
                     <div class="row ml-2">
                       <div class="col">
-                        <small class="font-usco-default font-usco-gr font-weight-bold text-uppercase">
-                          {{docente[0].sede}} - {{docente[0].nombrePrograma}}
+                        <small
+                          class="font-usco-default font-usco-bl font-weight-bold text-uppercase"
+                        >
+                          {{ docente[0].sede }} -
+                          {{ docente[0].nombrePrograma }}
                         </small>
                       </div>
                     </div>
                     <div class="row ml-2">
                       <div class="col">
-                        <small class="font-usco-default font-usco-gr font-weight-bold text-uppercase">
-                          {{docente[0].vinculacionNombre}}
+                        <small
+                          class="font-usco-default font-usco-bl font-weight-bold text-uppercase"
+                        >
+                          {{ docente[0].vinculacionNombre }}
                         </small>
                       </div>
                     </div>
                     <div class="row ml-2">
                       <div class="col">
-                        <small class="font-usco-default font-usco-gr font-weight-bold text-uppercase">
+                        <small
+                          class="font-usco-default font-usco-bl font-weight-bold text-uppercase"
+                        >
                           DOCENTE
                         </small>
                       </div>
@@ -221,20 +293,32 @@
               </div>
             </div>
             <!--CARNET PC ADMINISTRATIVO-->
-            <div class="card-usco-carnet-pc carnet-usco-body-pc shadow p-4 mt-4" id="carnet-usco-rotulo-front"
-              *ngIf="(administrativo | json) != '[]' && foto.url != '' && carnetAdministrativo">
+            <div
+              class="card-usco-carnet-pc carnet-usco-body-pc shadow p-4 mt-4"
+              id="carnet-usco-rotulo-front"
+              *ngIf="
+                (administrativo | json) != '[]' &&
+                foto.url != '' &&
+                carnetAdministrativo
+              "
+            >
               <div class="row mt-4">
                 <div class="col-md-4">
                   <div class="row text-center">
                     <div class="col">
-                      <img src="{{ foto.url }}" [alt]="persona[0].apellido" [title]="persona[0].apellido"
-                        class="card-img-top foto-usco-pc cursor-select" style="width: 110%;" />
+                      <img
+                        src="{{ foto.url }}"
+                        [alt]="persona[0].apellido"
+                        [title]="persona[0].apellido"
+                        class="card-img-top foto-usco-pc cursor-select"
+                        style="width: 110%"
+                      />
                     </div>
                   </div>
                   <div class="row text-left">
                     <div class="col ml-2">
                       <small class="font-usco-vt font-weight-bold">
-                        G.S: {{persona[0].grupoSanguineo}}
+                        G.S: {{ persona[0].grupoSanguineo }}
                       </small>
                     </div>
                   </div>
@@ -245,34 +329,44 @@
                       <div class="col">
                         <img
                           src="https://www.usco.edu.co/imagen-institucional/ocre/universidad-surcolombiana-multicampos.png"
-                          class="img-fluid" style="width: 90%;">
+                          class="img-fluid"
+                          style="width: 90%"
+                        />
                       </div>
                     </div>
                     <div class="row mt-4 ml-2">
                       <div class="col">
-                        <small class="font-usco-default font-usco-gr font-weight-bold text-uppercase">
-                          {{persona[0].nombre}} {{persona[0].apellido}}
+                        <small
+                          class="font-usco-default font-usco-bl font-weight-bold text-uppercase"
+                        >
+                          {{ persona[0].nombre }} {{ persona[0].apellido }}
                         </small>
                       </div>
                     </div>
                     <div class="row ml-2">
                       <div class="col">
-                        <small class="font-usco-default font-usco-gr font-weight-bold">
-                          ID: {{administrativo[0].identificacion}}
+                        <small
+                          class="font-usco-default font-usco-bl font-weight-bold"
+                        >
+                          ID: {{ administrativo[0].identificacion }}
                         </small>
                       </div>
                     </div>
                     <div class="row ml-2">
                       <div class="col">
-                        <small class="font-usco-default font-usco-gr font-weight-bold text-uppercase">
-                          {{administrativo[0].nombrePrograma}}
+                        <small
+                          class="font-usco-default font-usco-bl font-weight-bold text-uppercase"
+                        >
+                          {{ administrativo[0].nombrePrograma }}
                         </small>
                       </div>
                     </div>
                     <div class="row ml-2">
                       <div class="col">
-                        <small class="font-usco-default font-usco-gr font-weight-bold text-uppercase">
-                          {{administrativo[0].cargoNombre}}
+                        <small
+                          class="font-usco-default font-usco-bl font-weight-bold text-uppercase"
+                        >
+                          {{ administrativo[0].cargoNombre }}
                         </small>
                       </div>
                     </div>
@@ -281,7 +375,10 @@
               </div>
             </div>
             <!--TIQUETE INVITADO-->
-            <div class="row text-left pr-4 pl-4 pb-4" *ngIf="tiquete && tipoTiquete === 1 && (ticket | json) != '[]'">
+            <div
+              class="row text-left pr-4 pl-4 pb-4"
+              *ngIf="tiquete && tipoTiquete === 1 && (ticket | json) != '[]'"
+            >
               <div class="row">
                 <div class="col">
                   <table class="table table-sm text-uppercase">
@@ -289,69 +386,103 @@
                       <tr>
                         <th colspan="2">
                           <div class="bg-usco-gr-d6 text-white p-2 text-center">
-                            <img src="assets/universidad-surcolombiana-multicampos-white.png" alt="USCO"
-                              class="img-fluid">
+                            <img
+                              src="assets/universidad-surcolombiana-multicampos-white.png"
+                              alt="USCO"
+                              class="img-fluid"
+                            />
                           </div>
                         </th>
                       </tr>
                     </thead>
                     <tbody>
                       <tr>
-                        <th scope="row" style="font-size: 14px;">Nombre:</th>
-                        <td *ngIf="ticket[0].persona.codigo != 0" class="font-usco-gr font-weight-bold"
-                          style="font-size: 14px;">
-                          {{ticket[0].persona.nombre}} {{ticket[0].persona.apellido}}
+                        <th scope="row" style="font-size: 14px">Nombre:</th>
+                        <td
+                          *ngIf="ticket[0].persona.codigo != 0"
+                          class="font-usco-bl font-weight-bold"
+                          style="font-size: 14px"
+                        >
+                          {{ ticket[0].persona.nombre }}
+                          {{ ticket[0].persona.apellido }}
                         </td>
-                        <td *ngIf="ticket[0].tercero.codigo != 0" class="font-usco-gr font-weight-bold"
-                          style="font-size: 14px;">
-                          {{ticket[0].tercero.nombreCompleto}}
-                        </td>
-                      </tr>
-                      <tr>
-                        <th scope="row" style="font-size: 14px;">Id:</th>
-                        <td *ngIf="ticket[0].persona.codigo != 0" class="font-usco-gr font-weight-bold"
-                          style="font-size: 14px;">
-                          {{ticket[0].persona.identificacion}}
-                        </td>
-                        <td *ngIf="ticket[0].tercero.codigo != 0" class="font-usco-gr font-weight-bold"
-                          style="font-size: 14px;">
-                          {{ticket[0].tercero.identificacion}}
+                        <td
+                          *ngIf="ticket[0].tercero.codigo != 0"
+                          class="font-usco-bl font-weight-bold"
+                          style="font-size: 14px"
+                        >
+                          {{ ticket[0].tercero.nombreCompleto }}
                         </td>
                       </tr>
                       <tr>
-                        <th scope="row" style="font-size: 14px;">Correo:</th>
-                        <td *ngIf="ticket[0].persona.codigo != 0" class="font-usco-gr font-weight-bold"
-                          style="font-size: 14px;">
-                          {{ticket[0].persona.emailPersonal}}
+                        <th scope="row" style="font-size: 14px">Id:</th>
+                        <td
+                          *ngIf="ticket[0].persona.codigo != 0"
+                          class="font-usco-bl font-weight-bold"
+                          style="font-size: 14px"
+                        >
+                          {{ ticket[0].persona.identificacion }}
                         </td>
-                        <td *ngIf="ticket[0].tercero.codigo != 0" class="font-usco-gr font-weight-bold"
-                          style="font-size: 14px;">
-                          {{ticket[0].tercero.email}}
-                        </td>
-                      </tr>
-                      <tr>
-                        <th scope="row" style="font-size: 14px;">Lugar:</th>
-                        <td *ngIf="ticket[0].tipoLugar == 1" class="font-usco-gr font-weight-bold"
-                          style="font-size: 14px;">
-                          {{ticket[0].bloque.bloqueNombre}}
-                        </td>
-                        <td *ngIf="ticket[0].tipoLugar == 2" class="font-usco-gr font-weight-bold"
-                          style="font-size: 14px;">
-                          {{ticket[0].oficina.uaaNombre}}
+                        <td
+                          *ngIf="ticket[0].tercero.codigo != 0"
+                          class="font-usco-bl font-weight-bold"
+                          style="font-size: 14px"
+                        >
+                          {{ ticket[0].tercero.identificacion }}
                         </td>
                       </tr>
                       <tr>
-                        <th scope="row" style="font-size: 14px;">Creación:</th>
-                        <td *ngIf="(ticket | json) != '[]'" class="font-usco-gr font-weight-bold"
-                          style="font-size: 14px;">
-                          {{ticket[0].fechaCreacion | date : 'dd-MM-yyyy'}}
+                        <th scope="row" style="font-size: 14px">Correo:</th>
+                        <td
+                          *ngIf="ticket[0].persona.codigo != 0"
+                          class="font-usco-bl font-weight-bold"
+                          style="font-size: 14px"
+                        >
+                          {{ ticket[0].persona.emailPersonal }}
+                        </td>
+                        <td
+                          *ngIf="ticket[0].tercero.codigo != 0"
+                          class="font-usco-bl font-weight-bold"
+                          style="font-size: 14px"
+                        >
+                          {{ ticket[0].tercero.email }}
                         </td>
                       </tr>
                       <tr>
-                        <th scope="row" style="font-size: 14px;">Vigencia:</th>
-                        <td *ngIf="(ticket | json) != '[]'" class="font-usco-gr font-weight-bold"
-                          style="font-size: 14px;">
-                          {{ticket[0].fechaVigencia | date : 'dd-MM-yyyy'}}
+                        <th scope="row" style="font-size: 14px">Lugar:</th>
+                        <td
+                          *ngIf="ticket[0].tipoLugar == 1"
+                          class="font-usco-bl font-weight-bold"
+                          style="font-size: 14px"
+                        >
+                          {{ ticket[0].bloque.bloqueNombre }}
+                        </td>
+                        <td
+                          *ngIf="ticket[0].tipoLugar == 2"
+                          class="font-usco-bl font-weight-bold"
+                          style="font-size: 14px"
+                        >
+                          {{ ticket[0].oficina.uaaNombre }}
+                        </td>
+                      </tr>
+                      <tr>
+                        <th scope="row" style="font-size: 14px">Creación:</th>
+                        <td
+                          *ngIf="(ticket | json) != '[]'"
+                          class="font-usco-bl font-weight-bold"
+                          style="font-size: 14px"
+                        >
+                          {{ ticket[0].fechaCreacion | date : "dd-MM-yyyy" }}
+                        </td>
+                      </tr>
+                      <tr>
+                        <th scope="row" style="font-size: 14px">Vigencia:</th>
+                        <td
+                          *ngIf="(ticket | json) != '[]'"
+                          class="font-usco-bl font-weight-bold"
+                          style="font-size: 14px"
+                        >
+                          {{ ticket[0].fechaVigencia | date : "dd-MM-yyyy" }}
                         </td>
                       </tr>
                     </tbody>
@@ -359,7 +490,9 @@
                       <tr>
                         <th colspan="2">
                           <div class="bg-usco-gr-d6 text-white text-center">
-                            <h6 class="p-2 font-weight-bold text-uppercase">TIQUETE DE ACCESO</h6>
+                            <h6 class="p-2 font-weight-bold text-uppercase">
+                              TIQUETE DE ACCESO
+                            </h6>
                           </div>
                         </th>
                       </tr>
@@ -369,7 +502,10 @@
               </div>
             </div>
             <!--TIQUETE VISITANTE-->
-            <div class="row text-left pr-4 pl-4 pb-4" *ngIf="tiquete && tipoTiquete === 2 && (ticket | json) != '[]'">
+            <div
+              class="row text-left pr-4 pl-4 pb-4"
+              *ngIf="tiquete && tipoTiquete === 2 && (ticket | json) != '[]'"
+            >
               <div class="row">
                 <div class="col">
                   <table class="table table-sm text-uppercase">
@@ -377,62 +513,93 @@
                       <tr>
                         <th colspan="2">
                           <div class="bg-usco-gr-d6 text-white p-2 text-center">
-                            <img src="assets/universidad-surcolombiana-multicampos-white.png" alt="USCO"
-                              class="img-fluid">
+                            <img
+                              src="assets/universidad-surcolombiana-multicampos-white.png"
+                              alt="USCO"
+                              class="img-fluid"
+                            />
                           </div>
                         </th>
                       </tr>
                     </thead>
                     <tbody>
                       <tr>
-                        <th scope="row" style="font-size: 14px;">Nombre:</th>
-                        <td *ngIf="ticket[0].persona.codigo != 0" class="font-usco-gr font-weight-bold"
-                          style="font-size: 14px;">
-                          {{ticket[0].persona.nombre}} {{ticket[0].persona.apellido}}
+                        <th scope="row" style="font-size: 14px">Nombre:</th>
+                        <td
+                          *ngIf="ticket[0].persona.codigo != 0"
+                          class="font-usco-bl font-weight-bold"
+                          style="font-size: 14px"
+                        >
+                          {{ ticket[0].persona.nombre }}
+                          {{ ticket[0].persona.apellido }}
                         </td>
-                        <td *ngIf="ticket[0].tercero.codigo != 0" class="font-usco-gr font-weight-bold"
-                          style="font-size: 14px;">
-                          {{ticket[0].tercero.nombreCompleto}}
-                        </td>
-                      </tr>
-                      <tr>
-                        <th scope="row" style="font-size: 14px;">Id:</th>
-                        <td *ngIf="ticket[0].persona.codigo != 0" class="font-usco-gr font-weight-bold"
-                          style="font-size: 14px;">
-                          {{ticket[0].persona.identificacion}}
-                        </td>
-                        <td *ngIf="ticket[0].tercero.codigo != 0" class="font-usco-gr font-weight-bold"
-                          style="font-size: 14px;">
-                          {{ticket[0].tercero.identificacion}}
+                        <td
+                          *ngIf="ticket[0].tercero.codigo != 0"
+                          class="font-usco-bl font-weight-bold"
+                          style="font-size: 14px"
+                        >
+                          {{ ticket[0].tercero.nombreCompleto }}
                         </td>
                       </tr>
                       <tr>
-                        <th scope="row" style="font-size: 14px;">Correo:</th>
-                        <td *ngIf="ticket[0].persona.codigo != 0" class="font-usco-gr font-weight-bold"
-                          style="font-size: 14px;">
-                          {{ticket[0].persona.emailPersonal}}
+                        <th scope="row" style="font-size: 14px">Id:</th>
+                        <td
+                          *ngIf="ticket[0].persona.codigo != 0"
+                          class="font-usco-bl font-weight-bold"
+                          style="font-size: 14px"
+                        >
+                          {{ ticket[0].persona.identificacion }}
                         </td>
-                        <td *ngIf="ticket[0].tercero.codigo != 0" class="font-usco-gr font-weight-bold"
-                          style="font-size: 14px;">
-                          {{ticket[0].tercero.email}}
-                        </td>
-                      </tr>
-                      <tr>
-                        <th scope="row" style="font-size: 14px;">Lugar:</th>
-                        <td *ngIf="ticket[0].tipoLugar == 1" class="font-usco-gr font-weight-bold"
-                          style="font-size: 14px;">
-                          {{ticket[0].bloque.bloqueNombre}}
-                        </td>
-                        <td *ngIf="ticket[0].tipoLugar == 2" class="font-usco-gr font-weight-bold"
-                          style="font-size: 14px;">
-                          {{ticket[0].oficina.uaaNombre}}
+                        <td
+                          *ngIf="ticket[0].tercero.codigo != 0"
+                          class="font-usco-bl font-weight-bold"
+                          style="font-size: 14px"
+                        >
+                          {{ ticket[0].tercero.identificacion }}
                         </td>
                       </tr>
                       <tr>
-                        <th scope="row" style="font-size: 14px;">Vigencia:</th>
-                        <td *ngIf="(ticket | json) != '[]'" class="font-usco-gr font-weight-bold"
-                          style="font-size: 14px;">
-                          {{ticket[0].fechaVigencia | date : 'dd-MM-yyyy'}}
+                        <th scope="row" style="font-size: 14px">Correo:</th>
+                        <td
+                          *ngIf="ticket[0].persona.codigo != 0"
+                          class="font-usco-bl font-weight-bold"
+                          style="font-size: 14px"
+                        >
+                          {{ ticket[0].persona.emailPersonal }}
+                        </td>
+                        <td
+                          *ngIf="ticket[0].tercero.codigo != 0"
+                          class="font-usco-bl font-weight-bold"
+                          style="font-size: 14px"
+                        >
+                          {{ ticket[0].tercero.email }}
+                        </td>
+                      </tr>
+                      <tr>
+                        <th scope="row" style="font-size: 14px">Lugar:</th>
+                        <td
+                          *ngIf="ticket[0].tipoLugar == 1"
+                          class="font-usco-bl font-weight-bold"
+                          style="font-size: 14px"
+                        >
+                          {{ ticket[0].bloque.bloqueNombre }}
+                        </td>
+                        <td
+                          *ngIf="ticket[0].tipoLugar == 2"
+                          class="font-usco-bl font-weight-bold"
+                          style="font-size: 14px"
+                        >
+                          {{ ticket[0].oficina.uaaNombre }}
+                        </td>
+                      </tr>
+                      <tr>
+                        <th scope="row" style="font-size: 14px">Vigencia:</th>
+                        <td
+                          *ngIf="(ticket | json) != '[]'"
+                          class="font-usco-bl font-weight-bold"
+                          style="font-size: 14px"
+                        >
+                          {{ ticket[0].fechaVigencia | date : "dd-MM-yyyy" }}
                         </td>
                       </tr>
                     </tbody>
@@ -440,7 +607,9 @@
                       <tr>
                         <th colspan="2">
                           <div class="bg-usco-gr-d6 text-white text-center">
-                            <h6 class="p-2 font-weight-bold text-uppercase">TIQUETE DE ACCESO</h6>
+                            <h6 class="p-2 font-weight-bold text-uppercase">
+                              TIQUETE DE ACCESO
+                            </h6>
                           </div>
                         </th>
                       </tr>
@@ -457,9 +626,19 @@
                 <mat-form-field class="example-full-width">
                   <mat-label>Cámara</mat-label>
                   <select matNativeControl matInput>
-                    <option value="" [selected]="!currentDevice">Ninguna seleccionada</option>
-                    <option *ngFor="let device of availableDevices" [value]="device.deviceId"
-                      [selected]="currentDevice && device.deviceId === currentDevice.deviceId">{{device.label}}</option>
+                    <option value="" [selected]="!currentDevice">
+                      Ninguna seleccionada
+                    </option>
+                    <option
+                      *ngFor="let device of availableDevices"
+                      [value]="device.deviceId"
+                      [selected]="
+                        currentDevice &&
+                        device.deviceId === currentDevice.deviceId
+                      "
+                    >
+                      {{ device.label }}
+                    </option>
                   </select>
                 </mat-form-field>
               </div>
@@ -469,11 +648,21 @@
                 <mat-form-field appearance="fill" class="example-full-width">
                   <mat-label>Estamento</mat-label>
                   <mat-select [(ngModel)]="botonRadio">
-                    <mat-option (click)="buscarManual(botonRadio)" value="2">Estudiante</mat-option>
-                    <mat-option (click)="buscarManual(botonRadio)" value="4">Graduado</mat-option>
-                    <mat-option (click)="buscarManual(botonRadio)" value="3">Docente</mat-option>
-                    <mat-option (click)="buscarManual(botonRadio)" value="1">Administrativo</mat-option>
-                    <mat-option (click)="buscarManual(botonRadio)" value="5">Tiquete</mat-option>
+                    <mat-option (click)="buscarManual(botonRadio)" value="2"
+                      >Estudiante</mat-option
+                    >
+                    <mat-option (click)="buscarManual(botonRadio)" value="4"
+                      >Graduado</mat-option
+                    >
+                    <mat-option (click)="buscarManual(botonRadio)" value="3"
+                      >Docente</mat-option
+                    >
+                    <mat-option (click)="buscarManual(botonRadio)" value="1"
+                      >Administrativo</mat-option
+                    >
+                    <mat-option (click)="buscarManual(botonRadio)" value="5"
+                      >Tiquete</mat-option
+                    >
                   </mat-select>
                 </mat-form-field>
               </div>
@@ -483,12 +672,25 @@
                 <div class="form-group">
                   <mat-form-field class="example-full-width">
                     <mat-label>Códgio estudiante</mat-label>
-                    <input matInput #input maxlength="11" type="text" [(ngModel)]="busqueda" name="busqueda"
-                      id="identificacion" (keyup.enter)="buscarEstudiante(busqueda)" placeholder="20231000000">
-                    <button matSuffix mat-icon-button (click)="buscarEstudiante(busqueda)">
+                    <input
+                      matInput
+                      #input
+                      maxlength="11"
+                      type="text"
+                      [(ngModel)]="busqueda"
+                      name="busqueda"
+                      id="identificacion"
+                      (keyup.enter)="buscarEstudiante(busqueda)"
+                      placeholder="20231000000"
+                    />
+                    <button
+                      matSuffix
+                      mat-icon-button
+                      (click)="buscarEstudiante(busqueda)"
+                    >
                       <mat-icon>search</mat-icon>
                     </button>
-                    <mat-hint align="end">{{input.value.length}}/11</mat-hint>
+                    <mat-hint align="end">{{ input.value.length }}/11</mat-hint>
                   </mat-form-field>
                 </div>
               </div>
@@ -498,12 +700,25 @@
                 <div class="form-group">
                   <mat-form-field class="example-full-width">
                     <mat-label>Cédula graduado</mat-label>
-                    <input matInput #input maxlength="11" type="text" [(ngModel)]="busquedaGraduado" name="busqueda"
-                      id="identificacion" (keyup.enter)="buscarGraduado(busquedaGraduado)" placeholder="1075000000">
-                    <button matSuffix mat-icon-button (click)="buscarGraduado(busquedaGraduado)">
+                    <input
+                      matInput
+                      #input
+                      maxlength="11"
+                      type="text"
+                      [(ngModel)]="busquedaGraduado"
+                      name="busqueda"
+                      id="identificacion"
+                      (keyup.enter)="buscarGraduado(busquedaGraduado)"
+                      placeholder="1075000000"
+                    />
+                    <button
+                      matSuffix
+                      mat-icon-button
+                      (click)="buscarGraduado(busquedaGraduado)"
+                    >
                       <mat-icon>search</mat-icon>
                     </button>
-                    <mat-hint align="end">{{input.value.length}}/11</mat-hint>
+                    <mat-hint align="end">{{ input.value.length }}/11</mat-hint>
                   </mat-form-field>
                 </div>
               </div>
@@ -513,12 +728,25 @@
                 <div class="form-group">
                   <mat-form-field class="example-full-width">
                     <mat-label>Cédula docente</mat-label>
-                    <input matInput #input maxlength="11" type="text" [(ngModel)]="busquedaDocente" name="busqueda"
-                      id="identificacion" (keyup.enter)="buscarDocente(busquedaDocente)" placeholder="1075000000">
-                    <button matSuffix mat-icon-button (click)="buscarDocente(busquedaDocente)">
+                    <input
+                      matInput
+                      #input
+                      maxlength="11"
+                      type="text"
+                      [(ngModel)]="busquedaDocente"
+                      name="busqueda"
+                      id="identificacion"
+                      (keyup.enter)="buscarDocente(busquedaDocente)"
+                      placeholder="1075000000"
+                    />
+                    <button
+                      matSuffix
+                      mat-icon-button
+                      (click)="buscarDocente(busquedaDocente)"
+                    >
                       <mat-icon>search</mat-icon>
                     </button>
-                    <mat-hint align="end">{{input.value.length}}/11</mat-hint>
+                    <mat-hint align="end">{{ input.value.length }}/11</mat-hint>
                   </mat-form-field>
                 </div>
               </div>
@@ -528,13 +756,27 @@
                 <div class="form-group">
                   <mat-form-field class="example-full-width">
                     <mat-label>Cédula administrativo</mat-label>
-                    <input matInput #input maxlength="11" type="text" [(ngModel)]="busquedaAdministrativo"
-                      name="busqueda" id="identificacion" (keyup.enter)="buscarAdministrativo(busquedaAdministrativo)"
-                      placeholder="1075000000">
-                    <button matSuffix mat-icon-button (click)="buscarAdministrativo(busquedaAdministrativo)">
+                    <input
+                      matInput
+                      #input
+                      maxlength="11"
+                      type="text"
+                      [(ngModel)]="busquedaAdministrativo"
+                      name="busqueda"
+                      id="identificacion"
+                      (keyup.enter)="
+                        buscarAdministrativo(busquedaAdministrativo)
+                      "
+                      placeholder="1075000000"
+                    />
+                    <button
+                      matSuffix
+                      mat-icon-button
+                      (click)="buscarAdministrativo(busquedaAdministrativo)"
+                    >
                       <mat-icon>search</mat-icon>
                     </button>
-                    <mat-hint align="end">{{input.value.length}}/11</mat-hint>
+                    <mat-hint align="end">{{ input.value.length }}/11</mat-hint>
                   </mat-form-field>
                 </div>
               </div>
@@ -544,27 +786,54 @@
                 <div class="form-group">
                   <mat-form-field class="example-full-width">
                     <mat-label>Cédula persona</mat-label>
-                    <input matInput #input maxlength="11" type="text" [(ngModel)]="busquedaTiquete" name="busqueda"
-                      id="identificacion" (keyup.enter)="buscarTiquete(busquedaTiquete)" placeholder="1075000000">
-                    <button matSuffix mat-icon-button (click)="buscarTiquete(busquedaTiquete)">
+                    <input
+                      matInput
+                      #input
+                      maxlength="11"
+                      type="text"
+                      [(ngModel)]="busquedaTiquete"
+                      name="busqueda"
+                      id="identificacion"
+                      (keyup.enter)="buscarTiquete(busquedaTiquete)"
+                      placeholder="1075000000"
+                    />
+                    <button
+                      matSuffix
+                      mat-icon-button
+                      (click)="buscarTiquete(busquedaTiquete)"
+                    >
                       <mat-icon>search</mat-icon>
                     </button>
-                    <mat-hint align="end">{{input.value.length}}/11</mat-hint>
+                    <mat-hint align="end">{{ input.value.length }}/11</mat-hint>
                   </mat-form-field>
                 </div>
               </div>
             </div>
             <div class="row text-center">
               <div class="col" *ngIf="!alert">
-                <img src="../assets/precarga-usco.gif" class="img-fluid" alt="USCO">
+                <img
+                  src="../assets/precarga-usco.gif"
+                  class="img-fluid"
+                  alt="USCO"
+                />
               </div>
               <div class="container">
-                <div class="col p-4" *ngIf="alert" style="background-color: #1E262B;border-radius: 15px;">
-                  <div class="box" style="width: 350px;">
-                    <zxing-scanner style="margin: 0;padding: 0;" [(device)]="currentDevice"
-                      (scanSuccess)="onCodeResult($event)" [formats]="formatsEnabled" [tryHarder]="tryHarder"
-                      (permissionResponse)="onHasPermission($event)" (camerasFound)="onCamerasFound($event)"
-                      (torchCompatible)="onTorchCompatible($event)"></zxing-scanner>
+                <div
+                  class="col p-4"
+                  *ngIf="alert"
+                  style="background-color: #1e262b; border-radius: 15px"
+                >
+                  <div class="box" style="width: 350px">
+                    <zxing-scanner
+                      style="margin: 0; padding: 0"
+                      [(device)]="currentDevice"
+                      (scanSuccess)="onCodeResult($event)"
+                      [formats]="formatsEnabled"
+                      [tryHarder]="tryHarder"
+                      (permissionResponse)="onHasPermission($event)"
+                      (camerasFound)="onCamerasFound($event)"
+                      (torchCompatible)="onTorchCompatible($event)"
+                    ></zxing-scanner>
                   </div>
                 </div>
               </div>
@@ -576,7 +845,11 @@
   </div>
   <div id="content-wrap" class="mt-3 text-center" *ngIf="mobile">
     <div class="card rounded-2 p-0 shadow-sm mt-3 mb-2">
-      <div class="card-header cursor-select" [routerLink]="['/inicio']" routerLinkActive="router-link-active">
+      <div
+        class="card-header cursor-select"
+        [routerLink]="['/inicio']"
+        routerLinkActive="router-link-active"
+      >
         <h5 class="font-usco-default">
           <strong>Escáner QR</strong>
         </h5>
@@ -589,9 +862,19 @@
                 <mat-form-field class="example-full-width">
                   <mat-label>Cámara</mat-label>
                   <select matNativeControl matInput>
-                    <option value="" [selected]="!currentDevice">Ninguna seleccionada</option>
-                    <option *ngFor="let device of availableDevices" [value]="device.deviceId"
-                      [selected]="currentDevice && device.deviceId === currentDevice.deviceId">{{device.label}}</option>
+                    <option value="" [selected]="!currentDevice">
+                      Ninguna seleccionada
+                    </option>
+                    <option
+                      *ngFor="let device of availableDevices"
+                      [value]="device.deviceId"
+                      [selected]="
+                        currentDevice &&
+                        device.deviceId === currentDevice.deviceId
+                      "
+                    >
+                      {{ device.label }}
+                    </option>
                   </select>
                 </mat-form-field>
               </div>
@@ -601,11 +884,21 @@
                 <mat-form-field appearance="fill" class="example-full-width">
                   <mat-label>Estamento</mat-label>
                   <mat-select [(ngModel)]="botonRadio">
-                    <mat-option (click)="buscarManual(botonRadio)" value="2">Estudiante</mat-option>
-                    <mat-option (click)="buscarManual(botonRadio)" value="4">Graduado</mat-option>
-                    <mat-option (click)="buscarManual(botonRadio)" value="3">Docente</mat-option>
-                    <mat-option (click)="buscarManual(botonRadio)" value="1">Administrativo</mat-option>
-                    <mat-option (click)="buscarManual(botonRadio)" value="5">Tiquete</mat-option>
+                    <mat-option (click)="buscarManual(botonRadio)" value="2"
+                      >Estudiante</mat-option
+                    >
+                    <mat-option (click)="buscarManual(botonRadio)" value="4"
+                      >Graduado</mat-option
+                    >
+                    <mat-option (click)="buscarManual(botonRadio)" value="3"
+                      >Docente</mat-option
+                    >
+                    <mat-option (click)="buscarManual(botonRadio)" value="1"
+                      >Administrativo</mat-option
+                    >
+                    <mat-option (click)="buscarManual(botonRadio)" value="5"
+                      >Tiquete</mat-option
+                    >
                   </mat-select>
                 </mat-form-field>
               </div>
@@ -615,12 +908,25 @@
                 <div class="form-group">
                   <mat-form-field class="example-full-width">
                     <mat-label>Códgio estudiante</mat-label>
-                    <input matInput #input maxlength="11" type="text" [(ngModel)]="busqueda" name="busqueda"
-                      id="identificacion" (keyup.enter)="buscarEstudiante(busqueda)" placeholder="20231000000">
-                    <button matSuffix mat-icon-button (click)="buscarEstudiante(busqueda)">
+                    <input
+                      matInput
+                      #input
+                      maxlength="11"
+                      type="text"
+                      [(ngModel)]="busqueda"
+                      name="busqueda"
+                      id="identificacion"
+                      (keyup.enter)="buscarEstudiante(busqueda)"
+                      placeholder="20231000000"
+                    />
+                    <button
+                      matSuffix
+                      mat-icon-button
+                      (click)="buscarEstudiante(busqueda)"
+                    >
                       <mat-icon>search</mat-icon>
                     </button>
-                    <mat-hint align="end">{{input.value.length}}/11</mat-hint>
+                    <mat-hint align="end">{{ input.value.length }}/11</mat-hint>
                   </mat-form-field>
                 </div>
               </div>
@@ -630,12 +936,25 @@
                 <div class="form-group">
                   <mat-form-field class="example-full-width">
                     <mat-label>Cédula graduado</mat-label>
-                    <input matInput #input maxlength="11" type="text" [(ngModel)]="busquedaGraduado" name="busqueda"
-                      id="identificacion" (keyup.enter)="buscarGraduado(busquedaGraduado)" placeholder="1075000000">
-                    <button matSuffix mat-icon-button (click)="buscarGraduado(busquedaGraduado)">
+                    <input
+                      matInput
+                      #input
+                      maxlength="11"
+                      type="text"
+                      [(ngModel)]="busquedaGraduado"
+                      name="busqueda"
+                      id="identificacion"
+                      (keyup.enter)="buscarGraduado(busquedaGraduado)"
+                      placeholder="1075000000"
+                    />
+                    <button
+                      matSuffix
+                      mat-icon-button
+                      (click)="buscarGraduado(busquedaGraduado)"
+                    >
                       <mat-icon>search</mat-icon>
                     </button>
-                    <mat-hint align="end">{{input.value.length}}/11</mat-hint>
+                    <mat-hint align="end">{{ input.value.length }}/11</mat-hint>
                   </mat-form-field>
                 </div>
               </div>
@@ -645,12 +964,25 @@
                 <div class="form-group">
                   <mat-form-field class="example-full-width">
                     <mat-label>Cédula docente</mat-label>
-                    <input matInput #input maxlength="11" type="text" [(ngModel)]="busquedaDocente" name="busqueda"
-                      id="identificacion" (keyup.enter)="buscarDocente(busquedaDocente)" placeholder="1075000000">
-                    <button matSuffix mat-icon-button (click)="buscarDocente(busquedaDocente)">
+                    <input
+                      matInput
+                      #input
+                      maxlength="11"
+                      type="text"
+                      [(ngModel)]="busquedaDocente"
+                      name="busqueda"
+                      id="identificacion"
+                      (keyup.enter)="buscarDocente(busquedaDocente)"
+                      placeholder="1075000000"
+                    />
+                    <button
+                      matSuffix
+                      mat-icon-button
+                      (click)="buscarDocente(busquedaDocente)"
+                    >
                       <mat-icon>search</mat-icon>
                     </button>
-                    <mat-hint align="end">{{input.value.length}}/11</mat-hint>
+                    <mat-hint align="end">{{ input.value.length }}/11</mat-hint>
                   </mat-form-field>
                 </div>
               </div>
@@ -660,13 +992,27 @@
                 <div class="form-group">
                   <mat-form-field class="example-full-width">
                     <mat-label>Cédula administrativo</mat-label>
-                    <input matInput #input maxlength="11" type="text" [(ngModel)]="busquedaAdministrativo"
-                      name="busqueda" id="identificacion" (keyup.enter)="buscarAdministrativo(busquedaAdministrativo)"
-                      placeholder="1075000000">
-                    <button matSuffix mat-icon-button (click)="buscarAdministrativo(busquedaAdministrativo)">
+                    <input
+                      matInput
+                      #input
+                      maxlength="11"
+                      type="text"
+                      [(ngModel)]="busquedaAdministrativo"
+                      name="busqueda"
+                      id="identificacion"
+                      (keyup.enter)="
+                        buscarAdministrativo(busquedaAdministrativo)
+                      "
+                      placeholder="1075000000"
+                    />
+                    <button
+                      matSuffix
+                      mat-icon-button
+                      (click)="buscarAdministrativo(busquedaAdministrativo)"
+                    >
                       <mat-icon>search</mat-icon>
                     </button>
-                    <mat-hint align="end">{{input.value.length}}/11</mat-hint>
+                    <mat-hint align="end">{{ input.value.length }}/11</mat-hint>
                   </mat-form-field>
                 </div>
               </div>
@@ -676,26 +1022,53 @@
                 <div class="form-group">
                   <mat-form-field class="example-full-width">
                     <mat-label>Cédula persona</mat-label>
-                    <input matInput #input maxlength="11" type="text" [(ngModel)]="busquedaTiquete" name="busqueda"
-                      id="identificacion" (keyup.enter)="buscarTiquete(busquedaTiquete)" placeholder="1075000000">
-                    <button matSuffix mat-icon-button (click)="buscarTiquete(busquedaTiquete)">
+                    <input
+                      matInput
+                      #input
+                      maxlength="11"
+                      type="text"
+                      [(ngModel)]="busquedaTiquete"
+                      name="busqueda"
+                      id="identificacion"
+                      (keyup.enter)="buscarTiquete(busquedaTiquete)"
+                      placeholder="1075000000"
+                    />
+                    <button
+                      matSuffix
+                      mat-icon-button
+                      (click)="buscarTiquete(busquedaTiquete)"
+                    >
                       <mat-icon>search</mat-icon>
                     </button>
-                    <mat-hint align="end">{{input.value.length}}/11</mat-hint>
+                    <mat-hint align="end">{{ input.value.length }}/11</mat-hint>
                   </mat-form-field>
                 </div>
               </div>
             </div>
             <div class="row justify-content-center">
               <div class="col" style="width: 250px" *ngIf="!alert">
-                <img src="../assets/precarga-usco.gif" class="img-fluid" alt="USCO">
+                <img
+                  src="../assets/precarga-usco.gif"
+                  class="img-fluid"
+                  alt="USCO"
+                />
               </div>
-              <div class="col p-4" *ngIf="alert" style="background-color: #4D626C;border-radius: 15px;">
-                <div class="box" style="width: 250px;">
-                  <zxing-scanner style="margin: 0;padding: 0;" [(device)]="currentDevice"
-                    (scanSuccess)="onCodeResult($event)" [formats]="formatsEnabled" [tryHarder]="tryHarder"
-                    (permissionResponse)="onHasPermission($event)" (camerasFound)="onCamerasFound($event)"
-                    (torchCompatible)="onTorchCompatible($event)"></zxing-scanner>
+              <div
+                class="col p-4"
+                *ngIf="alert"
+                style="background-color: #4d626c; border-radius: 15px"
+              >
+                <div class="box" style="width: 250px">
+                  <zxing-scanner
+                    style="margin: 0; padding: 0"
+                    [(device)]="currentDevice"
+                    (scanSuccess)="onCodeResult($event)"
+                    [formats]="formatsEnabled"
+                    [tryHarder]="tryHarder"
+                    (permissionResponse)="onHasPermission($event)"
+                    (camerasFound)="onCamerasFound($event)"
+                    (torchCompatible)="onTorchCompatible($event)"
+                  ></zxing-scanner>
                 </div>
               </div>
             </div>
@@ -703,28 +1076,44 @@
         </div>
         <div class="row mt-2 align-items-center">
           <div class="col" *ngIf="foto.url == ''">
-            <img src="../assets/precarga-usco.gif" class="img-fluid" alt="USCO">
+            <img
+              src="../assets/precarga-usco.gif"
+              class="img-fluid"
+              alt="USCO"
+            />
           </div>
           <div class="col" *ngIf="foto.url != ''">
             <!--VISTA MOBILE-->
             <div class="row" *ngIf="mobile">
               <div class="col mb-2">
                 <!--VISTA MOBILE ESTUDIANTE-->
-                <div class="card-usco-carnet carnet-usco-body shadow p-4 text-center" id="carnet-usco-rotulo-front"
-                  *ngIf="(estudiante | json) != '[]' && foto.url != '' && carnetEstudiante">
+                <div
+                  class="card-usco-carnet carnet-usco-body shadow p-4 text-center"
+                  id="carnet-usco-rotulo-front"
+                  *ngIf="
+                    (estudiante | json) != '[]' &&
+                    foto.url != '' &&
+                    carnetEstudiante
+                  "
+                >
                   <div class="row mt-4">
                     <div class="col-md-4">
                       <div class="row mb-3">
                         <div class="col">
                           <img
                             src="https://www.usco.edu.co/imagen-institucional/ocre/universidad-surcolombiana-multicampos.png"
-                            class="img-fluid">
+                            class="img-fluid"
+                          />
                         </div>
                       </div>
                       <div class="row">
                         <div class="col">
-                          <img src="{{foto.url}}" [alt]="estudiante[0].persona.apellido"
-                            [title]="estudiante[0].persona.apellido" class="card-img-top foto-usco cursor-select" />
+                          <img
+                            src="{{ foto.url }}"
+                            [alt]="estudiante[0].persona.apellido"
+                            [title]="estudiante[0].persona.apellido"
+                            class="card-img-top foto-usco cursor-select"
+                          />
                         </div>
                       </div>
                     </div>
@@ -733,41 +1122,48 @@
                         <div class="row mt-2">
                           <div class="col">
                             <h6 class="font-weight-bold">
-                              Cód: {{estudiante[0].codigo}}
+                              Cód: {{ estudiante[0].codigo }}
                             </h6>
                           </div>
                         </div>
                         <div class="row mb-2">
                           <div class="col">
-                            <small class="font-usco-default font-weight-bold text-uppercase">
-                              {{estudiante[0].persona.nombre}} {{estudiante[0].persona.apellido}}
+                            <small
+                              class="font-usco-default font-weight-bold text-uppercase"
+                            >
+                              {{ estudiante[0].persona.nombre }}
+                              {{ estudiante[0].persona.apellido }}
                             </small>
                           </div>
                         </div>
                         <div class="row mb-2">
                           <div class="col">
                             <small class="font-usco-default font-weight-bold">
-                              ID: {{estudiante[0].persona.identificacion}}
+                              ID: {{ estudiante[0].persona.identificacion }}
                             </small>
                           </div>
                         </div>
                         <div class="row mb-2">
                           <div class="col">
-                            <small class="font-usco-default font-weight-bold text-uppercase">
-                              {{estudiante[0].programa.nombreCorto}}
+                            <small
+                              class="font-usco-default font-weight-bold text-uppercase"
+                            >
+                              {{ estudiante[0].programa.nombreCorto }}
                             </small>
                           </div>
                         </div>
                         <div class="row mb-2">
                           <div class="col">
                             <small class="font-usco-vt font-weight-bold">
-                              G.S: {{estudiante[0].persona.grupoSanguineo}}
+                              G.S: {{ estudiante[0].persona.grupoSanguineo }}
                             </small>
                           </div>
                         </div>
                         <div class="row">
                           <div class="col">
-                            <small class="font-usco-default font-weight-bold text-uppercase">
+                            <small
+                              class="font-usco-default font-weight-bold text-uppercase"
+                            >
                               ESTUDIANTE
                             </small>
                           </div>
@@ -777,23 +1173,40 @@
                   </div>
                 </div>
                 <!--VISTA MOBILE GRADUADO-->
-                <div class="card-usco-carnet carnet-usco-body shadow p-4 text-center" id="carnet-usco-rotulo-front"
-                  *ngIf="(graduado | json) != '[]' && foto.url != '' && carnetGraduado">
+                <div
+                  class="card-usco-carnet carnet-usco-body shadow p-4 text-center"
+                  id="carnet-usco-rotulo-front"
+                  *ngIf="
+                    (graduado | json) != '[]' &&
+                    foto.url != '' &&
+                    carnetGraduado
+                  "
+                >
                   <div class="row mt-4">
                     <div class="col-md-4">
                       <div class="row mb-3">
                         <div class="col">
                           <img
                             src="https://www.usco.edu.co/imagen-institucional/ocre/universidad-surcolombiana-multicampos.png"
-                            class="img-fluid">
+                            class="img-fluid"
+                          />
                         </div>
                       </div>
                       <div class="row">
                         <div class="col">
-                          <img src="{{ foto.url }}" [alt]="graduado[0].persona.apellido"
-                            [title]="graduado[0].persona.apellido" class="card-img-top foto-usco cursor-select" />
-                          <img *ngIf="(graduado | json) == '[]'" src="assets/carnet.png" alt="usco" title="usco"
-                            class="card-img-top foto-usco cursor-select" />
+                          <img
+                            src="{{ foto.url }}"
+                            [alt]="graduado[0].persona.apellido"
+                            [title]="graduado[0].persona.apellido"
+                            class="card-img-top foto-usco cursor-select"
+                          />
+                          <img
+                            *ngIf="(graduado | json) == '[]'"
+                            src="assets/carnet.png"
+                            alt="usco"
+                            title="usco"
+                            class="card-img-top foto-usco cursor-select"
+                          />
                         </div>
                       </div>
                     </div>
@@ -802,41 +1215,57 @@
                         <div class="row mt-2">
                           <div class="col">
                             <small class="font-weight-bold">
-                              ID: {{graduado[0].persona.identificacion}}
+                              ID: {{ graduado[0].persona.identificacion }}
                             </small>
-                            <small *ngIf="(graduado | json) == '[]'" class="font-weight-bold">
+                            <small
+                              *ngIf="(graduado | json) == '[]'"
+                              class="font-weight-bold"
+                            >
                               ID: 1075******
                             </small>
                           </div>
                         </div>
                         <div class="row mb-2">
                           <div class="col">
-                            <small class="font-usco-default  font-weight-bold text-uppercase">
-                              {{graduado[0].persona.nombre}} {{graduado[0].persona.apellido}}
+                            <small
+                              class="font-usco-default font-weight-bold text-uppercase"
+                            >
+                              {{ graduado[0].persona.nombre }}
+                              {{ graduado[0].persona.apellido }}
                             </small>
-                            <small *ngIf="(graduado | json) == '[]'"
-                              class="font-usco-default  font-weight-bold text-uppercase">
+                            <small
+                              *ngIf="(graduado | json) == '[]'"
+                              class="font-usco-default font-weight-bold text-uppercase"
+                            >
                               Nombre y apellidos
                             </small>
                           </div>
                         </div>
                         <div class="row mb-2">
                           <div class="col">
-                            <small class="font-usco-default  font-weight-bold">
-                              {{graduado[0].programa.nombrePrograma}}
+                            <small class="font-usco-default font-weight-bold">
+                              {{ graduado[0].programa.nombrePrograma }}
                             </small>
-                            <small *ngIf="(graduado | json) == '[]'" class="font-usco-default  font-weight-bold">
+                            <small
+                              *ngIf="(graduado | json) == '[]'"
+                              class="font-usco-default font-weight-bold"
+                            >
                               PROGRAMA
                             </small>
                           </div>
                         </div>
                         <div class="row mb-2">
                           <div class="col">
-                            <small class="font-usco-default  font-weight-bold text-uppercase">
-                              Fecha: {{graduado[0].fechaGrado | date : "dd/MM/yyyy"}}
+                            <small
+                              class="font-usco-default font-weight-bold text-uppercase"
+                            >
+                              Fecha:
+                              {{ graduado[0].fechaGrado | date : "dd/MM/yyyy" }}
                             </small>
-                            <small *ngIf="(graduado | json) == '[]'"
-                              class="font-usco-default  font-weight-bold text-uppercase">
+                            <small
+                              *ngIf="(graduado | json) == '[]'"
+                              class="font-usco-default font-weight-bold text-uppercase"
+                            >
                               FECHA DE GRADO
                             </small>
                           </div>
@@ -844,25 +1273,34 @@
                         <div class="row mb-2">
                           <div class="col">
                             <small class="font-usco-vt font-weight-bold">
-                              G.S: {{graduado[0].persona.grupoSanguineo}}
+                              G.S: {{ graduado[0].persona.grupoSanguineo }}
                             </small>
-                            <small *ngIf="(graduado | json) == '[]'" class="font-usco-vt font-weight-bold">
+                            <small
+                              *ngIf="(graduado | json) == '[]'"
+                              class="font-usco-vt font-weight-bold"
+                            >
                               G.S: AB+
                             </small>
                           </div>
                         </div>
                         <div class="row">
                           <div class="col">
-                            <small *ngIf="(graduado | json) == '[]'"
-                              class="font-usco-default  font-weight-bold text-uppercase">
+                            <small
+                              *ngIf="(graduado | json) == '[]'"
+                              class="font-usco-default font-weight-bold text-uppercase"
+                            >
                               graduado
                             </small>
-                            <small *ngIf="graduado[0].persona.genero === 'M'"
-                              class="font-usco-default  font-weight-bold text-uppercase">
+                            <small
+                              *ngIf="graduado[0].persona.genero === 'M'"
+                              class="font-usco-default font-weight-bold text-uppercase"
+                            >
                               graduado
                             </small>
-                            <small *ngIf="graduado[0].persona.genero === 'F'"
-                              class="font-usco-default  font-weight-bold text-uppercase">
+                            <small
+                              *ngIf="graduado[0].persona.genero === 'F'"
+                              class="font-usco-default font-weight-bold text-uppercase"
+                            >
                               graduada
                             </small>
                           </div>
@@ -872,23 +1310,38 @@
                   </div>
                 </div>
                 <!--VISTA MOBILE DOCENTE-->
-                <div class="card-usco-carnet carnet-usco-body shadow p-4 text-center" id="carnet-usco-rotulo-front"
-                  *ngIf="(docente | json) != '[]' && foto.url != '' && carnetDocente">
+                <div
+                  class="card-usco-carnet carnet-usco-body shadow p-4 text-center"
+                  id="carnet-usco-rotulo-front"
+                  *ngIf="
+                    (docente | json) != '[]' && foto.url != '' && carnetDocente
+                  "
+                >
                   <div class="row mt-4">
                     <div class="col-md-4">
                       <div class="row mb-3">
                         <div class="col">
                           <img
                             src="https://www.usco.edu.co/imagen-institucional/ocre/universidad-surcolombiana-multicampos.png"
-                            class="img-fluid">
+                            class="img-fluid"
+                          />
                         </div>
                       </div>
                       <div class="row">
                         <div class="col">
-                          <img src="{{ foto.url }}" [alt]="docente[0].persona.apellido"
-                            [title]="docente[0].persona.apellido" class="card-img-top foto-usco cursor-select" />
-                          <img *ngIf="(docente | json) == '[]'" src="assets/carnet.png" alt="usco" title="usco"
-                            class="card-img-top foto-usco cursor-select" />
+                          <img
+                            src="{{ foto.url }}"
+                            [alt]="docente[0].persona.apellido"
+                            [title]="docente[0].persona.apellido"
+                            class="card-img-top foto-usco cursor-select"
+                          />
+                          <img
+                            *ngIf="(docente | json) == '[]'"
+                            src="assets/carnet.png"
+                            alt="usco"
+                            title="usco"
+                            class="card-img-top foto-usco cursor-select"
+                          />
                         </div>
                       </div>
                     </div>
@@ -896,42 +1349,52 @@
                       <div class="card-block">
                         <div class="row mt-2">
                           <div class="col">
-                            <small class="font-usco-default  font-weight-bold">
-                              ID: {{docente[0].persona.identificacion}}
+                            <small class="font-usco-default font-weight-bold">
+                              ID: {{ docente[0].persona.identificacion }}
                             </small>
                           </div>
                         </div>
                         <div class="row mb-2">
                           <div class="col">
-                            <small class="font-usco-default  font-weight-bold text-uppercase">
-                              {{docente[0].persona.nombre}} {{docente[0].persona.apellido}}
+                            <small
+                              class="font-usco-default font-weight-bold text-uppercase"
+                            >
+                              {{ docente[0].persona.nombre }}
+                              {{ docente[0].persona.apellido }}
                             </small>
                           </div>
                         </div>
                         <div class="row mb-2">
                           <div class="col">
-                            <small class="font-usco-default  font-weight-bold text-uppercase">
-                              {{docente[0].sede}} - {{docente[0].nombrePrograma}}
+                            <small
+                              class="font-usco-default font-weight-bold text-uppercase"
+                            >
+                              {{ docente[0].sede }} -
+                              {{ docente[0].nombrePrograma }}
                             </small>
                           </div>
                         </div>
                         <div class="row mb-2">
                           <div class="col">
-                            <small class="font-usco-default  font-weight-bold text-uppercase">
-                              {{docente[0].vinculacionNombre}}
+                            <small
+                              class="font-usco-default font-weight-bold text-uppercase"
+                            >
+                              {{ docente[0].vinculacionNombre }}
                             </small>
                           </div>
                         </div>
                         <div class="row">
                           <div class="col">
                             <small class="font-usco-vt font-weight-bold">
-                              G.S: {{docente[0].persona.grupoSanguineo}}
+                              G.S: {{ docente[0].persona.grupoSanguineo }}
                             </small>
                           </div>
                         </div>
                         <div class="row">
                           <div class="col">
-                            <small class="font-usco-default  font-weight-bold text-uppercase">
+                            <small
+                              class="font-usco-default font-weight-bold text-uppercase"
+                            >
                               DOCENTE
                             </small>
                           </div>
@@ -941,21 +1404,33 @@
                   </div>
                 </div>
                 <!--VISTA MOBILE ADMINISTRATIVO-->
-                <div class="card-usco-carnet carnet-usco-body shadow p-4 text-center" id="carnet-usco-rotulo-front"
-                  *ngIf="(administrativo | json) != '[]' && foto.url != '' && carnetAdministrativo">
+                <div
+                  class="card-usco-carnet carnet-usco-body shadow p-4 text-center"
+                  id="carnet-usco-rotulo-front"
+                  *ngIf="
+                    (administrativo | json) != '[]' &&
+                    foto.url != '' &&
+                    carnetAdministrativo
+                  "
+                >
                   <div class="row mt-4">
                     <div class="col-md-4">
                       <div class="row mb-3">
                         <div class="col">
                           <img
                             src="https://www.usco.edu.co/imagen-institucional/ocre/universidad-surcolombiana-multicampos.png"
-                            class="img-fluid">
+                            class="img-fluid"
+                          />
                         </div>
                       </div>
                       <div class="row">
                         <div class="col">
-                          <img src="{{ foto.url }}" [alt]="persona[0].apellido" [title]="persona[0].apellido"
-                            class="card-img-top foto-usco cursor-select" />
+                          <img
+                            src="{{ foto.url }}"
+                            [alt]="persona[0].apellido"
+                            [title]="persona[0].apellido"
+                            class="card-img-top foto-usco cursor-select"
+                          />
                         </div>
                       </div>
                     </div>
@@ -963,36 +1438,42 @@
                       <div class="card-block">
                         <div class="row mt-2">
                           <div class="col">
-                            <small class="font-usco-default  font-weight-bold">
-                              ID: {{administrativo[0].identificacion}}
+                            <small class="font-usco-default font-weight-bold">
+                              ID: {{ administrativo[0].identificacion }}
                             </small>
                           </div>
                         </div>
                         <div class="row mb-2">
                           <div class="col">
-                            <small class="font-usco-default  font-weight-bold text-uppercase">
-                              {{persona[0].nombre}} {{persona[0].apellido}}
+                            <small
+                              class="font-usco-default font-weight-bold text-uppercase"
+                            >
+                              {{ persona[0].nombre }} {{ persona[0].apellido }}
                             </small>
                           </div>
                         </div>
                         <div class="row mb-2">
                           <div class="col">
-                            <small class="font-usco-default  font-weight-bold text-uppercase">
-                              {{administrativo[0].nombrePrograma}}
+                            <small
+                              class="font-usco-default font-weight-bold text-uppercase"
+                            >
+                              {{ administrativo[0].nombrePrograma }}
                             </small>
                           </div>
                         </div>
                         <div class="row mb-2">
                           <div class="col">
                             <small class="font-usco-vt font-weight-bold">
-                              G.S: {{persona[0].grupoSanguineo}}
+                              G.S: {{ persona[0].grupoSanguineo }}
                             </small>
                           </div>
                         </div>
                         <div class="row">
                           <div class="col">
-                            <small class="font-usco-default  font-weight-bold text-uppercase">
-                              {{administrativo[0].cargoNombre}}
+                            <small
+                              class="font-usco-default font-weight-bold text-uppercase"
+                            >
+                              {{ administrativo[0].cargoNombre }}
                             </small>
                           </div>
                         </div>
@@ -1001,74 +1482,124 @@
                   </div>
                 </div>
                 <!--TIQUETE MOBILE INVITADO-->
-                <div class="row text-left text-uppercase"
-                  *ngIf="tiquete && tipoTiquete === 1 && (ticket | json) != '[]'">
+                <div
+                  class="row text-left text-uppercase"
+                  *ngIf="
+                    tiquete && tipoTiquete === 1 && (ticket | json) != '[]'
+                  "
+                >
                   <div class="col">
                     <div class="table-responsive">
                       <table class="table">
                         <thead>
                           <tr>
                             <th colspan="2">
-                              <div class="bg-usco-gr-d6 text-white p-2 text-center">
-                                <img src="assets/universidad-surcolombiana-multicampos-white.png" alt="USCO"
-                                  class="img-fluid">
+                              <div
+                                class="bg-usco-gr-d6 text-white p-2 text-center"
+                              >
+                                <img
+                                  src="assets/universidad-surcolombiana-multicampos-white.png"
+                                  alt="USCO"
+                                  class="img-fluid"
+                                />
                               </div>
                             </th>
                           </tr>
                         </thead>
                         <tbody>
                           <tr>
-                            <th scope="row" style="font-size: 14px;">Nombre:</th>
-                            <td *ngIf="ticket[0].persona.codigo != 0" class=" font-weight-bold"
-                              style="font-size: 14px;">
-                              {{ticket[0].persona.nombre}} {{ticket[0].persona.apellido}}
+                            <th scope="row" style="font-size: 14px">Nombre:</th>
+                            <td
+                              *ngIf="ticket[0].persona.codigo != 0"
+                              class="font-weight-bold"
+                              style="font-size: 14px"
+                            >
+                              {{ ticket[0].persona.nombre }}
+                              {{ ticket[0].persona.apellido }}
                             </td>
-                            <td *ngIf="ticket[0].tercero.codigo != 0" class=" font-weight-bold"
-                              style="font-size: 14px;">
-                              {{ticket[0].tercero.nombreCompleto}}
-                            </td>
-                          </tr>
-                          <tr>
-                            <th scope="row" style="font-size: 14px;">Id:</th>
-                            <td *ngIf="ticket[0].persona.codigo != 0" class=" font-weight-bold"
-                              style="font-size: 14px;">
-                              {{ticket[0].persona.identificacion}}
-                            </td>
-                            <td *ngIf="ticket[0].tercero.codigo != 0" class=" font-weight-bold"
-                              style="font-size: 14px;">
-                              {{ticket[0].tercero.identificacion}}
+                            <td
+                              *ngIf="ticket[0].tercero.codigo != 0"
+                              class="font-weight-bold"
+                              style="font-size: 14px"
+                            >
+                              {{ ticket[0].tercero.nombreCompleto }}
                             </td>
                           </tr>
                           <tr>
-                            <th scope="row" style="font-size: 14px;">Correo:</th>
-                            <td *ngIf="ticket[0].persona.codigo != 0" class=" font-weight-bold"
-                              style="font-size: 14px;">
-                              {{ticket[0].persona.emailPersonal}}
+                            <th scope="row" style="font-size: 14px">Id:</th>
+                            <td
+                              *ngIf="ticket[0].persona.codigo != 0"
+                              class="font-weight-bold"
+                              style="font-size: 14px"
+                            >
+                              {{ ticket[0].persona.identificacion }}
                             </td>
-                            <td *ngIf="ticket[0].tercero.codigo != 0" class=" font-weight-bold"
-                              style="font-size: 14px;">
-                              {{ticket[0].tercero.email}}
-                            </td>
-                          </tr>
-                          <tr>
-                            <th scope="row" style="font-size: 14px;">Lugar:</th>
-                            <td *ngIf="ticket[0].tipoLugar == 1" class=" font-weight-bold" style="font-size: 14px;">
-                              {{ticket[0].bloque.bloqueNombre}}
-                            </td>
-                            <td *ngIf="ticket[0].tipoLugar == 2" class=" font-weight-bold" style="font-size: 14px;">
-                              {{ticket[0].oficina.uaaNombre}}
+                            <td
+                              *ngIf="ticket[0].tercero.codigo != 0"
+                              class="font-weight-bold"
+                              style="font-size: 14px"
+                            >
+                              {{ ticket[0].tercero.identificacion }}
                             </td>
                           </tr>
                           <tr>
-                            <th scope="row" style="font-size: 14px;">Creación:</th>
-                            <td class=" font-weight-bold" style="font-size: 14px;">
-                              {{ticket[0].fechaCreacion | date : 'dd-MM-yyyy'}}
+                            <th scope="row" style="font-size: 14px">Correo:</th>
+                            <td
+                              *ngIf="ticket[0].persona.codigo != 0"
+                              class="font-weight-bold"
+                              style="font-size: 14px"
+                            >
+                              {{ ticket[0].persona.emailPersonal }}
+                            </td>
+                            <td
+                              *ngIf="ticket[0].tercero.codigo != 0"
+                              class="font-weight-bold"
+                              style="font-size: 14px"
+                            >
+                              {{ ticket[0].tercero.email }}
                             </td>
                           </tr>
                           <tr>
-                            <th scope="row" style="font-size: 14px;">Vigencia:</th>
-                            <td class=" font-weight-bold" style="font-size: 14px;">
-                              {{ticket[0].fechaVigencia | date : 'dd-MM-yyyy'}}
+                            <th scope="row" style="font-size: 14px">Lugar:</th>
+                            <td
+                              *ngIf="ticket[0].tipoLugar == 1"
+                              class="font-weight-bold"
+                              style="font-size: 14px"
+                            >
+                              {{ ticket[0].bloque.bloqueNombre }}
+                            </td>
+                            <td
+                              *ngIf="ticket[0].tipoLugar == 2"
+                              class="font-weight-bold"
+                              style="font-size: 14px"
+                            >
+                              {{ ticket[0].oficina.uaaNombre }}
+                            </td>
+                          </tr>
+                          <tr>
+                            <th scope="row" style="font-size: 14px">
+                              Creación:
+                            </th>
+                            <td
+                              class="font-weight-bold"
+                              style="font-size: 14px"
+                            >
+                              {{
+                                ticket[0].fechaCreacion | date : "dd-MM-yyyy"
+                              }}
+                            </td>
+                          </tr>
+                          <tr>
+                            <th scope="row" style="font-size: 14px">
+                              Vigencia:
+                            </th>
+                            <td
+                              class="font-weight-bold"
+                              style="font-size: 14px"
+                            >
+                              {{
+                                ticket[0].fechaVigencia | date : "dd-MM-yyyy"
+                              }}
                             </td>
                           </tr>
                         </tbody>
@@ -1076,7 +1607,9 @@
                           <tr>
                             <th colspan="2">
                               <div class="bg-usco-gr-d6 text-white text-center">
-                                <h6 class="p-2 font-weight-bold text-uppercase">TIQUETE DE ACCESO</h6>
+                                <h6 class="p-2 font-weight-bold text-uppercase">
+                                  TIQUETE DE ACCESO
+                                </h6>
                               </div>
                             </th>
                           </tr>
@@ -1086,68 +1619,111 @@
                   </div>
                 </div>
                 <!--TIQUETE MOBILE VISITANTE-->
-                <div class="row text-left text-uppercase"
-                  *ngIf="tiquete && tipoTiquete === 2 && (ticket | json) != '[]'">
+                <div
+                  class="row text-left text-uppercase"
+                  *ngIf="
+                    tiquete && tipoTiquete === 2 && (ticket | json) != '[]'
+                  "
+                >
                   <div class="col">
                     <div class="table-responsive">
                       <table class="table">
                         <thead>
                           <tr>
                             <th colspan="2">
-                              <div class="bg-usco-gr-d6 text-white p-2 text-center">
-                                <img src="assets/universidad-surcolombiana-multicampos-white.png" alt="USCO"
-                                  class="img-fluid">
+                              <div
+                                class="bg-usco-gr-d6 text-white p-2 text-center"
+                              >
+                                <img
+                                  src="assets/universidad-surcolombiana-multicampos-white.png"
+                                  alt="USCO"
+                                  class="img-fluid"
+                                />
                               </div>
                             </th>
                           </tr>
                         </thead>
                         <tbody>
                           <tr>
-                            <th scope="row" style="font-size: 14px;">Nombre:</th>
-                            <td *ngIf="ticket[0].persona.codigo != 0" class=" font-weight-bold"
-                              style="font-size: 14px;">
-                              {{ticket[0].persona.nombre}} {{ticket[0].persona.apellido}}
+                            <th scope="row" style="font-size: 14px">Nombre:</th>
+                            <td
+                              *ngIf="ticket[0].persona.codigo != 0"
+                              class="font-weight-bold"
+                              style="font-size: 14px"
+                            >
+                              {{ ticket[0].persona.nombre }}
+                              {{ ticket[0].persona.apellido }}
                             </td>
-                            <td *ngIf="ticket[0].tercero.codigo != 0" class=" font-weight-bold"
-                              style="font-size: 14px;">
-                              {{ticket[0].tercero.nombreCompleto}}
-                            </td>
-                          </tr>
-                          <tr>
-                            <th scope="row" style="font-size: 14px;">Id:</th>
-                            <td *ngIf="ticket[0].persona.codigo != 0" class=" font-weight-bold"
-                              style="font-size: 14px;">
-                              {{ticket[0].persona.identificacion}}
-                            </td>
-                            <td *ngIf="ticket[0].tercero.codigo != 0" class=" font-weight-bold"
-                              style="font-size: 14px;">
-                              {{ticket[0].tercero.identificacion}}
+                            <td
+                              *ngIf="ticket[0].tercero.codigo != 0"
+                              class="font-weight-bold"
+                              style="font-size: 14px"
+                            >
+                              {{ ticket[0].tercero.nombreCompleto }}
                             </td>
                           </tr>
                           <tr>
-                            <th scope="row" style="font-size: 14px;">Correo:</th>
-                            <td *ngIf="ticket[0].persona.codigo != 0" class=" font-weight-bold"
-                              style="font-size: 14px;">
-                              {{ticket[0].persona.emailPersonal}}
+                            <th scope="row" style="font-size: 14px">Id:</th>
+                            <td
+                              *ngIf="ticket[0].persona.codigo != 0"
+                              class="font-weight-bold"
+                              style="font-size: 14px"
+                            >
+                              {{ ticket[0].persona.identificacion }}
                             </td>
-                            <td *ngIf="ticket[0].tercero.codigo != 0" class=" font-weight-bold"
-                              style="font-size: 14px;">
-                              {{ticket[0].tercero.email}}
-                            </td>
-                          </tr>
-                          <tr>
-                            <th scope="row" style="font-size: 14px;">Lugar:</th>
-                            <td *ngIf="ticket[0].tipoLugar == 1" class=" font-weight-bold" style="font-size: 14px;">
-                              {{ticket[0].bloque.bloqueNombre}}
-                            </td>
-                            <td *ngIf="ticket[0].tipoLugar == 2" class=" font-weight-bold" style="font-size: 14px;">
-                              {{ticket[0].oficina.uaaNombre}}
+                            <td
+                              *ngIf="ticket[0].tercero.codigo != 0"
+                              class="font-weight-bold"
+                              style="font-size: 14px"
+                            >
+                              {{ ticket[0].tercero.identificacion }}
                             </td>
                           </tr>
                           <tr>
-                            <th scope="row" style="font-size: 14px;">Vigencia:</th>
-                            <td class="font-weight-bold" style="font-size: 14px;">
-                              {{ticket[0].fechaVigencia | date : 'dd-MM-yyyy'}}
+                            <th scope="row" style="font-size: 14px">Correo:</th>
+                            <td
+                              *ngIf="ticket[0].persona.codigo != 0"
+                              class="font-weight-bold"
+                              style="font-size: 14px"
+                            >
+                              {{ ticket[0].persona.emailPersonal }}
+                            </td>
+                            <td
+                              *ngIf="ticket[0].tercero.codigo != 0"
+                              class="font-weight-bold"
+                              style="font-size: 14px"
+                            >
+                              {{ ticket[0].tercero.email }}
+                            </td>
+                          </tr>
+                          <tr>
+                            <th scope="row" style="font-size: 14px">Lugar:</th>
+                            <td
+                              *ngIf="ticket[0].tipoLugar == 1"
+                              class="font-weight-bold"
+                              style="font-size: 14px"
+                            >
+                              {{ ticket[0].bloque.bloqueNombre }}
+                            </td>
+                            <td
+                              *ngIf="ticket[0].tipoLugar == 2"
+                              class="font-weight-bold"
+                              style="font-size: 14px"
+                            >
+                              {{ ticket[0].oficina.uaaNombre }}
+                            </td>
+                          </tr>
+                          <tr>
+                            <th scope="row" style="font-size: 14px">
+                              Vigencia:
+                            </th>
+                            <td
+                              class="font-weight-bold"
+                              style="font-size: 14px"
+                            >
+                              {{
+                                ticket[0].fechaVigencia | date : "dd-MM-yyyy"
+                              }}
                             </td>
                           </tr>
                         </tbody>
@@ -1155,7 +1731,9 @@
                           <tr>
                             <th colspan="2">
                               <div class="bg-usco-gr-d6 text-white text-center">
-                                <h6 class="p-2 font-weight-bold text-uppercase">TIQUETE DE ACCESO</h6>
+                                <h6 class="p-2 font-weight-bold text-uppercase">
+                                  TIQUETE DE ACCESO
+                                </h6>
                               </div>
                             </th>
                           </tr>

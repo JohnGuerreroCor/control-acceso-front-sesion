@@ -8,7 +8,6 @@
   width: 100%;
 }
 
-
 .card {
   display: inline-block !important;
   position: relative !important;
@@ -42,16 +41,23 @@
   /*inner circle color change*/
 }
 
-::ng-deep.mat-radio-button.mat-accent.mat-radio-checked .mat-radio-outer-circle {
+::ng-deep.mat-radio-button.mat-accent.mat-radio-checked
+  .mat-radio-outer-circle {
   border-color: #8f141b !important;
   /*outer ring color change*/
 }
 
-:host ::ng-deep .mat-slide-toggle.mat-checked:not(.mat-disabled) .mat-slide-toggle-bar {
+:host
+  ::ng-deep
+  .mat-slide-toggle.mat-checked:not(.mat-disabled)
+  .mat-slide-toggle-bar {
   background-color: #b15b60;
 }
 
-:host ::ng-deep .mat-slide-toggle.mat-checked:not(.mat-disabled) .mat-slide-toggle-thumb {
+:host
+  ::ng-deep
+  .mat-slide-toggle.mat-checked:not(.mat-disabled)
+  .mat-slide-toggle-thumb {
   background-color: #8f141b;
 }
 
@@ -133,31 +139,64 @@ th.mat-header-cell {
   border-radius: 10px;
 }
 
+.box {
+  --b: 5px; /* thickness of the border */
+  --c: white; /* color of the border */
+  --w: 30px; /* width of border */
+
+  border: var(--b) solid #0000; /* space for the border */
+  --_g: #0000 90deg, var(--c) 0;
+  --_p: var(--w) var(--w) border-box no-repeat;
+  background: conic-gradient(
+        from 90deg at top var(--b) left var(--b),
+        var(--_g)
+      )
+      0 0 / var(--_p),
+    conic-gradient(from 180deg at top var(--b) right var(--b), var(--_g)) 100% 0 /
+      var(--_p),
+    conic-gradient(from 0deg at bottom var(--b) left var(--b), var(--_g)) 0 100% /
+      var(--_p),
+    conic-gradient(from -90deg at bottom var(--b) right var(--b), var(--_g))
+      100% 100% / var(--_p);
+
+  /*Irrelevant code*/
+  box-sizing: border-box;
+  display: inline-flex;
+  justify-content: center;
+}
+
 #carnet-usco-rotulo-front {
-  background-image: linear-gradient(#8f141b 35%, white 10%);
+  background-image: linear-gradient(
+    to bottom,
+    #8f141b 0,
+    #8f141b 33%,
+    #dfd4a6 33%,
+    #dfd4a6 35%,
+    #ffffff 35%,
+    #ffffff 100%
+  );
+}
+
+#carnet-usco-rotulo-back-mobile {
+  background-image: linear-gradient(
+    to bottom,
+    #8f141b 0,
+    #8f141b 33%,
+    #dfd4a6 33%,
+    #dfd4a6 35%,
+    #ffffff 35%,
+    #ffffff 100%
+  );
 }
 
 #carnet-usco-rotulo-back {
-  background-image: linear-gradient(#8f141b 30%, white 10%);
-}
-
-.box {
-  --b: 5px;   /* thickness of the border */
-  --c: white;   /* color of the border */
-  --w: 30px;  /* width of border */
-  
-
-  border: var(--b) solid #0000; /* space for the border */
-  --_g: #0000 90deg,var(--c) 0;
-  --_p: var(--w) var(--w) border-box no-repeat;
-  background:
-    conic-gradient(from 90deg  at top    var(--b) left  var(--b),var(--_g)) 0    0    / var(--_p),
-    conic-gradient(from 180deg at top    var(--b) right var(--b),var(--_g)) 100% 0    / var(--_p),
-    conic-gradient(from 0deg   at bottom var(--b) left  var(--b),var(--_g)) 0    100% / var(--_p),
-    conic-gradient(from -90deg at bottom var(--b) right var(--b),var(--_g)) 100% 100% / var(--_p);
-  
-  /*Irrelevant code*/  
-  box-sizing:border-box;
-  display:inline-flex;
-  justify-content:center;
+  background-image: linear-gradient(
+    to bottom,
+    #8f141b 0,
+    #8f141b 33%,
+    #dfd4a6 33%,
+    #dfd4a6 35%,
+    #ffffff 35%,
+    #ffffff 100%
+  );
 }
