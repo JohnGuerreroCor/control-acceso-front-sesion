@@ -1,9 +1,9 @@
 export const environment = {
   production: true,
-  // URL_BACKEND : "https://gaitana.usco.edu.co/planes_academicos"
-  URL_BACKEND: "/acreditacion",
-  //  URL_BACKEND: "/planes-posgrado-1.0"
-
+  //DESCOMENTAR LOCAL
+  //URL_BACKEND : "http://localhost:8080/puesto-vigilancia-1.0",
+  //DESCOMENTAR PRODUCCIÓN
+  URL_BACKEND : "https://gaitana.usco.edu.co/control_acceso",
   firebase: {
     apiKey: 'AIzaSyDCI1DjDRTyWgCJd681nhrEqY216Kfbm44',
     authDomain: 'doctoradocienciasdelasaludusco.firebaseapp.com',

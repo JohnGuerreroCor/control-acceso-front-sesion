@@ -3,53 +3,89 @@
     <div class="card-header bg-usco-vt header-usco-card">
       <div class="row">
         <div class="col">
-          <img title="USCO" mat-card-image src="assets/universidad-surcolombiana-multicampos-white.png"
-            class="img-fluid" />
+          <img
+            title="USCO"
+            mat-card-image
+            src="assets/universidad-surcolombiana-multicampos-white.png"
+            class="img-fluid"
+          />
         </div>
       </div>
-      <hr class="punteada">
+      <hr class="punteada" />
       <div class="row">
         <div class="col">
           <h6 class="font-weight-bold text-white">
-            CONTROL DE ACCESO <br> INICIO DE SESIÓN
+            CONTROL DE ACCESO <br />
+            INICIO DE SESIÓN
           </h6>
         </div>
       </div>
     </div>
     <div class="card-body text-center font-usco-gr">
       <div class="container">
-        <form>
+        <form form [formGroup]="formLogin">
           <div class="row">
             <div class="col">
               <mat-form-field class="example-full-width">
-                <span matPrefix class="mr-2"><i class="fa-solid fa-user"></i></span>
+                <span matPrefix class="mr-2"
+                  ><i class="fa-solid fa-user"></i
+                ></span>
                 <mat-label>Usuario</mat-label>
-                <input matInput [(ngModel)]="usuario.username" placeholder="Número de identificación" autocomplete="off"
-                  name="username" tabindex="1" />
+                <input
+                  matInput
+                  formControlName="identificacion"
+                  placeholder="Número de cédula"
+                  autocomplete="off"
+                  name="username"
+                  tabindex="1"
+                />
               </mat-form-field>
             </div>
           </div>
           <div class="row">
             <div class="col">
               <mat-form-field class="example-full-width">
-                <span matPrefix class="mr-2"><i class="fa-solid fa-envelope"></i></span>
+                <span matPrefix class="mr-2"
+                  ><i class="fa-solid fa-envelope"></i
+                ></span>
                 <mat-label>Correo</mat-label>
-                <input matInput [(ngModel)]="usuario.password" type="email" name="password"
-                  placeholder="correo@email.edu.co" tabindex="2" />
+                <input
+                  matInput
+                  formControlName="correo"
+                  type="email"
+                  name="password"
+                  placeholder="correo@email.edu.co"
+                  tabindex="2"
+                />
               </mat-form-field>
             </div>
           </div>
           <div class="row">
             <div class="col mt-3 mb-4">
-              <button (click)="login()" type="submit" class="btn btn-usco-vt" tabindex="3">
+              <button
+                [disabled]="!formLogin.valid"
+                (click)="login()"
+                type="submit"
+                class="btn btn-usco-vt"
+                tabindex="3"
+              >
                 Ingresar
-                <i *ngIf="cargando" class="fas fa-spinner fa-pulse"></i>
+                <span
+                  *ngIf="cargando"
+                  class="spinner-border spinner-border-sm"
+                  role="status"
+                  aria-hidden="true"
+                ></span>
               </button>
             </div>
           </div>
           <div>
-            <small><b class="version">© {{ today | date : "yyyy" }} CITCD - Version 1 Construcción
-                1.0</b></small>
+            <small
+              ><b class="version"
+                >© {{ today | date : "yyyy" }} CITCD - Version 1 Construcción
+                1.0</b
+              ></small
+            >
           </div>
         </form>
       </div>
