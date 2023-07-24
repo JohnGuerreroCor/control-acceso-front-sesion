@@ -42,15 +42,17 @@
                   </div>
                   <div class="row text-left">
                     <div class="col ml-2">
-                      <small class="font-weight-bold" style="font-size: 11px">
-                        Cód: {{ estudiante[0].codigo }}
+                      <small
+                        class="font-weight-bold font-usco-gr text-uppercase"
+                      >
+                        C:{{ estudiante[0].codigo }}
                       </small>
                     </div>
                   </div>
                   <div class="row text-left">
                     <div class="col ml-2">
                       <small class="font-usco-vt font-weight-bold">
-                        G.S: {{ estudiante[0].persona.grupoSanguineo }}
+                        R.H: {{ estudiante[0].persona.grupoSanguineo }}
                       </small>
                     </div>
                   </div>
@@ -69,7 +71,7 @@
                     <div class="row mt-4 ml-2">
                       <div class="col">
                         <small
-                          CLASS="font-usco-default font-usco-bl font-weight-bold text-uppercase"
+                          CLASS="font-usco-default font-usco-gr font-weight-bold text-uppercase"
                         >
                           {{ estudiante[0].persona.nombre }}
                           {{ estudiante[0].persona.apellido }}
@@ -79,25 +81,26 @@
                     <div class="row ml-2">
                       <div class="col">
                         <small
-                          class="font-usco-default font-usco-bl font-weight-bold"
+                          class="font-usco-default font-usco-gr font-weight-bold"
                         >
-                          ID: {{ estudiante[0].persona.identificacion }}
+                          {{ estudiante[0].persona.documento }}:
+                          {{ estudiante[0].persona.identificacion }}
                         </small>
                       </div>
                     </div>
                     <div class="row ml-2">
                       <div class="col">
                         <small
-                          class="font-usco-default font-usco-bl font-weight-bold text-uppercase"
+                          class="font-usco-default font-usco-gr font-weight-bold text-uppercase"
                         >
                           {{ estudiante[0].programa.nombreCorto }}
                         </small>
                       </div>
                     </div>
-                    <div class="row ml-2">
+                    <div class="row ml-2 mt-3">
                       <div class="col">
                         <small
-                          class="font-usco-default font-usco-bl font-weight-bold text-uppercase"
+                          class="font-usco-default font-usco-vt font-weight-bold text-uppercase"
                         >
                           ESTUDIANTE
                         </small>
@@ -128,16 +131,18 @@
                     </div>
                   </div>
                   <div class="row text-left">
-                    <div class="col ml-2" style="font-size: 14px">
-                      <small class="font-weight-bold">
-                        ID: {{ graduado[0].persona.identificacion }}
+                    <div class="col ml-2">
+                      <small
+                        class="font-usco-default font-usco-gr font-weight-bold text-uppercase"
+                      >
+                        Gra:{{ graduado[0].fechaGrado | date : "dd/MM/yyyy" }}
                       </small>
                     </div>
                   </div>
                   <div class="row text-left">
                     <div class="col ml-2">
                       <small class="font-usco-vt font-weight-bold">
-                        G.S: {{ graduado[0].persona.grupoSanguineo }}
+                        R.H: {{ graduado[0].persona.grupoSanguineo }}
                       </small>
                     </div>
                   </div>
@@ -156,7 +161,7 @@
                     <div class="row mt-4 ml-2">
                       <div class="col">
                         <small
-                          class="font-usco-default font-usco-bl font-weight-bold text-uppercase"
+                          class="font-usco-default font-usco-gr font-weight-bold text-uppercase"
                         >
                           {{ graduado[0].persona.nombre }}
                           {{ graduado[0].persona.apellido }}
@@ -165,34 +170,32 @@
                     </div>
                     <div class="row ml-2">
                       <div class="col">
+                        <small class="font-weight-bold font-usco-gr">
+                          {{ graduado[0].persona.documento }}:
+                          {{ graduado[0].persona.identificacion }}
+                        </small>
+                      </div>
+                    </div>
+                    <div class="row ml-2">
+                      <div class="col">
                         <small
-                          class="font-usco-default font-usco-bl font-weight-bold"
+                          class="font-usco-default font-usco-gr font-weight-bold"
                         >
                           {{ graduado[0].programa.nombrePrograma }}
                         </small>
                       </div>
                     </div>
-                    <div class="row ml-2">
-                      <div class="col">
-                        <small
-                          class="font-usco-default font-usco-bl font-weight-bold text-uppercase"
-                        >
-                          Fecha:
-                          {{ graduado[0].fechaGrado | date : "dd/MM/yyyy" }}
-                        </small>
-                      </div>
-                    </div>
-                    <div class="row ml-2">
+                    <div class="row ml-2 mt-3">
                       <div class="col">
                         <small
                           *ngIf="graduado[0].persona.genero === 'M'"
-                          class="font-usco-default font-usco-bl font-weight-bold text-uppercase"
+                          class="font-usco-default font-usco-vt font-weight-bold text-uppercase"
                         >
                           graduado
                         </small>
                         <small
                           *ngIf="graduado[0].persona.genero === 'F'"
-                          class="font-usco-default font-usco-bl font-weight-bold text-uppercase"
+                          class="font-usco-default font-usco-vt font-weight-bold text-uppercase"
                         >
                           graduada
                         </small>
@@ -224,8 +227,19 @@
                   </div>
                   <div class="row text-left">
                     <div class="col ml-2">
+                      <small
+                        class="font-usco-default font-usco-gr font-weight-bold"
+                      >
+                        {{ docente[0].persona.documento }}:{{
+                          docente[0].persona.identificacion
+                        }}
+                      </small>
+                    </div>
+                  </div>
+                  <div class="row text-left">
+                    <div class="col ml-2">
                       <small class="font-usco-vt font-weight-bold">
-                        G.S: {{ docente[0].persona.grupoSanguineo }}
+                        R.H: {{ docente[0].persona.grupoSanguineo }}
                       </small>
                     </div>
                   </div>
@@ -244,7 +258,7 @@
                     <div class="row mt-4 ml-2">
                       <div class="col">
                         <small
-                          class="font-usco-default font-usco-bl font-weight-bold text-uppercase"
+                          class="font-usco-default font-usco-gr font-weight-bold text-uppercase"
                         >
                           {{ docente[0].persona.nombre }}
                           {{ docente[0].persona.apellido }}
@@ -254,37 +268,19 @@
                     <div class="row ml-2">
                       <div class="col">
                         <small
-                          class="font-usco-default font-usco-bl font-weight-bold"
-                        >
-                          ID: {{ docente[0].persona.identificacion }}
-                        </small>
-                      </div>
-                    </div>
-                    <div class="row ml-2">
-                      <div class="col">
-                        <small
-                          class="font-usco-default font-usco-bl font-weight-bold text-uppercase"
+                          class="font-usco-default font-usco-gr font-weight-bold text-uppercase"
                         >
                           {{ docente[0].sede }} -
                           {{ docente[0].nombrePrograma }}
                         </small>
                       </div>
                     </div>
-                    <div class="row ml-2">
+                    <div class="row ml-2 mt-3">
                       <div class="col">
                         <small
-                          class="font-usco-default font-usco-bl font-weight-bold text-uppercase"
+                          class="font-usco-default font-usco-vt font-weight-bold text-uppercase"
                         >
                           {{ docente[0].vinculacionNombre }}
-                        </small>
-                      </div>
-                    </div>
-                    <div class="row ml-2">
-                      <div class="col">
-                        <small
-                          class="font-usco-default font-usco-bl font-weight-bold text-uppercase"
-                        >
-                          DOCENTE
                         </small>
                       </div>
                     </div>
@@ -317,8 +313,19 @@
                   </div>
                   <div class="row text-left">
                     <div class="col ml-2">
+                      <small
+                        class="font-usco-default font-usco-gr font-weight-bold"
+                      >
+                        {{ persona[0].documento }}:{{
+                          administrativo[0].identificacion
+                        }}
+                      </small>
+                    </div>
+                  </div>
+                  <div class="row text-left">
+                    <div class="col ml-2">
                       <small class="font-usco-vt font-weight-bold">
-                        G.S: {{ persona[0].grupoSanguineo }}
+                        R.H: {{ persona[0].grupoSanguineo }}
                       </small>
                     </div>
                   </div>
@@ -337,7 +344,7 @@
                     <div class="row mt-4 ml-2">
                       <div class="col">
                         <small
-                          class="font-usco-default font-usco-bl font-weight-bold text-uppercase"
+                          class="font-usco-default font-usco-gr font-weight-bold text-uppercase"
                         >
                           {{ persona[0].nombre }} {{ persona[0].apellido }}
                         </small>
@@ -346,25 +353,16 @@
                     <div class="row ml-2">
                       <div class="col">
                         <small
-                          class="font-usco-default font-usco-bl font-weight-bold"
-                        >
-                          ID: {{ administrativo[0].identificacion }}
-                        </small>
-                      </div>
-                    </div>
-                    <div class="row ml-2">
-                      <div class="col">
-                        <small
-                          class="font-usco-default font-usco-bl font-weight-bold text-uppercase"
+                          class="font-usco-default font-usco-gr font-weight-bold text-uppercase"
                         >
                           {{ administrativo[0].nombrePrograma }}
                         </small>
                       </div>
                     </div>
-                    <div class="row ml-2">
+                    <div class="row ml-2 mt-3">
                       <div class="col">
                         <small
-                          class="font-usco-default font-usco-bl font-weight-bold text-uppercase"
+                          class="font-usco-default font-usco-vt font-weight-bold text-uppercase"
                         >
                           {{ administrativo[0].cargoNombre }}
                         </small>
@@ -400,7 +398,7 @@
                         <th scope="row" style="font-size: 14px">Nombre:</th>
                         <td
                           *ngIf="ticket[0].persona.codigo != 0"
-                          class="font-usco-bl font-weight-bold"
+                          class="font-usco-gr font-weight-bold"
                           style="font-size: 14px"
                         >
                           {{ ticket[0].persona.nombre }}
@@ -408,7 +406,7 @@
                         </td>
                         <td
                           *ngIf="ticket[0].tercero.codigo != 0"
-                          class="font-usco-bl font-weight-bold"
+                          class="font-usco-gr font-weight-bold"
                           style="font-size: 14px"
                         >
                           {{ ticket[0].tercero.nombreCompleto }}
@@ -418,14 +416,14 @@
                         <th scope="row" style="font-size: 14px">Id:</th>
                         <td
                           *ngIf="ticket[0].persona.codigo != 0"
-                          class="font-usco-bl font-weight-bold"
+                          class="font-usco-gr font-weight-bold"
                           style="font-size: 14px"
                         >
                           {{ ticket[0].persona.identificacion }}
                         </td>
                         <td
                           *ngIf="ticket[0].tercero.codigo != 0"
-                          class="font-usco-bl font-weight-bold"
+                          class="font-usco-gr font-weight-bold"
                           style="font-size: 14px"
                         >
                           {{ ticket[0].tercero.identificacion }}
@@ -435,14 +433,14 @@
                         <th scope="row" style="font-size: 14px">Correo:</th>
                         <td
                           *ngIf="ticket[0].persona.codigo != 0"
-                          class="font-usco-bl font-weight-bold"
+                          class="font-usco-gr font-weight-bold"
                           style="font-size: 14px"
                         >
                           {{ ticket[0].persona.emailPersonal }}
                         </td>
                         <td
                           *ngIf="ticket[0].tercero.codigo != 0"
-                          class="font-usco-bl font-weight-bold"
+                          class="font-usco-gr font-weight-bold"
                           style="font-size: 14px"
                         >
                           {{ ticket[0].tercero.email }}
@@ -452,14 +450,14 @@
                         <th scope="row" style="font-size: 14px">Lugar:</th>
                         <td
                           *ngIf="ticket[0].tipoLugar == 1"
-                          class="font-usco-bl font-weight-bold"
+                          class="font-usco-gr font-weight-bold"
                           style="font-size: 14px"
                         >
                           {{ ticket[0].bloque.bloqueNombre }}
                         </td>
                         <td
                           *ngIf="ticket[0].tipoLugar == 2"
-                          class="font-usco-bl font-weight-bold"
+                          class="font-usco-gr font-weight-bold"
                           style="font-size: 14px"
                         >
                           {{ ticket[0].oficina.uaaNombre }}
@@ -469,7 +467,7 @@
                         <th scope="row" style="font-size: 14px">Creación:</th>
                         <td
                           *ngIf="(ticket | json) != '[]'"
-                          class="font-usco-bl font-weight-bold"
+                          class="font-usco-gr font-weight-bold"
                           style="font-size: 14px"
                         >
                           {{ ticket[0].fechaCreacion | date : "dd-MM-yyyy" }}
@@ -479,7 +477,7 @@
                         <th scope="row" style="font-size: 14px">Vigencia:</th>
                         <td
                           *ngIf="(ticket | json) != '[]'"
-                          class="font-usco-bl font-weight-bold"
+                          class="font-usco-gr font-weight-bold"
                           style="font-size: 14px"
                         >
                           {{ ticket[0].fechaVigencia | date : "dd-MM-yyyy" }}
@@ -527,7 +525,7 @@
                         <th scope="row" style="font-size: 14px">Nombre:</th>
                         <td
                           *ngIf="ticket[0].persona.codigo != 0"
-                          class="font-usco-bl font-weight-bold"
+                          class="font-usco-gr font-weight-bold"
                           style="font-size: 14px"
                         >
                           {{ ticket[0].persona.nombre }}
@@ -535,7 +533,7 @@
                         </td>
                         <td
                           *ngIf="ticket[0].tercero.codigo != 0"
-                          class="font-usco-bl font-weight-bold"
+                          class="font-usco-gr font-weight-bold"
                           style="font-size: 14px"
                         >
                           {{ ticket[0].tercero.nombreCompleto }}
@@ -545,14 +543,14 @@
                         <th scope="row" style="font-size: 14px">Id:</th>
                         <td
                           *ngIf="ticket[0].persona.codigo != 0"
-                          class="font-usco-bl font-weight-bold"
+                          class="font-usco-gr font-weight-bold"
                           style="font-size: 14px"
                         >
                           {{ ticket[0].persona.identificacion }}
                         </td>
                         <td
                           *ngIf="ticket[0].tercero.codigo != 0"
-                          class="font-usco-bl font-weight-bold"
+                          class="font-usco-gr font-weight-bold"
                           style="font-size: 14px"
                         >
                           {{ ticket[0].tercero.identificacion }}
@@ -562,14 +560,14 @@
                         <th scope="row" style="font-size: 14px">Correo:</th>
                         <td
                           *ngIf="ticket[0].persona.codigo != 0"
-                          class="font-usco-bl font-weight-bold"
+                          class="font-usco-gr font-weight-bold"
                           style="font-size: 14px"
                         >
                           {{ ticket[0].persona.emailPersonal }}
                         </td>
                         <td
                           *ngIf="ticket[0].tercero.codigo != 0"
-                          class="font-usco-bl font-weight-bold"
+                          class="font-usco-gr font-weight-bold"
                           style="font-size: 14px"
                         >
                           {{ ticket[0].tercero.email }}
@@ -579,14 +577,14 @@
                         <th scope="row" style="font-size: 14px">Lugar:</th>
                         <td
                           *ngIf="ticket[0].tipoLugar == 1"
-                          class="font-usco-bl font-weight-bold"
+                          class="font-usco-gr font-weight-bold"
                           style="font-size: 14px"
                         >
                           {{ ticket[0].bloque.bloqueNombre }}
                         </td>
                         <td
                           *ngIf="ticket[0].tipoLugar == 2"
-                          class="font-usco-bl font-weight-bold"
+                          class="font-usco-gr font-weight-bold"
                           style="font-size: 14px"
                         >
                           {{ ticket[0].oficina.uaaNombre }}
@@ -596,7 +594,7 @@
                         <th scope="row" style="font-size: 14px">Vigencia:</th>
                         <td
                           *ngIf="(ticket | json) != '[]'"
-                          class="font-usco-bl font-weight-bold"
+                          class="font-usco-gr font-weight-bold"
                           style="font-size: 14px"
                         >
                           {{ ticket[0].fechaVigencia | date : "dd-MM-yyyy" }}
@@ -1115,17 +1113,10 @@
                     </div>
                     <div class="col-md-8 p-1">
                       <div class="card-block">
-                        <div class="row mt-2">
-                          <div class="col">
-                            <h6 class="font-weight-bold">
-                              Cód: {{ estudiante[0].codigo }}
-                            </h6>
-                          </div>
-                        </div>
-                        <div class="row mb-2">
+                        <div class="row mt-2 mb-2">
                           <div class="col">
                             <small
-                              class="font-usco-default font-weight-bold text-uppercase"
+                              class="font-usco-default font-weight-bold font-usco-gr text-uppercase"
                             >
                               {{ estudiante[0].persona.nombre }}
                               {{ estudiante[0].persona.apellido }}
@@ -1134,31 +1125,43 @@
                         </div>
                         <div class="row mb-2">
                           <div class="col">
-                            <small class="font-usco-default font-weight-bold">
-                              ID: {{ estudiante[0].persona.identificacion }}
+                            <small
+                              class="font-weight-bold font-usco-gr text-uppercase"
+                            >
+                              Código: {{ estudiante[0].codigo }}
                             </small>
                           </div>
                         </div>
                         <div class="row mb-2">
                           <div class="col">
                             <small
-                              class="font-usco-default font-weight-bold text-uppercase"
+                              class="font-usco-default font-usco-gr font-weight-bold"
                             >
-                              {{ estudiante[0].programa.nombreCorto }}
+                              {{ estudiante[0].persona.documento }}:
+                              {{ estudiante[0].persona.identificacion }}
                             </small>
                           </div>
                         </div>
                         <div class="row mb-2">
                           <div class="col">
                             <small class="font-usco-vt font-weight-bold">
-                              G.S: {{ estudiante[0].persona.grupoSanguineo }}
+                              R.H: {{ estudiante[0].persona.grupoSanguineo }}
+                            </small>
+                          </div>
+                        </div>
+                        <div class="row mb-2">
+                          <div class="col">
+                            <small
+                              class="font-usco-default font-usco-gr font-weight-bold text-uppercase"
+                            >
+                              {{ estudiante[0].programa.nombreCorto }}
                             </small>
                           </div>
                         </div>
                         <div class="row">
                           <div class="col">
                             <small
-                              class="font-usco-default font-weight-bold text-uppercase"
+                              class="font-usco-default font-usco-vt font-weight-bold text-uppercase"
                             >
                               ESTUDIANTE
                             </small>
@@ -1208,94 +1211,61 @@
                     </div>
                     <div class="col-md-8 p-1">
                       <div class="card-block">
-                        <div class="row mt-2">
-                          <div class="col">
-                            <small class="font-weight-bold">
-                              ID: {{ graduado[0].persona.identificacion }}
-                            </small>
-                            <small
-                              *ngIf="(graduado | json) == '[]'"
-                              class="font-weight-bold"
-                            >
-                              ID: 1075******
-                            </small>
-                          </div>
-                        </div>
-                        <div class="row mb-2">
+                        <div class="row mt-2 mb-2">
                           <div class="col">
                             <small
-                              class="font-usco-default font-weight-bold text-uppercase"
+                              class="font-usco-default font-usco-gr font-weight-bold text-uppercase"
                             >
                               {{ graduado[0].persona.nombre }}
                               {{ graduado[0].persona.apellido }}
                             </small>
-                            <small
-                              *ngIf="(graduado | json) == '[]'"
-                              class="font-usco-default font-weight-bold text-uppercase"
-                            >
-                              Nombre y apellidos
-                            </small>
                           </div>
                         </div>
                         <div class="row mb-2">
                           <div class="col">
-                            <small class="font-usco-default font-weight-bold">
-                              {{ graduado[0].programa.nombrePrograma }}
-                            </small>
-                            <small
-                              *ngIf="(graduado | json) == '[]'"
-                              class="font-usco-default font-weight-bold"
-                            >
-                              PROGRAMA
-                            </small>
-                          </div>
-                        </div>
-                        <div class="row mb-2">
-                          <div class="col">
-                            <small
-                              class="font-usco-default font-weight-bold text-uppercase"
-                            >
-                              Fecha:
-                              {{ graduado[0].fechaGrado | date : "dd/MM/yyyy" }}
-                            </small>
-                            <small
-                              *ngIf="(graduado | json) == '[]'"
-                              class="font-usco-default font-weight-bold text-uppercase"
-                            >
-                              FECHA DE GRADO
+                            <small class="font-weight-bold font-usco-gr">
+                              {{ graduado[0].persona.documento }}:
+                              {{ graduado[0].persona.identificacion }}
                             </small>
                           </div>
                         </div>
                         <div class="row mb-2">
                           <div class="col">
                             <small class="font-usco-vt font-weight-bold">
-                              G.S: {{ graduado[0].persona.grupoSanguineo }}
+                              R.H: {{ graduado[0].persona.grupoSanguineo }}
                             </small>
+                          </div>
+                        </div>
+                        <div class="row mb-2">
+                          <div class="col">
                             <small
-                              *ngIf="(graduado | json) == '[]'"
-                              class="font-usco-vt font-weight-bold"
+                              class="font-usco-default font-usco-gr font-weight-bold"
                             >
-                              G.S: AB+
+                              {{ graduado[0].programa.nombrePrograma }}
+                            </small>
+                          </div>
+                        </div>
+                        <div class="row mb-2">
+                          <div class="col">
+                            <small
+                              class="font-usco-default font-usco-gr font-weight-bold text-uppercase"
+                            >
+                              grado:
+                              {{ graduado[0].fechaGrado | date : "dd/MM/yyyy" }}
                             </small>
                           </div>
                         </div>
                         <div class="row">
                           <div class="col">
                             <small
-                              *ngIf="(graduado | json) == '[]'"
-                              class="font-usco-default font-weight-bold text-uppercase"
-                            >
-                              graduado
-                            </small>
-                            <small
                               *ngIf="graduado[0].persona.genero === 'M'"
-                              class="font-usco-default font-weight-bold text-uppercase"
+                              class="font-usco-default font-usco-vt font-weight-bold text-uppercase"
                             >
                               graduado
                             </small>
                             <small
                               *ngIf="graduado[0].persona.genero === 'F'"
-                              class="font-usco-default font-weight-bold text-uppercase"
+                              class="font-usco-default font-usco-vt font-weight-bold text-uppercase"
                             >
                               graduada
                             </small>
@@ -1345,15 +1315,8 @@
                       <div class="card-block">
                         <div class="row mt-2">
                           <div class="col">
-                            <small class="font-usco-default font-weight-bold">
-                              ID: {{ docente[0].persona.identificacion }}
-                            </small>
-                          </div>
-                        </div>
-                        <div class="row mb-2">
-                          <div class="col">
                             <small
-                              class="font-usco-default font-weight-bold text-uppercase"
+                              class="font-usco-default font-usco-gr font-weight-bold text-uppercase"
                             >
                               {{ docente[0].persona.nombre }}
                               {{ docente[0].persona.apellido }}
@@ -1363,7 +1326,24 @@
                         <div class="row mb-2">
                           <div class="col">
                             <small
-                              class="font-usco-default font-weight-bold text-uppercase"
+                              class="font-usco-default font-usco-gr font-weight-bold"
+                            >
+                              {{ docente[0].persona.documento }}:
+                              {{ docente[0].persona.identificacion }}
+                            </small>
+                          </div>
+                        </div>
+                        <div class="row mb-2">
+                          <div class="col">
+                            <small class="font-usco-vt font-weight-bold">
+                              R.H: {{ docente[0].persona.grupoSanguineo }}
+                            </small>
+                          </div>
+                        </div>
+                        <div class="row mb-2">
+                          <div class="col">
+                            <small
+                              class="font-usco-default font-usco-gr font-weight-bold text-uppercase"
                             >
                               {{ docente[0].sede }} -
                               {{ docente[0].nombrePrograma }}
@@ -1373,25 +1353,9 @@
                         <div class="row mb-2">
                           <div class="col">
                             <small
-                              class="font-usco-default font-weight-bold text-uppercase"
+                              class="font-usco-default font-usco-vt font-weight-bold text-uppercase"
                             >
                               {{ docente[0].vinculacionNombre }}
-                            </small>
-                          </div>
-                        </div>
-                        <div class="row">
-                          <div class="col">
-                            <small class="font-usco-vt font-weight-bold">
-                              G.S: {{ docente[0].persona.grupoSanguineo }}
-                            </small>
-                          </div>
-                        </div>
-                        <div class="row">
-                          <div class="col">
-                            <small
-                              class="font-usco-default font-weight-bold text-uppercase"
-                            >
-                              DOCENTE
                             </small>
                           </div>
                         </div>
@@ -1434,15 +1398,8 @@
                       <div class="card-block">
                         <div class="row mt-2">
                           <div class="col">
-                            <small class="font-usco-default font-weight-bold">
-                              ID: {{ administrativo[0].identificacion }}
-                            </small>
-                          </div>
-                        </div>
-                        <div class="row mb-2">
-                          <div class="col">
                             <small
-                              class="font-usco-default font-weight-bold text-uppercase"
+                              class="font-usco-default font-usco-gr font-weight-bold text-uppercase"
                             >
                               {{ persona[0].nombre }} {{ persona[0].apellido }}
                             </small>
@@ -1451,23 +1408,33 @@
                         <div class="row mb-2">
                           <div class="col">
                             <small
-                              class="font-usco-default font-weight-bold text-uppercase"
+                              class="font-usco-default font-usco-gr font-weight-bold"
                             >
-                              {{ administrativo[0].nombrePrograma }}
+                              {{ persona[0].documento }}:
+                              {{ administrativo[0].identificacion }}
                             </small>
                           </div>
                         </div>
                         <div class="row mb-2">
                           <div class="col">
                             <small class="font-usco-vt font-weight-bold">
-                              G.S: {{ persona[0].grupoSanguineo }}
+                              R.H: {{ persona[0].grupoSanguineo }}
+                            </small>
+                          </div>
+                        </div>
+                        <div class="row mb-2">
+                          <div class="col">
+                            <small
+                              class="font-usco-default font-usco-gr font-weight-bold text-uppercase"
+                            >
+                              {{ administrativo[0].nombrePrograma }}
                             </small>
                           </div>
                         </div>
                         <div class="row">
                           <div class="col">
                             <small
-                              class="font-usco-default font-weight-bold text-uppercase"
+                              class="font-usco-default font-usco-vt font-weight-bold text-uppercase"
                             >
                               {{ administrativo[0].cargoNombre }}
                             </small>

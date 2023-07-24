@@ -363,6 +363,8 @@ export class EscanerComponent implements OnInit {
           icon: 'error',
           title: 'Codigo desconocido',
           text: 'El código no posee los parametros correspondientes.',
+          confirmButtonColor: '#8f141b',
+          confirmButtonText: 'Listo',
         });
         break;
     }
@@ -379,7 +381,7 @@ export class EscanerComponent implements OnInit {
         this.mostrarFotoEstudiante('' + this.estudiante[0].persona.codigo);
         setTimeout(() => {
           this.alert = true;
-          const swalWithBootstrapButtons = Swal.mixin({
+          /*  const swalWithBootstrapButtons = Swal.mixin({
             customClass: {
               confirmButton: 'btn btn-success',
               cancelButton: 'btn btn-danger ml-5',
@@ -404,17 +406,14 @@ export class EscanerComponent implements OnInit {
                   'El usuario ingresó a la institución.',
                   'success'
                 );
-              } else if (
-                /* Read more about handling dismissals below */
-                result.dismiss === Swal.DismissReason.cancel
-              ) {
+              } else if (result.dismiss === Swal.DismissReason.cancel) {
                 swalWithBootstrapButtons.fire(
                   'Salida',
                   'El usuario salió de la institución.',
                   'success'
                 );
               }
-            });
+            }); */
         }, 2000);
       } else {
         this.error();
@@ -428,6 +427,8 @@ export class EscanerComponent implements OnInit {
           icon: 'warning',
           title: 'No existe',
           text: 'El código digitado no encontró ningún Estudiante asociado, por favor rectifique el código.',
+          confirmButtonColor: '#8f141b',
+          confirmButtonText: 'Listo',
         });
       }
     });
@@ -444,7 +445,7 @@ export class EscanerComponent implements OnInit {
         this.mostrarFotoGraduado('' + this.graduado[0].persona.codigo);
         setTimeout(() => {
           this.alert = true;
-          const swalWithBootstrapButtons = Swal.mixin({
+          /* const swalWithBootstrapButtons = Swal.mixin({
             customClass: {
               confirmButton: 'btn btn-success',
               cancelButton: 'btn btn-danger ml-5',
@@ -469,17 +470,14 @@ export class EscanerComponent implements OnInit {
                   'El usuario ingresó a la institución.',
                   'success'
                 );
-              } else if (
-                /* Read more about handling dismissals below */
-                result.dismiss === Swal.DismissReason.cancel
-              ) {
+              } else if (result.dismiss === Swal.DismissReason.cancel) {
                 swalWithBootstrapButtons.fire(
                   'Salida',
                   'El usuario salió de la institución.',
                   'success'
                 );
               }
-            });
+            }); */
         }, 2000);
       } else {
         this.error();
@@ -493,6 +491,8 @@ export class EscanerComponent implements OnInit {
           icon: 'warning',
           title: 'No existe',
           text: 'El código no encontró ningún Graduado asociado, por favor rectifique el código.',
+          confirmButtonColor: '#8f141b',
+          confirmButtonText: 'Listo',
         });
       }
     });
@@ -509,7 +509,7 @@ export class EscanerComponent implements OnInit {
         this.mostrarFotoDocente('' + this.docente[0].persona.codigo);
         setTimeout(() => {
           this.alert = true;
-          const swalWithBootstrapButtons = Swal.mixin({
+          /*   const swalWithBootstrapButtons = Swal.mixin({
             customClass: {
               confirmButton: 'btn btn-success',
               cancelButton: 'btn btn-danger ml-5',
@@ -534,17 +534,14 @@ export class EscanerComponent implements OnInit {
                   'El usuario ingresó a la institución.',
                   'success'
                 );
-              } else if (
-                /* Read more about handling dismissals below */
-                result.dismiss === Swal.DismissReason.cancel
-              ) {
+              } else if (result.dismiss === Swal.DismissReason.cancel) {
                 swalWithBootstrapButtons.fire(
                   'Salida',
                   'El usuario salió de la institución.',
                   'success'
                 );
               }
-            });
+            }); */
         }, 2000);
       } else {
         this.error();
@@ -558,6 +555,8 @@ export class EscanerComponent implements OnInit {
           icon: 'warning',
           title: 'No existe',
           text: 'El código no encontró ningún Docente asociado, por favor rectifique el código.',
+          confirmButtonColor: '#8f141b',
+          confirmButtonText: 'Listo',
         });
       }
     });
@@ -579,7 +578,7 @@ export class EscanerComponent implements OnInit {
           });
         setTimeout(() => {
           this.alert = true;
-          const swalWithBootstrapButtons = Swal.mixin({
+          /*  const swalWithBootstrapButtons = Swal.mixin({
             customClass: {
               confirmButton: 'btn btn-success',
               cancelButton: 'btn btn-danger ml-5',
@@ -604,17 +603,14 @@ export class EscanerComponent implements OnInit {
                   'El usuario ingresó a la institución.',
                   'success'
                 );
-              } else if (
-                /* Read more about handling dismissals below */
-                result.dismiss === Swal.DismissReason.cancel
-              ) {
+              } else if (result.dismiss === Swal.DismissReason.cancel) {
                 swalWithBootstrapButtons.fire(
                   'Salida',
                   'El usuario salió de la institución.',
                   'success'
                 );
               }
-            });
+            }); */
         }, 2000);
       } else {
         this.error();
@@ -623,6 +619,8 @@ export class EscanerComponent implements OnInit {
           icon: 'warning',
           title: 'No existe',
           text: 'El código no encontró ningún Administrativo asociado, por favor rectifique el código.',
+          confirmButtonColor: '#8f141b',
+          confirmButtonText: 'Listo',
         });
         setTimeout(() => {
           this.alert = true;
@@ -653,7 +651,7 @@ export class EscanerComponent implements OnInit {
           console.log(this.ticket);
           setTimeout(() => {
             this.alert = true;
-            const swalWithBootstrapButtons = Swal.mixin({
+            /* const swalWithBootstrapButtons = Swal.mixin({
               customClass: {
                 confirmButton: 'btn btn-success',
                 cancelButton: 'btn btn-danger ml-5',
@@ -678,17 +676,14 @@ export class EscanerComponent implements OnInit {
                     'El usuario ingresó a la institución.',
                     'success'
                   );
-                } else if (
-                  /* Read more about handling dismissals below */
-                  result.dismiss === Swal.DismissReason.cancel
-                ) {
+                } else if (result.dismiss === Swal.DismissReason.cancel) {
                   swalWithBootstrapButtons.fire(
                     'Salida',
                     'El usuario salió de la institución.',
                     'success'
                   );
                 }
-              });
+              }); */
           }, 2000);
           /* this.personaService.obtenerPersonaPorPerCodigo(data[0].codigo).subscribe(data => {
             this.persona = data;
@@ -700,6 +695,8 @@ export class EscanerComponent implements OnInit {
             icon: 'warning',
             title: 'No existe o expiró el tiquete',
             text: 'El código no encontró ningún Tiquete vigente o asociado, por favor rectifique el código.',
+            confirmButtonColor: '#8f141b',
+            confirmButtonText: 'Listo',
           });
           this.ticket = [];
           setTimeout(() => {
@@ -713,6 +710,8 @@ export class EscanerComponent implements OnInit {
           icon: 'warning',
           title: 'No existe o expiró el tiquete',
           text: 'El código no encontró ningún Tiquete vigente o asociado, por favor rectifique el código.',
+          confirmButtonColor: '#8f141b',
+          confirmButtonText: 'Listo',
         });
         this.ticket = [];
       }
@@ -721,14 +720,14 @@ export class EscanerComponent implements OnInit {
 
   lectura() {
     let audio = new Audio();
-    audio.src = '../assets/lectura.mp3';
+    audio.src = 'assets/lectura.mp3';
     audio.load();
     audio.play();
   }
 
   error() {
     let audio = new Audio();
-    audio.src = '../assets/error.mp3';
+    audio.src = 'assets/error.mp3';
     audio.load();
     audio.play();
   }
