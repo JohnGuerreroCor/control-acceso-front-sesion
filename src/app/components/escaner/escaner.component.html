@@ -616,6 +616,16 @@
                 </div>
               </div>
             </div>
+            <div class="row mt-5" *ngIf="foto.url != ''">
+              <div class="col mt-4 mb-4">
+                <button class="btn btn-success mr-4" (click)="entrada()">
+                  Ingreso
+                </button>
+                <button class="btn btn-danger" (click)="salida()">
+                  Salida
+                </button>
+              </div>
+            </div>
           </div>
           <!--CAMARA DE ESCANER-->
           <div class="col">
@@ -668,8 +678,22 @@
             <div class="row" *ngIf="carnetEstudiante">
               <div class="col">
                 <div class="form-group">
+                  <mat-radio-group
+                    aria-label="Select an option"
+                    formControlName="tipoUbicacion"
+                    id="tipoUbicacion"
+                  >
+                    <mat-radio-button value="1">Código</mat-radio-button>
+                    <mat-radio-button value="2">Cédula</mat-radio-button>
+                  </mat-radio-group>
+                </div>
+              </div>
+            </div>
+            <div class="row" *ngIf="carnetEstudiante">
+              <div class="col">
+                <div class="form-group">
                   <mat-form-field class="example-full-width">
-                    <mat-label>Códgio estudiante</mat-label>
+                    <mat-label>Código estudiante</mat-label>
                     <input
                       matInput
                       #input
@@ -904,8 +928,22 @@
             <div class="row" *ngIf="carnetEstudiante">
               <div class="col">
                 <div class="form-group">
+                  <mat-radio-group
+                    aria-label="Select an option"
+                    formControlName="tipoUbicacion"
+                    id="tipoUbicacion"
+                  >
+                    <mat-radio-button value="1">Código</mat-radio-button>
+                    <mat-radio-button value="2">Cédula</mat-radio-button>
+                  </mat-radio-group>
+                </div>
+              </div>
+            </div>
+            <div class="row" *ngIf="carnetEstudiante">
+              <div class="col">
+                <div class="form-group">
                   <mat-form-field class="example-full-width">
-                    <mat-label>Códgio estudiante</mat-label>
+                    <mat-label>Código estudiante</mat-label>
                     <input
                       matInput
                       #input
@@ -1075,6 +1113,12 @@
         <div class="row mt-2 align-items-center">
           <div class="col" *ngIf="foto.url == ''">
             <img src="assets/precarga-usco.gif" class="img-fluid" alt="USCO" />
+          </div>
+          <div class="col mt-4 mb-4" *ngIf="foto.url != ''">
+            <button class="btn btn-success mr-4" (click)="entrada()">
+              Ingreso
+            </button>
+            <button class="btn btn-danger" (click)="salida()">Salida</button>
           </div>
           <div class="col" *ngIf="foto.url != ''">
             <!--VISTA MOBILE-->

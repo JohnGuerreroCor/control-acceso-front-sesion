@@ -39,6 +39,7 @@ export class EscanerComponent implements OnInit {
 
   hasDevices!: boolean;
   hasPermission!: boolean;
+  ingreso: boolean = false;
 
   camara: boolean = true;
 
@@ -141,11 +142,11 @@ export class EscanerComponent implements OnInit {
       console.log('Longitud', this.qrResultString.length);
       if (parametros.length <= 1) {
         this.foto.url = '';
-        this.alert = true;
+        //this.alert = true;
         this.mensajeError();
         this.error();
       } else {
-        this.alert = false;
+        //this.alert = false;
         console.log('LLAVE:::', llave[1]);
         if (llave.length == 2) {
           this.decifrar('' + llave[1]);
@@ -166,7 +167,7 @@ export class EscanerComponent implements OnInit {
       ) {
         if (parametros.length <= 1) {
           this.foto.url = '';
-          this.alert = true;
+          //this.alert = true;
           this.mensajeError();
           this.error();
         } else {
@@ -179,7 +180,7 @@ export class EscanerComponent implements OnInit {
           //this.buscar(+parametros[0], parametros[1]);
         }
       } else {
-        this.alert = true;
+        //this.alert = true;
         Swal.fire({
           icon: 'warning',
           title: 'Mismo QR',
@@ -299,6 +300,7 @@ export class EscanerComponent implements OnInit {
   }
 
   buscarManual(estamento: number) {
+    this.alert = false;
     console.log('Estamento', estamento);
     switch (+estamento) {
       case 1: //ADMINISTRATIVO
@@ -370,6 +372,46 @@ export class EscanerComponent implements OnInit {
     }
   }
 
+  entrada() {
+    this.foto.url = '';
+    this.busquedaAdministrativo = '';
+    this.busquedaDocente = '';
+    this.busquedaGraduado = '';
+    this.busqueda = '';
+    this.busquedaAdministrativo = '';
+    this.carnetEstudiante = false;
+    this.carnetGraduado = false;
+    this.carnetDocente = false;
+    this.carnetAdministrativo = false;
+    this.alert = true;
+    Swal.fire({
+      icon: 'success',
+      title: 'El usuario ingreso a la institución.',
+      showConfirmButton: false,
+      timer: 1500,
+    });
+  }
+
+  salida() {
+    this.foto.url = '';
+    this.busquedaAdministrativo = '';
+    this.busquedaDocente = '';
+    this.busquedaGraduado = '';
+    this.busqueda = '';
+    this.busquedaAdministrativo = '';
+    this.carnetEstudiante = false;
+    this.carnetGraduado = false;
+    this.carnetDocente = false;
+    this.carnetAdministrativo = false;
+    this.alert = true;
+    Swal.fire({
+      icon: 'warning',
+      title: 'El usuario salio de la institución.',
+      showConfirmButton: false,
+      timer: 1500,
+    });
+  }
+
   buscarEstudiante(codigo: String) {
     this.estServices.getEstudiante(codigo).subscribe((data) => {
       if (JSON.stringify(data) !== '[]') {
@@ -380,7 +422,7 @@ export class EscanerComponent implements OnInit {
           this.estudiante[0].persona.codigo;
         this.mostrarFotoEstudiante('' + this.estudiante[0].persona.codigo);
         setTimeout(() => {
-          this.alert = true;
+          //this.alert = true;
           /*  const swalWithBootstrapButtons = Swal.mixin({
             customClass: {
               confirmButton: 'btn btn-success',
