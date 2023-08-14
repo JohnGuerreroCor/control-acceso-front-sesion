@@ -7,6 +7,7 @@ import { TiquetesComponent } from './components/inicio/tiquetes/tiquetes.compone
 import { TiqueteInvitadosComponent } from './components/tiquete/tiquete-invitados/tiquete-invitados.component';
 import { TiqueteVisitantesComponent } from './components/tiquete/tiquete-visitantes/tiquete-visitantes.component';
 import { EscanerComponent } from './components/escaner/escaner.component';
+import { InstructivoComponent } from './components/instructivo/instructivo.component';
 
 
 const routes: Routes = [
@@ -20,6 +21,8 @@ const routes: Routes = [
   { path: 'tiquete-visitantes', component: TiqueteVisitantesComponent },
 
   { path: 'escaner', component: EscanerComponent },
+
+  { path: 'instructivo', component: InstructivoComponent },
 
   { path: '', pathMatch: 'full', redirectTo: '/login' },
   { path: '**', pathMatch: 'full', redirectTo: '/login' }

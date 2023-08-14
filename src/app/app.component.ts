@@ -7,7 +7,7 @@ import { SwUpdate } from '@angular/service-worker';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'Carnet Digital USCO';
+  title = 'Control Acceso USCO';
   isAnyViewUpdate?: boolean;
 
   constructor(private update: SwUpdate) {

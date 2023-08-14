@@ -1,6 +1,6 @@
 {
-  "name": "carnet-digital",
-  "short_name": "carnet-digital",
+  "name": "control-acceso",
+  "short_name": "control-acceso",
   "theme_color": "#1976d2",
   "background_color": "#fafafa",
   "display": "standalone",

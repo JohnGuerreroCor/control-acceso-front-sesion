@@ -8,7 +8,9 @@ import {
 import { AuthService } from '../../services/auth.service';
 import { Router } from '@angular/router';
 import { Usuario } from '../../models/usuario';
+import { VigilanteService } from 'src/app/services/vigilante.service';
 import swal from 'sweetalert2';
+import { Vigilante } from 'src/app/models/vigilante';
 
 @Component({
   selector: 'app-login',
@@ -22,9 +24,11 @@ export class LoginComponent implements OnInit {
   today = new Date();
   cargando: boolean = false;
   formLogin!: FormGroup;
+  vigilantes!: Vigilante[];
 
   constructor(
     public authService: AuthService,
+    public vigilanteService: VigilanteService,
     private router: Router,
     private formBuilder: FormBuilder
   ) {
@@ -81,6 +85,31 @@ export class LoginComponent implements OnInit {
       showClass: {
         popup: 'slide-top',
       },
+    });
+  }
+
+  validarEmail() {
+    this.cargando = true;
+    this.vigilanteService.obtenerVigilantesActivos().subscribe((data) => {
+      this.vigilantes = data;
+      let count = 0;
+      for (const e of data) {
+        if (e.correo === this.formLogin.get('correo')!.value) {
+          count = count + 1;
+        }
+      }
+      if (count > 0) {
+        this.login();
+      } else {
+        swal.fire({
+          icon: 'error',
+          title: 'Correo no encontrado',
+          text: 'El correo digitado no corresponde a ningún vigilante, por favor rectificar.',
+          confirmButtonColor: '#8f141b',
+          confirmButtonText: 'Listo',
+        });
+        this.cargando = false;
+      }
     });
   }
 

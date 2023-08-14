@@ -74,6 +74,7 @@ import { TiqueteVisitantesComponent, ModalTiqueteVisitante } from './components/
 import { TiquetesComponent } from './components/inicio/tiquetes/tiquetes.component';
 import { EscanerComponent } from './components/escaner/escaner.component';
 import { EmailHidePipe } from './pipes/email-hide.pipe';
+import { InstructivoComponent } from './components/instructivo/instructivo.component';
 
 const initializer =
   (promptNotificationService: PromptNotificationService) => () =>
@@ -101,6 +102,7 @@ const initializer =
     TiquetesComponent,
     EscanerComponent,
     EmailHidePipe,
+    InstructivoComponent,
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'serverApp' }),

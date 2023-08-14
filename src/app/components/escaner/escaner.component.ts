@@ -11,6 +11,12 @@ import { PoliticaEstamento } from '../../models/politica-estamento';
 import { FirmaDigitalService } from '../../services/firma-digital.service';
 import { Router } from '@angular/router';
 import { BehaviorSubject, fromEvent, Observable, Subscription } from 'rxjs';
+import {
+  FormBuilder,
+  FormControl,
+  FormGroup,
+  Validators,
+} from '@angular/forms';
 import { DatePipe } from '@angular/common';
 import { Graduado } from 'src/app/models/graduado';
 import { GraduadoService } from 'src/app/services/graduado.service';
@@ -24,6 +30,9 @@ import { Persona } from 'src/app/models/persona';
 import { Ticket } from 'src/app/models/ticket';
 import * as CryptoJS from 'crypto-js';
 import Swal from 'sweetalert2';
+import { ControlAcceso } from 'src/app/models/control-acceso';
+import { ControlAccesoService } from 'src/app/services/control-acceso.service';
+import { PuestoVigilancia } from 'src/app/models/puesto-vigilancia';
 
 @Component({
   selector: 'app-escaner',
@@ -35,7 +44,7 @@ export class EscanerComponent implements OnInit {
   availableDevices!: MediaDeviceInfo[];
   currentDevice!: MediaDeviceInfo;
 
-  titulo: String = 'Hello';
+  titulo: String = 'ValoresEscaner';
 
   hasDevices!: boolean;
   hasPermission!: boolean;
@@ -90,6 +99,8 @@ export class EscanerComponent implements OnInit {
   busquedaAdministrativo!: String;
   busquedaTiquete!: String;
 
+  formAcceso!: FormGroup;
+
   url: string = environment.URL_BACKEND;
   file!: FileList;
   foto: FotoAntigua = {
@@ -111,35 +122,27 @@ export class EscanerComponent implements OnInit {
     public firmaService: FirmaDigitalService,
     private datePipe: DatePipe,
     private auth: AuthService,
-    private router: Router
+    private formBuilder: FormBuilder,
+    private router: Router,
+    public controlAccesoService: ControlAccesoService
   ) {
     this.codigoQr = 'https://www.usco.edu.co/';
+    console.log(this.auth.user);
   }
 
   onCodeResult(resultString: string) {
-    console.log('QR: ', resultString);
     let llave = resultString.split(
       'https://gaitana.usco.edu.co/carnet_digital/#/publico;key='
     );
-    console.log('LENGTH:', llave.length);
     let parametros: any;
     if (llave.length == 2) {
       parametros = llave[1].split(',');
-      console.log('Parametros::: ', parametros);
       this.qrResultString.push(resultString);
-      console.log('Parametros: ', parametros);
-      console.log('Longitud: ', parametros.length);
-      console.log('Longitud', this.qrResultString.length);
     } else {
       parametros = resultString.split(' ');
-      console.log('Parametros::: ', parametros);
       this.qrResultString.push(resultString);
-      console.log('Parametros: ', parametros);
-      console.log('Longitud: ', parametros.length);
-      console.log('Longitud', this.qrResultString.length);
     }
     if (this.qrResultString.length < 2) {
-      console.log('Longitud', this.qrResultString.length);
       if (parametros.length <= 1) {
         this.foto.url = '';
         //this.alert = true;
@@ -147,7 +150,6 @@ export class EscanerComponent implements OnInit {
         this.error();
       } else {
         //this.alert = false;
-        console.log('LLAVE:::', llave[1]);
         if (llave.length == 2) {
           this.decifrar('' + llave[1]);
         } else {
@@ -156,12 +158,6 @@ export class EscanerComponent implements OnInit {
         //this.buscar(+parametros[0], parametros[1]);
       }
     } else {
-      console.log('**', this.qrResultString);
-      console.log(
-        this.qrResultString[this.qrResultString.length - 2],
-        '---',
-        resultString
-      );
       if (
         this.qrResultString[this.qrResultString.length - 2] !== resultString
       ) {
@@ -192,8 +188,106 @@ export class EscanerComponent implements OnInit {
     this.titulo = this.qrResultString[this.qrResultString.length];
   }
 
+  private crearFormularioAcceso(): void {
+    this.formAcceso = this.formBuilder.group({
+      codigo: new FormControl(''),
+      identificacion: new FormControl(''),
+      usuarioTipo: new FormControl(''),
+      puesto: new FormControl(''),
+      puestoTipo: new FormControl(''),
+      sede: new FormControl(''),
+      subsede: new FormControl(''),
+      bloque: new FormControl(''),
+      accesoTipo: new FormControl(''),
+      fecha: new FormControl(''),
+    });
+  }
+
+  registrarIngreso() {
+    //FUNCIÓN PARA HACER INSERT DEL INGRESO DE UNA PERSONA
+    let acceso: ControlAcceso = new ControlAcceso();
+    acceso.identificacion = this.formAcceso.get('identificacion')!.value;
+    acceso.usuarioTipo = this.formAcceso.get('usuarioTipo')!.value;
+    let puesto: PuestoVigilancia = new PuestoVigilancia();
+    puesto.codigo = this.auth.user.puesto;
+    acceso.puesto = puesto;
+    acceso.accesoTipo = 1;
+    acceso.fecha = new Date();
+    this.controlAccesoService.registrarAcceso(acceso).subscribe(
+      (data) => {
+        if (data > 0) {
+          Swal.fire({
+            icon: 'success',
+            title: 'El usuario ingreso a la institución.',
+            showConfirmButton: false,
+            timer: 1500,
+          });
+        } else {
+          this.mensajeError();
+        }
+      },
+      (err) => this.fError(err)
+    );
+  }
+
+  registrarSalida() {
+    //FUNCIÓN PARA HACER INSERT DE LA SALIDA DE UNA PERSONA
+    let acceso: ControlAcceso = new ControlAcceso();
+    acceso.identificacion = this.formAcceso.get('identificacion')!.value;
+    acceso.usuarioTipo = this.formAcceso.get('usuarioTipo')!.value;
+    let puesto: PuestoVigilancia = new PuestoVigilancia();
+    puesto.codigo = this.auth.user.puesto;
+    acceso.puesto = puesto;
+    acceso.accesoTipo = 2;
+    acceso.fecha = new Date();
+    this.controlAccesoService.registrarAcceso(acceso).subscribe(
+      (data) => {
+        if (data > 0) {
+          Swal.fire({
+            icon: 'warning',
+            title: 'El usuario salio de la institución.',
+            showConfirmButton: false,
+            timer: 1500,
+          });
+        } else {
+          this.mensajeError();
+        }
+      },
+      (err) => this.fError(err)
+    );
+  }
+
+  entrada() {
+    this.foto.url = '';
+    this.busquedaAdministrativo = '';
+    this.busquedaDocente = '';
+    this.busquedaGraduado = '';
+    this.busqueda = '';
+    this.busquedaAdministrativo = '';
+    this.carnetEstudiante = false;
+    this.carnetGraduado = false;
+    this.carnetDocente = false;
+    this.carnetAdministrativo = false;
+    this.alert = true;
+    this.registrarIngreso();
+  }
+
+  salida() {
+    this.foto.url = '';
+    this.busquedaAdministrativo = '';
+    this.busquedaDocente = '';
+    this.busquedaGraduado = '';
+    this.busqueda = '';
+    this.busquedaAdministrativo = '';
+    this.carnetEstudiante = false;
+    this.carnetGraduado = false;
+    this.carnetDocente = false;
+    this.carnetAdministrativo = false;
+    this.alert = true;
+    this.registrarSalida();
+  }
+
   decryptParams(encryptedParams: string): { param1: string; param2: string } {
-    console.log('Decrypte', encryptedParams);
     const currentDate: any = this.datePipe.transform(new Date(), 'dd-MM-yyyy');
     let fecha = currentDate.toString();
     const [encryptedParam1, encryptedParam2] = encryptedParams.split(',');
@@ -201,12 +295,10 @@ export class EscanerComponent implements OnInit {
       encryptedParam1,
       fecha
     ).toString(CryptoJS.enc.Utf8);
-    console.log('param1: ', decryptedParam1);
     const decryptedParam2 = CryptoJS.AES.decrypt(
       encryptedParam2,
       fecha
     ).toString(CryptoJS.enc.Utf8);
-    console.log('param2: ', decryptedParam2);
     return { param1: decryptedParam1, param2: decryptedParam2 };
   }
 
@@ -236,13 +328,13 @@ export class EscanerComponent implements OnInit {
   }
 
   scroll(page: HTMLElement) {
-    console.log('Scroll');
     page.scrollIntoView();
   }
 
   buscar(estamento: number, codigo: String) {
     switch (estamento) {
       case 1: //ADMINISTRATIVO
+        this.formAcceso.get('usuarioTipo')!.setValue(1);
         this.foto.url = '';
         this.carnetEstudiante = false;
         this.carnetGraduado = false;
@@ -252,6 +344,7 @@ export class EscanerComponent implements OnInit {
         this.buscarAdministrativo(codigo);
         break;
       case 2: //ESTUDIANTE
+        this.formAcceso.get('usuarioTipo')!.setValue(2);
         this.foto.url = '';
         this.carnetEstudiante = true;
         this.carnetGraduado = false;
@@ -261,6 +354,7 @@ export class EscanerComponent implements OnInit {
         this.buscarEstudiante(codigo);
         break;
       case 3: //DOCENTE
+        this.formAcceso.get('usuarioTipo')!.setValue(3);
         this.foto.url = '';
         this.carnetEstudiante = false;
         this.carnetGraduado = false;
@@ -270,6 +364,7 @@ export class EscanerComponent implements OnInit {
         this.buscarDocente(codigo);
         break;
       case 4: //GRADUADO
+        this.formAcceso.get('usuarioTipo')!.setValue(4);
         this.foto.url = '';
         this.carnetEstudiante = false;
         this.carnetGraduado = true;
@@ -279,7 +374,7 @@ export class EscanerComponent implements OnInit {
         this.buscarGraduado(codigo);
         break;
       case 7: //TIQUETE
-        this.foto.url = '-';
+        this.formAcceso.get('usuarioTipo')!.setValue(7);
         this.tiquete = true;
         this.carnetEstudiante = false;
         this.carnetGraduado = false;
@@ -301,9 +396,9 @@ export class EscanerComponent implements OnInit {
 
   buscarManual(estamento: number) {
     this.alert = false;
-    console.log('Estamento', estamento);
     switch (+estamento) {
       case 1: //ADMINISTRATIVO
+        this.formAcceso.get('usuarioTipo')!.setValue(1);
         this.foto.url = '';
         this.carnetEstudiante = false;
         this.carnetGraduado = false;
@@ -316,6 +411,7 @@ export class EscanerComponent implements OnInit {
         this.busquedaGraduado = '';
         break;
       case 2: //ESTUDIANTE
+        this.formAcceso.get('usuarioTipo')!.setValue(2);
         this.foto.url = '';
         this.carnetEstudiante = true;
         this.carnetGraduado = false;
@@ -327,6 +423,7 @@ export class EscanerComponent implements OnInit {
         this.busquedaGraduado = '';
         break;
       case 3: //DOCENTE
+        this.formAcceso.get('usuarioTipo')!.setValue(3);
         this.foto.url = '';
         this.carnetEstudiante = false;
         this.carnetGraduado = false;
@@ -338,6 +435,7 @@ export class EscanerComponent implements OnInit {
         this.busquedaGraduado = '';
         break;
       case 4: //GRADUADO
+        this.formAcceso.get('usuarioTipo')!.setValue(4);
         this.foto.url = '';
         this.carnetEstudiante = false;
         this.carnetGraduado = true;
@@ -349,7 +447,7 @@ export class EscanerComponent implements OnInit {
         this.busqueda = '';
         break;
       case 5: //TIQUETE
-        this.foto.url = '';
+        this.formAcceso.get('usuarioTipo')!.setValue(7);
         this.tiquete = true;
         this.carnetEstudiante = false;
         this.carnetGraduado = false;
@@ -372,46 +470,6 @@ export class EscanerComponent implements OnInit {
     }
   }
 
-  entrada() {
-    this.foto.url = '';
-    this.busquedaAdministrativo = '';
-    this.busquedaDocente = '';
-    this.busquedaGraduado = '';
-    this.busqueda = '';
-    this.busquedaAdministrativo = '';
-    this.carnetEstudiante = false;
-    this.carnetGraduado = false;
-    this.carnetDocente = false;
-    this.carnetAdministrativo = false;
-    this.alert = true;
-    Swal.fire({
-      icon: 'success',
-      title: 'El usuario ingreso a la institución.',
-      showConfirmButton: false,
-      timer: 1500,
-    });
-  }
-
-  salida() {
-    this.foto.url = '';
-    this.busquedaAdministrativo = '';
-    this.busquedaDocente = '';
-    this.busquedaGraduado = '';
-    this.busqueda = '';
-    this.busquedaAdministrativo = '';
-    this.carnetEstudiante = false;
-    this.carnetGraduado = false;
-    this.carnetDocente = false;
-    this.carnetAdministrativo = false;
-    this.alert = true;
-    Swal.fire({
-      icon: 'warning',
-      title: 'El usuario salio de la institución.',
-      showConfirmButton: false,
-      timer: 1500,
-    });
-  }
-
   buscarEstudiante(codigo: String) {
     this.estServices.getEstudiante(codigo).subscribe((data) => {
       if (JSON.stringify(data) !== '[]') {
@@ -420,43 +478,11 @@ export class EscanerComponent implements OnInit {
         this.codigoQr =
           'https://sanagustin.usco.edu.co/planes_academicos/obtenerFoto/' +
           this.estudiante[0].persona.codigo;
+        this.formAcceso
+          .get('identificacion')!
+          .setValue(data[0].persona.identificacion);
         this.mostrarFotoEstudiante('' + this.estudiante[0].persona.codigo);
-        setTimeout(() => {
-          //this.alert = true;
-          /*  const swalWithBootstrapButtons = Swal.mixin({
-            customClass: {
-              confirmButton: 'btn btn-success',
-              cancelButton: 'btn btn-danger ml-5',
-            },
-            buttonsStyling: false,
-          });
-
-          swalWithBootstrapButtons
-            .fire({
-              title: 'Tipo de acceso',
-              text: 'El usuario está:',
-              icon: 'warning',
-              showCancelButton: true,
-              confirmButtonText: 'Ingresando',
-              cancelButtonText: 'Saliendo',
-              reverseButtons: false,
-            })
-            .then((result) => {
-              if (result.isConfirmed) {
-                swalWithBootstrapButtons.fire(
-                  'Ingreso',
-                  'El usuario ingresó a la institución.',
-                  'success'
-                );
-              } else if (result.dismiss === Swal.DismissReason.cancel) {
-                swalWithBootstrapButtons.fire(
-                  'Salida',
-                  'El usuario salió de la institución.',
-                  'success'
-                );
-              }
-            }); */
-        }, 2000);
+        setTimeout(() => {}, 2000);
       } else {
         this.error();
         this.foto.url = '';
@@ -481,45 +507,15 @@ export class EscanerComponent implements OnInit {
       if (JSON.stringify(data) !== '[]') {
         this.lectura();
         this.graduado = data;
+        this.formAcceso
+          .get('identificacion')!
+          .setValue(data[0].persona.identificacion);
         this.codigoQr =
           'https://sanagustin.usco.edu.co/planes_academicos/obtenerFoto/' +
           this.graduado[0].persona.codigo;
         this.mostrarFotoGraduado('' + this.graduado[0].persona.codigo);
         setTimeout(() => {
           this.alert = true;
-          /* const swalWithBootstrapButtons = Swal.mixin({
-            customClass: {
-              confirmButton: 'btn btn-success',
-              cancelButton: 'btn btn-danger ml-5',
-            },
-            buttonsStyling: false,
-          });
-
-          swalWithBootstrapButtons
-            .fire({
-              title: 'Tipo de acceso',
-              text: 'El usuario está:',
-              icon: 'warning',
-              showCancelButton: true,
-              confirmButtonText: 'Ingresando',
-              cancelButtonText: 'Saliendo',
-              reverseButtons: false,
-            })
-            .then((result) => {
-              if (result.isConfirmed) {
-                swalWithBootstrapButtons.fire(
-                  'Ingreso',
-                  'El usuario ingresó a la institución.',
-                  'success'
-                );
-              } else if (result.dismiss === Swal.DismissReason.cancel) {
-                swalWithBootstrapButtons.fire(
-                  'Salida',
-                  'El usuario salió de la institución.',
-                  'success'
-                );
-              }
-            }); */
         }, 2000);
       } else {
         this.error();
@@ -545,45 +541,15 @@ export class EscanerComponent implements OnInit {
       if (JSON.stringify(data) !== '[]') {
         this.lectura();
         this.docente = data;
+        this.formAcceso
+          .get('identificacion')!
+          .setValue(data[0].persona.identificacion);
         this.codigoQr =
           'https://sanagustin.usco.edu.co/planes_academicos/obtenerFoto/' +
           this.docente[0].persona.codigo;
         this.mostrarFotoDocente('' + this.docente[0].persona.codigo);
         setTimeout(() => {
           this.alert = true;
-          /*   const swalWithBootstrapButtons = Swal.mixin({
-            customClass: {
-              confirmButton: 'btn btn-success',
-              cancelButton: 'btn btn-danger ml-5',
-            },
-            buttonsStyling: false,
-          });
-
-          swalWithBootstrapButtons
-            .fire({
-              title: 'Tipo de acceso',
-              text: 'El usuario está:',
-              icon: 'warning',
-              showCancelButton: true,
-              confirmButtonText: 'Ingresando',
-              cancelButtonText: 'Saliendo',
-              reverseButtons: false,
-            })
-            .then((result) => {
-              if (result.isConfirmed) {
-                swalWithBootstrapButtons.fire(
-                  'Ingreso',
-                  'El usuario ingresó a la institución.',
-                  'success'
-                );
-              } else if (result.dismiss === Swal.DismissReason.cancel) {
-                swalWithBootstrapButtons.fire(
-                  'Salida',
-                  'El usuario salió de la institución.',
-                  'success'
-                );
-              }
-            }); */
         }, 2000);
       } else {
         this.error();
@@ -616,43 +582,13 @@ export class EscanerComponent implements OnInit {
           .obtenerPersonaPorPerCodigo(data[0].codigo)
           .subscribe((data) => {
             this.persona = data;
+            this.formAcceso
+              .get('identificacion')!
+              .setValue(data[0].identificacion);
             this.mostrarFotoAdministrativo('' + this.persona[0].codigo);
           });
         setTimeout(() => {
           this.alert = true;
-          /*  const swalWithBootstrapButtons = Swal.mixin({
-            customClass: {
-              confirmButton: 'btn btn-success',
-              cancelButton: 'btn btn-danger ml-5',
-            },
-            buttonsStyling: false,
-          });
-
-          swalWithBootstrapButtons
-            .fire({
-              title: 'Tipo de acceso',
-              text: 'El usuario está:',
-              icon: 'warning',
-              showCancelButton: true,
-              confirmButtonText: 'Ingresando',
-              cancelButtonText: 'Saliendo',
-              reverseButtons: false,
-            })
-            .then((result) => {
-              if (result.isConfirmed) {
-                swalWithBootstrapButtons.fire(
-                  'Ingreso',
-                  'El usuario ingresó a la institución.',
-                  'success'
-                );
-              } else if (result.dismiss === Swal.DismissReason.cancel) {
-                swalWithBootstrapButtons.fire(
-                  'Salida',
-                  'El usuario salió de la institución.',
-                  'success'
-                );
-              }
-            }); */
         }, 2000);
       } else {
         this.error();
@@ -674,62 +610,28 @@ export class EscanerComponent implements OnInit {
   }
 
   buscarTiquete(id: String) {
+    this.foto.url = '-';
     this.tiketServie.obtenerTicketIdentificacion(id).subscribe((data) => {
-      console.log(data);
       if (JSON.stringify(data) !== '[]') {
-        console.log(
-          this.datePipe.transform(data[0].fechaVigencia, 'yyyy-MM-dd') +
-            '>' +
-            this.datePipe.transform(new Date(), 'yyyy-MM-dd')
-        );
         if (
           this.datePipe.transform(data[0].fechaVigencia, 'yyyy-MM-dd')! >=
           this.datePipe.transform(new Date(), 'yyyy-MM-dd')!
         ) {
           this.ticket = data;
+          this.formAcceso
+            .get('identificacion')!
+            .setValue(data[0].persona.identificacion);
           this.tipoTiquete = data[0].tipo;
           this.mensajeRealizado();
           this.lectura();
-          console.log(this.ticket);
           setTimeout(() => {
             this.alert = true;
-            /* const swalWithBootstrapButtons = Swal.mixin({
-              customClass: {
-                confirmButton: 'btn btn-success',
-                cancelButton: 'btn btn-danger ml-5',
-              },
-              buttonsStyling: false,
-            });
-
-            swalWithBootstrapButtons
-              .fire({
-                title: 'Tipo de acceso',
-                text: 'El usuario está:',
-                icon: 'warning',
-                showCancelButton: true,
-                confirmButtonText: 'Ingresando',
-                cancelButtonText: 'Saliendo',
-                reverseButtons: false,
-              })
-              .then((result) => {
-                if (result.isConfirmed) {
-                  swalWithBootstrapButtons.fire(
-                    'Ingreso',
-                    'El usuario ingresó a la institución.',
-                    'success'
-                  );
-                } else if (result.dismiss === Swal.DismissReason.cancel) {
-                  swalWithBootstrapButtons.fire(
-                    'Salida',
-                    'El usuario salió de la institución.',
-                    'success'
-                  );
-                }
-              }); */
           }, 2000);
-          /* this.personaService.obtenerPersonaPorPerCodigo(data[0].codigo).subscribe(data => {
-            this.persona = data;
-          }); */
+          this.personaService
+            .obtenerPersonaPorPerCodigo(data[0].codigo)
+            .subscribe((data) => {
+              this.persona = data;
+            });
         } else {
           this.error();
           this.foto.url = '';
@@ -824,6 +726,7 @@ export class EscanerComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.crearFormularioAcceso();
     if (window.screen.width <= 950) {
       // 768px portrait
       this.mobile = true;
@@ -943,5 +846,17 @@ export class EscanerComponent implements OnInit {
           });
       }
     });
+  }
+
+  fError(er: any): void {
+    let err = er.error.error_description;
+    let arr: string[] = err.split(':');
+
+    if (arr[0] == 'Access token expired') {
+      this.auth.logout();
+      this.router.navigate(['login']);
+    } else {
+      this.mensajeError();
+    }
   }
 }

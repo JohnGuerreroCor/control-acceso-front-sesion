@@ -140,6 +140,7 @@ export class TiqueteVisitantesComponent implements OnInit {
       identificacion: new FormControl('', [
         Validators.required,
         Validators.maxLength(15),
+        Validators.pattern('^[0-9]*$'),
       ]),
       nombreCompleto: new FormControl(''),
       nombre1: new FormControl(''),
@@ -211,6 +212,9 @@ export class TiqueteVisitantesComponent implements OnInit {
   }
 
   buscarPersona() {
+    this.formTercero.get('sede')!.setValue(this.authService.user.sede);
+    this.buscarSubsede(this.authService.user.sede);
+    this.formTercero.get('subsede')!.setValue(this.authService.user.subsede);
     this.ticket = false;
     this.enviarTicketPersona = true;
     this.ipuntEmailPersona = false;

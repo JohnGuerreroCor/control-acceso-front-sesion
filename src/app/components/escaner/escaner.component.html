@@ -675,12 +675,11 @@
                 </mat-form-field>
               </div>
             </div>
-            <div class="row" *ngIf="carnetEstudiante">
+            <!--   <div class="row" *ngIf="carnetEstudiante">
               <div class="col">
                 <div class="form-group">
                   <mat-radio-group
                     aria-label="Select an option"
-                    formControlName="tipoUbicacion"
                     id="tipoUbicacion"
                   >
                     <mat-radio-button value="1">Código</mat-radio-button>
@@ -688,7 +687,7 @@
                   </mat-radio-group>
                 </div>
               </div>
-            </div>
+            </div> -->
             <div class="row" *ngIf="carnetEstudiante">
               <div class="col">
                 <div class="form-group">
@@ -832,17 +831,9 @@
               </div>
             </div>
             <div class="row text-center">
-              <div class="col" *ngIf="!alert">
-                <img
-                  src="assets/precarga-usco.gif"
-                  class="img-fluid"
-                  alt="USCO"
-                />
-              </div>
               <div class="container">
                 <div
                   class="col p-4"
-                  *ngIf="alert"
                   style="background-color: #1e262b; border-radius: 15px"
                 >
                   <div class="box" style="width: 350px">
@@ -925,7 +916,7 @@
                 </mat-form-field>
               </div>
             </div>
-            <div class="row" *ngIf="carnetEstudiante">
+            <!--   <div class="row" *ngIf="carnetEstudiante">
               <div class="col">
                 <div class="form-group">
                   <mat-radio-group
@@ -938,7 +929,7 @@
                   </mat-radio-group>
                 </div>
               </div>
-            </div>
+            </div> -->
             <div class="row" *ngIf="carnetEstudiante">
               <div class="col">
                 <div class="form-group">
