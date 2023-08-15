@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ElementRef, ViewChild } from '@angular/core';
 import { BarcodeFormat } from '@zxing/library';
 import { EstudianteService } from '../../services/estudiante.service';
 import { environment } from 'src/environments/environment';
@@ -110,6 +110,9 @@ export class EscanerComponent implements OnInit {
     url: '',
   };
 
+  // Referencia al elemento div oculto
+  @ViewChild('hiddenDiv') hiddenDiv!: ElementRef;
+
   constructor(
     public estServices: EstudianteService,
     public graduadoService: GraduadoService,
@@ -124,7 +127,8 @@ export class EscanerComponent implements OnInit {
     private auth: AuthService,
     private formBuilder: FormBuilder,
     private router: Router,
-    public controlAccesoService: ControlAccesoService
+    public controlAccesoService: ControlAccesoService,
+    private elementRef: ElementRef
   ) {
     this.codigoQr = 'https://www.usco.edu.co/';
     console.log(this.auth.user);
@@ -186,6 +190,20 @@ export class EscanerComponent implements OnInit {
       }
     }
     this.titulo = this.qrResultString[this.qrResultString.length];
+  }
+
+  // Función para mostrar el div oculto y desplazarse hacia él
+  showAndScrollToHiddenDiv() {
+    this.hiddenDiv.nativeElement.scrollIntoView({ behavior: 'smooth' });
+  }
+
+  scrollToSection(sectionId: string) {
+    const section = this.elementRef.nativeElement.querySelector(
+      '#' + sectionId
+    );
+    if (section) {
+      section.scrollIntoView({ behavior: 'smooth' });
+    }
   }
 
   private crearFormularioAcceso(): void {
@@ -482,7 +500,9 @@ export class EscanerComponent implements OnInit {
           .get('identificacion')!
           .setValue(data[0].persona.identificacion);
         this.mostrarFotoEstudiante('' + this.estudiante[0].persona.codigo);
-        setTimeout(() => {}, 2000);
+        setTimeout(() => {
+          this.showAndScrollToHiddenDiv();
+        }, 1000);
       } else {
         this.error();
         this.foto.url = '';
@@ -515,8 +535,9 @@ export class EscanerComponent implements OnInit {
           this.graduado[0].persona.codigo;
         this.mostrarFotoGraduado('' + this.graduado[0].persona.codigo);
         setTimeout(() => {
-          this.alert = true;
-        }, 2000);
+          this.showAndScrollToHiddenDiv();
+        }, 1000);
+        this.scrollToSection('section1');
       } else {
         this.error();
         this.foto.url = '';
@@ -549,8 +570,9 @@ export class EscanerComponent implements OnInit {
           this.docente[0].persona.codigo;
         this.mostrarFotoDocente('' + this.docente[0].persona.codigo);
         setTimeout(() => {
-          this.alert = true;
-        }, 2000);
+          this.showAndScrollToHiddenDiv();
+        }, 1000);
+        this.scrollToSection('section1');
       } else {
         this.error();
         this.foto.url = '';
@@ -588,8 +610,9 @@ export class EscanerComponent implements OnInit {
             this.mostrarFotoAdministrativo('' + this.persona[0].codigo);
           });
         setTimeout(() => {
-          this.alert = true;
-        }, 2000);
+          this.showAndScrollToHiddenDiv();
+        }, 1000);
+        this.scrollToSection('section1');
       } else {
         this.error();
         this.foto.url = '';
@@ -625,8 +648,8 @@ export class EscanerComponent implements OnInit {
           this.mensajeRealizado();
           this.lectura();
           setTimeout(() => {
-            this.alert = true;
-          }, 2000);
+            this.showAndScrollToHiddenDiv();
+          }, 1000);
           this.personaService
             .obtenerPersonaPorPerCodigo(data[0].codigo)
             .subscribe((data) => {

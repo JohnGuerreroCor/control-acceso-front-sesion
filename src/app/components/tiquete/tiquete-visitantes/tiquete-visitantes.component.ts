@@ -215,6 +215,7 @@ export class TiqueteVisitantesComponent implements OnInit {
     this.formTercero.get('sede')!.setValue(this.authService.user.sede);
     this.buscarSubsede(this.authService.user.sede);
     this.formTercero.get('subsede')!.setValue(this.authService.user.subsede);
+    this.buscarBloque(this.authService.user.subsede);
     this.ticket = false;
     this.enviarTicketPersona = true;
     this.ipuntEmailPersona = false;
@@ -354,6 +355,7 @@ export class TiqueteVisitantesComponent implements OnInit {
   buscarBloque(codigo: number) {
     this.formTercero.get('bloque')!.reset;
     this.ubicacionService.buscarBloques(codigo).subscribe((data) => {
+      console.log('BLOQUE:: ',data);
       this.bloques = data;
     });
   }

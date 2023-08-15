@@ -1073,16 +1073,15 @@
               </div>
             </div>
             <div class="row justify-content-center">
-              <div class="col" style="width: 250px" *ngIf="!alert">
+              <!-- <div class="col" style="width: 250px" *ngIf="!alert">
                 <img
                   src="assets/precarga-usco.gif"
                   class="img-fluid"
                   alt="USCO"
                 />
-              </div>
+              </div> -->
               <div
                 class="col p-4"
-                *ngIf="alert"
                 style="background-color: #4d626c; border-radius: 15px"
               >
                 <div class="box" style="width: 250px">
@@ -1117,6 +1116,7 @@
               <div class="col mb-2">
                 <!--VISTA MOBILE ESTUDIANTE-->
                 <div
+                  #hiddenDiv
                   class="card-usco-carnet carnet-usco-body shadow p-4 text-center"
                   id="carnet-usco-rotulo-front"
                   *ngIf="
@@ -1208,6 +1208,7 @@
                 </div>
                 <!--VISTA MOBILE GRADUADO-->
                 <div
+                  #hiddenDiv
                   class="card-usco-carnet carnet-usco-body shadow p-4 text-center"
                   id="carnet-usco-rotulo-front"
                   *ngIf="
@@ -1312,6 +1313,7 @@
                 </div>
                 <!--VISTA MOBILE DOCENTE-->
                 <div
+                  #hiddenDiv
                   class="card-usco-carnet carnet-usco-body shadow p-4 text-center"
                   id="carnet-usco-rotulo-front"
                   *ngIf="
@@ -1400,6 +1402,7 @@
                 </div>
                 <!--VISTA MOBILE ADMINISTRATIVO-->
                 <div
+                  #hiddenDiv
                   class="card-usco-carnet carnet-usco-body shadow p-4 text-center"
                   id="carnet-usco-rotulo-front"
                   *ngIf="
@@ -1481,6 +1484,7 @@
                 </div>
                 <!--TIQUETE MOBILE INVITADO-->
                 <div
+                  #hiddenDiv
                   class="row text-left text-uppercase"
                   *ngIf="
                     tiquete && tipoTiquete === 1 && (ticket | json) != '[]'
@@ -1618,6 +1622,7 @@
                 </div>
                 <!--TIQUETE MOBILE VISITANTE-->
                 <div
+                  #hiddenDiv
                   class="row text-left text-uppercase"
                   *ngIf="
                     tiquete && tipoTiquete === 2 && (ticket | json) != '[]'

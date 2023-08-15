@@ -19,7 +19,7 @@
         routerLinkActive="router-link-active"
       >
         <i class="fa-solid fa-arrow-left"></i> Regresar</button
-      ><a href="assets/ManualCarnetDigitalUsco.pdf" download>
+      ><a href="assets/ManualControlAcceso.pdf" download>
         <button class="btn btn-usco-vt">
           <i class="fa-solid fa-download"></i> Descargar
         </button></a
@@ -77,7 +77,10 @@
               dirección en cualquier navegador disponible:
             </p>
             <p>
-              <a href=" https://gaitana.usco.edu.co/control_acceso">
+              <a
+                href=" https://gaitana.usco.edu.co/control_acceso"
+                class="font-weight-bold"
+              >
                 https://gaitana.usco.edu.co/control_acceso</a
               >
             </p>
@@ -177,43 +180,81 @@
           <div class="col text-left">
             <p>
               El panel de inicio de sesión cuenta con dos casillas, la primera
-              casilla para ingresar el usuario y la segunda casilla para digitar
-              la contraseña con la cual accede al portal institucional.
+              casilla para ingresar el usuario (número de identificación) y la
+              segunda casilla para digitar correo electrónico personal
+              suministrado para su registro en la plataforma.
             </p>
           </div>
         </div>
         <div class="row">
           <div class="col">
-            <img class="img-fluid" src="assets/clave.gif" alt="USCO" />
+            <img class="img-fluid" src="assets/instructivo.gif" alt="USCO" />
           </div>
         </div>
         <div class="row">
           <div class="col text-left">
             <p>
-              En la parte inferior del panel de inicio de sesión encontrará dos
-              opciones la primera opción
-              <span class="font-usco-vt font-weight-bold"
-                >¿Olvidó su contraseña?</span
-              >
-              permite a través de un formulario restaurar la contraseña de
-              acceso para los módulos de la institución.
+              En la parte inferior encontrará el instructivo con el cual podrá
+              tener una guía rápida de las funcionalidades de la aplicación,
+              ante cualquier inquietud comunicarse con el Desarrollador a cargo
+              Ing John Guerrero a través del correo:
             </p>
+            <p>
+              <a href="john.guerrero@usco.edu.co" class="font-weight-bold"
+                >john.guerrero@usco.edu.co</a
+              >
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="carousel-item">
+        <div class="row">
+          <div class="col">
+            <img
+              class="img-fluid"
+              src="assets/universidad-surcolombiana.png"
+              alt="USCO"
+            />
+          </div>
+        </div>
+        <div class="row mt-4">
+          <div class="col">
+            <img class="img-fluid" src="assets/token.gif" alt="USCO" />
+          </div>
+        </div>
+        <div class="row mt-4">
+          <div class="col text-left">
+            <p>
+              Después de que el sistema valide las credenciales de inicio de
+              sesión, el aplicativo enviará un correo electrónico a su cuenta
+              institucional con un código único de acceso, el cual tiene una
+              vigencia de 5 minutos.
+            </p>
+            <p>
+              Para acceder, diríjase a la bandeja de entrada de su correo
+              institucional y abra el correo con el remitente "carnetizacion#".
+              Dentro del correo de token, copie el código resaltado en la imagen
+              2 y péguelo en la ventana de solicitud del token en el aplicativo.
+              Luego, presione "Validar". Si la autenticación del código no
+              coincide, el sistema mostrará la siguiente alerta: "Código de
+              verficación incorrecto". Esto puede ocurrir por dos razones:
+            </p>
+            <ol>
+              <li>El token ha caducado debido a su tiempo de validez.</li>
+              <li>Ha excedido el número máximo de intentos permitidos.</li>
+            </ol>
+            <p>Para solucionar cualquiera de estos dos casos, refresque la ventana. </p>
           </div>
         </div>
         <div class="row">
           <div class="col">
-            <img class="img-fluid" src="assets/usuario.gif" alt="USCO" />
+            <img class="img-fluid" src="assets/error.jpg" alt="USCO" />
           </div>
         </div>
         <div class="row">
           <div class="col text-left">
             <p>
-              Como segunda opción
-              <span class="font-usco-vt font-weight-bold"
-                ><i class="fa-solid fa-circle-info"></i> Tipos de usuario</span
-              >
-              despliega una ventana emergente donde detalla para cada estamento
-              cómo está compuesto la nomenclatura de su usuario.
+              Una vez que el código sea autenticado, el sistema le permitirá acceder a la siguiente pestaña.
             </p>
           </div>
         </div>
@@ -243,17 +284,19 @@
         <div class="row mt-4">
           <div class="col text-left">
             <p>
-              En la parte superior derecha en el ícono de tres líneas
-              horizontales despliega un menú donde refleja los carnés que puede
-              generar el usuario dependiendo de las vinculaciones que tenga
-              activas, además como última opción está el cierre de sesión con el
-              cual sale del aplicativo evitando dejar credenciales activas.
+              En la parte superior derecha, en el ícono de tres líneas
+              horizontales, se despliega un menú que muestra las opciones
+              disponibles para el vigilante. Desde aquí, el vigilante puede
+              escanear y validar el carné digital, generar tiquetes para
+              visitantes, y finalmente, cerrar la sesión. La opción de cerrar la
+              sesión permite salir del aplicativo y evitar dejar credenciales
+              activas.
             </p>
           </div>
         </div>
         <div class="row mt-4">
           <div class="col">
-            <img class="img-fluid" src="assets/cierre.jpg" alt="USCO" />
+            <img class="img-fluid" src="assets/cierre.gif" alt="USCO" />
           </div>
         </div>
         <div class="row mt-4">
@@ -267,94 +310,310 @@
         </div>
         <div class="row">
           <div class="col">
-            <img class="img-fluid" src="assets/carnets.jpg" alt="USCO" />
+            <img class="img-fluid" src="assets/opciones.jpg" alt="USCO" />
           </div>
         </div>
         <div class="row mt-4">
           <div class="col text-left">
             <p>
-              Dependiendo del tipo de vinculación que tenga con la institución,
-              podrá acceder a los diferentes carnés que comprenden los
-              estamentos de la institución. <br /><br />
-              La visualización del carné está desligado al usuario con el cual
-              inicia sesión, es decir si accede como graduado pero también está
-              vinculado laboralmente con la institución podrá tener acceso a
-              ambos carnés desde el menú inicial. Los estamentos que componen la
-              institución son: <br />
+              Dentro del menú, encontrarás dos opciones que se explican a
+              continuación, las cuales son "Escáner" y "Tiquete".
             </p>
-            <ul>
+          </div>
+        </div>
+      </div>
+      <div class="carousel-item">
+        <div class="row">
+          <div class="col">
+            <img
+              class="img-fluid"
+              src="assets/universidad-surcolombiana.png"
+              alt="USCO"
+            />
+          </div>
+        </div>
+        <div class="row mt-5">
+          <div class="col text-left">
+            <h3 class="font-weight-bold">
+              <u>Escáner</u>
+            </h3>
+          </div>
+        </div>
+        <div class="row mt-4">
+          <div class="col">
+            <img class="img-fluid" src="assets/vistas.jpg" alt="USCO" />
+          </div>
+        </div>
+        <div class="row mt-4">
+          <div class="col text-left">
+            <p>
+              El formulario que se muestra en el componente "Escáner" consta de
+              las siguientes secciones:
+            </p>
+          </div>
+        </div>
+        <div class="row mt-4">
+          <div class="col">
+            <img class="img-fluid" src="assets/partes.jpg" alt="USCO" />
+          </div>
+        </div>
+        <div class="row mt-4">
+          <div class="col text-left">
+            <p>
+              Cuando se escanea el QR de la credencial digital, el sistema emite
+              tres tipos de notificaciones diferentes, según la validez del QR:
+            </p>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col">
+            <img class="img-fluid" src="assets/noexiste.jpg" alt="USCO" />
+          </div>
+        </div>
+        <div class="row mt-4">
+          <div class="col text-left">
+            <p>
+              El primer caso ocurre cuando la credencial digital no existe, el
+              tiquete ha vencido o el QR no está registrado en la institución.
+            </p>
+          </div>
+        </div>
+        <div class="row mt-4">
+          <div class="col">
+            <img class="img-fluid" src="assets/existe.jpg" alt="USCO" />
+          </div>
+        </div>
+        <div class="row mt-4">
+          <div class="col text-left">
+            <p>
+              El segundo caso ocurre cuando la credencial digital es aceptada y
+              validada correctamente. En este caso, el sistema notifica que el
+              usuario está vinculado con la institución.
+            </p>
+          </div>
+        </div>
+        <div class="row mt-4">
+          <div class="col">
+            <img class="img-fluid" src="assets/repetido.jpg" alt="USCO" />
+          </div>
+        </div>
+        <div class="row mt-4">
+          <div class="col text-left">
+            <p>
+              El último caso ocurre cuando se realiza múltiples lecturas del
+              mismo código QR. En este escenario, el sistema establece un
+              intervalo de tiempo para permitir tomar una nueva lectura.
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="carousel-item">
+        <div class="row">
+          <div class="col">
+            <img
+              class="img-fluid"
+              src="assets/universidad-surcolombiana.png"
+              alt="USCO"
+            />
+          </div>
+        </div>
+        <div class="row mt-4">
+          <div class="col">
+            <img class="img-fluid" src="assets/escaneado.jpg" alt="USCO" />
+          </div>
+        </div>
+        <div class="row mt-4">
+          <div class="col text-left">
+            <p>
+              Según el tipo de vinculación del usuario con la institución, su
+              credencial digital aparecerá en la parte inferior para vistas
+              móviles (tabletas o celulares) o en la parte izquierda para la
+              vista en escritorio (computadoras).
+            </p>
+            <p>Los estamentos que forman parte de la institución son:</p>
+            <ol class="font-weight-bold">
               <li>Estudiante</li>
               <li>Estudiante virtual</li>
-              <li>Estudiante intercambio</li>
+              <li>Estudiante de intercambio</li>
               <li>Graduado</li>
               <li>Docente</li>
               <li>Administrativo</li>
-            </ul>
+            </ol>
             <p>
-              Si por algún motivo no visualiza el carné o la información no
-              corresponde a su perfil, por favor remitir un correo a la
-              dependencia del Centro de Información, Tecnología y Control
-              Documental o al Ingeniero encargado del módulo.
+              Además, se incluyen los dos tipos de tiquetes: visitante e
+              invitado.
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="carousel-item">
+        <div class="row">
+          <div class="col">
+            <img
+              class="img-fluid"
+              src="assets/universidad-surcolombiana.png"
+              alt="USCO"
+            />
+          </div>
+        </div>
+        <div class="row mt-5">
+          <div class="col text-left">
+            <h3 class="font-weight-bold">
+              <u>Tiquete</u>
+            </h3>
+          </div>
+        </div>
+        <div class="row mt-4">
+          <div class="col">
+            <img class="img-fluid" src="assets/buscar.gif" alt="USCO" />
+          </div>
+        </div>
+        <div class="row mt-4">
+          <div class="col text-left">
+            <p>
+              En este componente, dispone de un formulario en el cual algunas
+              opciones no pueden ser editadas hasta que se verifique si el
+              usuario ya está vinculado con la institución. El primer campo
+              corresponde al número de documento de identidad del usuario. Esta
+              funcionalidad permite buscar al usuario por su identificación.
+              Para ello, puedes presionar la tecla Enter ubicada en el campo o
+              hacer clic en el icono de la lupa para ejecutar la búsqueda y
+              precargar los datos del usuario.
+            </p>
+          </div>
+        </div>
+        <div class="row mt-4">
+          <div class="col">
+            <img class="img-fluid" src="assets/sinresultado.gif" alt="USCO" />
+          </div>
+        </div>
+        <div class="row mt-4">
+          <div class="col text-left">
+            <p>
+              Una vez consultado el usuario por su número de identificación,
+              obtendrás tres posibles resultados. En el primer caso, se mostrará
+              una alerta emergente tal como se visualiza en la imagen anterior.
+              Esto significa que la consulta utilizando el número de
+              identificación no arrojó ningún usuario relacionado con dicho
+              número. Por lo tanto, deberás completar todos los campos
+              obligatorios para poder generar el tiquete de invitado.
+            </p>
+          </div>
+        </div>
+        <div class="row mt-4">
+          <div class="col">
+            <img class="img-fluid" src="assets/graduado.gif" alt="USCO" />
+          </div>
+        </div>
+        <div class="row mt-4">
+          <div class="col text-left">
+            <p>
+              El segundo resultado ocurre cuando el número de documento del
+              usuario coincide con una vinculación de graduado. En este caso, el
+              sistema mostrará una ventana emergente que proporcionará una
+              instrucción específica para completar el formulario en situaciones
+              excepcionales donde el usuario no cuente con un correo electrónico
+              vigente o actualizado.
+            </p>
+          </div>
+        </div>
+        <div class="row mt-4">
+          <div class="col">
+            <img class="img-fluid" src="assets/correo.gif" alt="USCO" />
+          </div>
+        </div>
+        <div class="row mt-4">
+          <div class="col text-left">
+            <p>
+              En el campo de correo electrónico para usuarios ya vinculados, se
+              ofrece la opción de desplegar un listado que incluye correo
+              interno y correo personal. En el caso de usuarios de terceros,
+              solo aparecerá un único correo y se mantendrá por defecto para el
+              envío del tiquete, excepto para los usuarios graduados.
+            </p>
+          </div>
+        </div>
+        <div class="row mt-4">
+          <div class="col">
+            <img class="img-fluid" src="assets/cambiocorreo.gif" alt="USCO" />
+          </div>
+        </div>
+        <div class="row mt-4">
+          <div class="col text-left">
+            <p>
+              Los usuarios que son graduados de la Universidad tendrán el correo
+              personal cargado por defecto. En caso de que el graduado ya no
+              utilice o no tenga disponible ese correo, en la parte superior
+              derecha encontrará la opción de cambiar temporalmente el correo
+              del graduado para enviar el tiquete en su momento. El cambio
+              realizado será notificado a la oficina de graduados para que
+              aprueben el cambio del correo correspondiente.
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="carousel-item">
+        <div class="row">
+          <div class="col">
+            <img
+              class="img-fluid"
+              src="assets/universidad-surcolombiana.png"
+              alt="USCO"
+            />
+          </div>
+        </div>
+        <div class="row mt-4">
+          <div class="col">
+            <img class="img-fluid" src="assets/lugar.jpg" alt="USCO" />
+          </div>
+        </div>
+        <div class="row mt-4">
+          <div class="col text-left">
+            <p>
+              En la sección de ubicación de ingreso, debe seleccionar la sede,
+              subsede y especificar el lugar de la visita. Tiene dos opciones:
             </p>
             <ul>
-              <li><a href="">ctic@usco.edu.co</a></li>
-              <li><a href="">john.guerrero@usco.edu.co</a></li>
+              <li>De manera general, elija la opción "Bloque".</li>
+              <li>
+                De manera específica, elija la opción "Oficina". Para el campo
+                de oficina, se activa una barra de autocompletar donde puede
+                escribir palabras clave para buscar la oficina existente.
+              </li>
             </ul>
           </div>
         </div>
-      </div>
-      <div class="carousel-item">
-        <div class="row">
-          <div class="col">
-            <img
-              class="img-fluid"
-              src="assets/universidad-surcolombiana.png"
-              alt="USCO"
-            />
-          </div>
-        </div>
-        <div class="row mt-5">
-          <div class="col text-left">
-            <h3 class="font-weight-bold">
-              <u>Carné digital</u>
-            </h3>
-          </div>
-        </div>
         <div class="row mt-4">
           <div class="col">
-            <img class="img-fluid" src="assets/qr.gif" alt="USCO" />
+            <img class="img-fluid" src="assets/generar.gif" alt="USCO" />
           </div>
         </div>
         <div class="row mt-4">
           <div class="col text-left">
             <p>
-              En la parte inferior derecha se encuentran posicionados dos
-              botones, el primer botón el cual tiene de símbolo un QR genera el
-              código QR
-              <button class="btn btn-dark" style="border-radius: 50%">
-                <i class="fa-solid fa-qrcode"></i>
-              </button>
-              dinámico con el cual podrá identificarse como personada vinculada
-              a la Universidad, este es un código único dinámico y de uso
-              personal, cada día cambia el código de acceso por protección de
-              datos y política de seguridad de la información.
+              La vigencia del tiquete corresponde únicamente al día en que es
+              generado.
+            </p>
+            <p>
+              No está habilitada la opción de adjuntar una foto debido a la
+              inmediatez de la vigencia; por lo tanto, se omite el uso de una
+              foto.
             </p>
           </div>
         </div>
         <div class="row mt-4">
           <div class="col">
-            <img class="img-fluid" src="assets/back.gif" alt="USCO" />
+            <img class="img-fluid" src="assets/tiquete.jpg" alt="USCO" />
           </div>
         </div>
         <div class="row mt-4">
           <div class="col text-left">
             <p>
-              El segundo botón el cual tiene de símbolo de flecha a la izquierda
-              <button class="btn btn-dark" style="border-radius: 50%">
-                <i class="fa-solid fa-arrow-left-long"></i>
-              </button>
-              regresa al menú inicial donde tiene a disposición los carnés según
-              la vinculación del usuario.
+              Una vez completado el formulario de tiquete visitante, se
+              habilitará el botón "Generar Tiquete". Procesada la solicitud,
+              aparecerá la siguiente vista y automáticamente se enviará un
+              correo electrónico a la persona con el tiquete, la información
+              recolectada.
             </p>
           </div>
         </div>
@@ -369,51 +628,28 @@
             />
           </div>
         </div>
-        <div class="row mt-5">
-          <div class="col text-left">
-            <h3 class="font-weight-bold">
-              <u>Código QR</u>
-            </h3>
-          </div>
-        </div>
         <div class="row mt-4">
           <div class="col">
-            <img class="img-fluid" src="assets/escaner.jpg" alt="USCO" />
+            <img class="img-fluid" src="assets/imprimir.gif" alt="USCO" />
           </div>
         </div>
         <div class="row mt-4">
           <div class="col text-left">
             <p>
-              Al escanear el código QR con cualquier dispositivo que cuente con
-              una cámara web y conexión a internet podrá validar que es un
-              código activo y verídico proporcionado por la institución.
+              Una vez finalizada la generación del tiquete, tendrás la opción de
+              "Generar otro tiquete". Al seleccionar esta opción, el formulario
+              se restablecerá y estará listo para repetir los pasos anteriores.
             </p>
-          </div>
-        </div>
-        <div class="row mt-4">
-          <div class="col">
-            <img class="img-fluid" src="assets/acceso.jpg" alt="USCO" />
-          </div>
-        </div>
-        <div class="row mt-4">
-          <div class="col text-left">
             <p>
-              A través de un aplicativo a disposición de los guardias de
-              vigilancia de la Institución podrán validar y hacer el registro de
-              ingreso y salida de la institución de cualquier Sede o Subsede que
-              acceda el usuario.
+              En la parte inferior del formulario, encontrarás una tabla que
+              muestra el histórico de los tiquetes generados, con la
+              particularidad de que solo podrás visualizar los tiquetes
+              generados en el día actual. Esto se realiza con el propósito de
+              mantener una trazabilidad, disponer de un respaldo en caso de
+              pérdida o necesidad de reenvío, evitar la duplicación del QR de
+              días anteriores y permitir la impresión si cuenta con los recursos
+              de una impresora.
             </p>
-          </div>
-        </div>
-      </div>
-      <div class="carousel-item">
-        <div class="row">
-          <div class="col">
-            <img
-              class="img-fluid"
-              src="assets/universidad-surcolombiana.png"
-              alt="USCO"
-            />
           </div>
         </div>
         <div class="row mt-5">
@@ -425,7 +661,7 @@
         </div>
         <div class="row mt-4">
           <div class="col">
-            <img class="img-fluid" src="assets/tiquete.jpg" alt="USCO" />
+            <img class="img-fluid" src="assets/tiquetes.jpg" alt="USCO" />
           </div>
         </div>
         <div class="row mt-4">
